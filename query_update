@@ -1,0 +1,56 @@
+UPDATE `images` SET pic1 = NULL WHERE pic1 = ''
+UPDATE `images` SET pic2 = NULL WHERE pic2 = ''
+UPDATE `images` SET pic3 = NULL WHERE pic3 = ''
+
+  /*$ages = DB::select("SELECT id, YEAR(CURDATE()) - YEAR(dob) AS age FROM profiles");
+        foreach ($ages as $age){
+            DB::select("UPDATE `profiles` SET age = $age->age WHERE age = 35 and id = $age->id");
+        }
+        echo 'done';*/
+
+        str_limit('This string is really really long.', 7);
+
+        ALTER TABLE `profiles` ADD `otp` INT NULL DEFAULT NULL AFTER `is_active`;
+
+        ALTER TABLE `profiles` ADD `f_income` FLOAT NULL DEFAULT NULL AFTER `otp`;
+
+        ALTER TABLE `profiles` ADD `create_for` FLOAT NULL DEFAULT NULL AFTER `name`;
+
+        ALTER TABLE `profiles` ADD `is_active` TINYINT NOT NULL DEFAULT '1' AFTER `f_income`;
+
+        ALTER TABLE `profiles` ADD `is_show_contact` TINYINT NOT NULL DEFAULT '0' AFTER `f_income`;
+
+        ALTER TABLE `profiles` ADD `is_show_dob` TINYINT NOT NULL DEFAULT '0' AFTER `f_income`
+
+        ALTER TABLE `profiles` ADD `is_show_img` TINYINT NOT NULL DEFAULT '0' AFTER `f_income`
+
+ALTER TABLE `profiles` ADD `is_once_contact` TINYINT NOT NULL DEFAULT '0' AFTER `is_active`, ADD `is_once_dob` TINYINT NOT NULL DEFAULT '0' AFTER `is_once_contact`, ADD `is_once_gender` TINYINT NOT NULL DEFAULT '0' AFTER `is_once_dob`, ADD `is_once_religion` TINYINT NOT NULL DEFAULT '0' AFTER `is_once_gender`;
+.
+ALTER TABLE `profiles` ADD `is_once_caste` TINYINT NOT NULL DEFAULT '0' AFTER `is_once_religion`;
+ALTER TABLE `profiles` ADD `f_income` VARCHAR(50) NULL DEFAULT NULL AFTER `otp`;
+
+ALTER TABLE `profiles` CHANGE `education` `education` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `profiles` CHANGE `password` `password` VARCHAR(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+ALTER TABLE `profiles` CHANGE `anual_income` `anual_income` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+        SELECT *  FROM `profiles` WHERE `height` IN ('5ft.1in-154cm','5ft.4in-162cm') AND `religion` IN ('Hindu') AND `caste` IN ('Kayastha') AND `education` IN ('CA') AND `occupation` IN ('Professor / Lecturer') AND `anual_income` IN ('INR 1 Lakh to 2 Lakh') AND `state` IN ('Uttar Pradesh') AND `age` IN (31) ORDER BY `id`  ASC LIMIT 0, 25
+
+
+        ALTER TABLE `profiles` CHANGE `p_heightfrom` `p_heightfrom` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'Not mentioned';
+
+        ALTER TABLE `profiles` CHANGE `p_heightto` `p_heightto` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'Not mentioned';
+
+
+        ALTER TABLE `profiles` ADD `aadhar` VARCHAR(100) NULL DEFAULT NULL AFTER `is_once_religion`;
+
+        ALTER TABLE `profiles` CHANGE `highest_degree` `highest_degree` VARCHAR(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+        ALTER TABLE `profiles` CHANGE `gender` `gender` ENUM('male','female','','') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'male';
+
+        ALTER TABLE `profiles` ADD `aadhar_back` VARCHAR(100) NULL DEFAULT NULL AFTER `aadhar`;
+
+        ALTER TABLE `profiles` ADD `is_show_pic` TINYINT NOT NULL DEFAULT '1' AFTER `is_show_dob`;
+
+
+        update profiles set mob2 = NULL WHERE mob2 = ''
