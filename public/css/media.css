@@ -1,280 +1,573 @@
-@media screen and (min-width: 320px) and (max-width: 479px) {
-    .main_banner {
-        width: 168%;
-        height: 98vh;
-        display: inline-block;
-        background-image: url(../images/mangal_banner.jpg);
-        /* background-size: cover; */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: inherit;
+/*------------------------Media Ibadur----------*/
+
+@media (max-width: 1199px) and (min-width: 992px)
+{
+    .btn-pay img
+    {
+        margin-top: 215% !important;
     }
-    .sucess_story {
-        display: inline-block;
-        width: 170%;
-        background: #e5e5e5;
-        padding: 23px 0px;
+
+}
+@media (max-width: 1023px)
+{
+    .form-header-modarn .form-wizard-step p {
+        font-size: 13px !important;
     }
-    .main_footer {
-        margin: auto;
-        overflow: hidden;
-        width: 170%;
-        background: #ca5050;
-        color: #fff;
-        background: #ff0000cc;
-        padding: 30px 0px 0px 0px;
+}
+
+
+@media (max-width: 991px) {
+    .top_menubox {
+        padding-left: 200px;
+    }
+
+    .main_story_box {
+        width: 750px !important;
+        margin-left: -375px !important;
+    }
+
+    .banner_age_txt + .banner_age_txt {
+        margin-right: 0;
+    }
+
+    .banner_block_search {
+        padding: 30px 2px 5px 2px;
+    }
+
+    .banner_block_search em {
+        left: 4px;
+    }
+
+    .banner_block_search:last-child {
+        padding-top: 15px;
+    }
+
+    .staps_mainblock h2 {
+        font-size: 20px;
+    }
+
+    .staps_mainblock p {
+        font-size: 16px;
+    }
+    .form-wizard-tolal-steps-4 .form-wizard-step
+    {
+        padding: 0 21px !important;
+        height: 105px;
+    }
+    .candidate_list_box
+    {
+        padding-left: 215px;
+    }
+    .filtr__box {
+        width: 200px;
+    }
+    .promise_caption
+    {
+        font-size: 16px;
+    }
+    .packages-section .LV-Basic h2, .LV-Super h2, .LV-Advance h2, .LV-Exclusive h2, .LV-Supreme h2
+    {
+        font-size: 16px !important;
+    }
+    .btn-LV-Basic, .btn-LV-Super, .btn-LV-Advance
+    {
+        padding: 6px 20px !important;
+    }
+    .cl_list_box
+    {
+        margin-top: 50px !important;
+    }
+    .cl_list_box .cand_search_filterbox
+    {
         position: relative;
+    }
+    .btn-pay
+    {
+        max-width: 260px;
+        height: 80px;
+        display: flex;
+        margin: 30px auto;
+    }
+    .btn-pay img
+    {
+        margin-top: 0 !important;
+    }
+}
+
+
+@media (max-width: 767px)
+{
+    .main_story_box
+    {
+        width: 100% !important;
+        left: 0 !important;
+        position: relative !important;
+        margin: 0 auto;
+        margin-left: 0 !important;
+
+    }
+    .login_with_baskit
+    {
+        width: 200px;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        right: 0px;
+        top: 46px;
+    }
+    .login_with_baskit ul li
+    {
+        width: 100%;
+        border-right: none;
+    }
+    .staps_mainblock
+    {
+        margin-bottom: 15px;
+    }
+    .aadhaar-holder-home
+    {
+        z-index: 5 !important;
+    }
+    .main_banner
+    {
+        background-position:50%;
+    }
+    .section-title h2
+    {
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .story_slider_text
+    {
+        padding-left: 20px !important;
+    }
+    .main_story_box h3
+    {
+        margin-top: 0;
+        font-size: 20px;
+    }
+    .main_footer_block
+    {
+        padding-left: 47px;
+    }
+    .login_popup_box
+    {
+        width: 80%;
+    }
+    .login_right_txt
+    {
+        width: 100%;
+    }
+    .login_lefttxtbox
+    {
+        display: none;
+    }
+    .form_allcontainer
+    {
+        padding: 30px 15px;
+    }
+    .form-wizard-tolal-steps-4 .form-wizard-step {
+        padding: 0 5px !important;
+    }
+    .form-header-modarn .form-wizard-step p {
+        font-size: 10px !important;
+        margin-top: 5px;
+    }
+    .cl_list_box
+    {
+        margin-top: 40px !important;
+    }
+    .cl_list_box > .cand_search_filterbox
+    {
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .cl_list_box
+    {
+        padding-left: 0;
+    }
+
+}
+@media (max-width: 479px)
+{
+    .banner_search_bg
+    {
+        width: 100%;
+    }
+    .btn-blue
+    {
+        font-size: 14px !important;
+        padding: 10px 15px !important;
+    }
+    .section-title h2
+    {
+        font-size: 20px;
+    }
+    .banner_block_search
+    {
+        min-width: 140px;
+        float: left;
+    }
+    .banner_block_search em
+    {
+        font-size: 16px;
+        top: 5px;
+    }
+    .main_footer_block
+    {
+        padding-left: 0;
+    }
+    .product_btn_box .btn + .btn
+    {
+        margin-left: 0 !important;
+    }
+    .product_btn_box .btn
+    {
+        margin-top: 5px;
+    }
+    .product_btn_box
+    {
+        text-align: center;
+    }
+    .product_btn_box .btn:last-child
+    {
+        float: none !important;
+    }
+    .form-wizard-tolal-steps-4 .form-wizard-step
+    {
+        width: 33.33% !important;
+    }
+    .filtr__box
+    {
+        width: 100%;
+        position: relative;
+        margin-bottom: 15px;
+    }
+    .candidate_list_box
+    {
+        padding-left: 0;
+    }
+    .cl_list_box > .cand_search_filterbox
+    {
+        width: 100%;
+    }
+    .heading_title
+    {
+        font-size: 14px !important;
+    }
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    #exTab3 .tab-content {
+        padding: 0px 5px;
+    }
+    .nav>li>a
+    {
+        padding: 5px 5px;
+        font-size: 12px;
+    }
+    .cand_name
+    {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+    .pics_counter_box
+    {
+        font-size: 20px;
+        height: 20px;
+        margin-right: 0px;
+    }
+    .overlay_trust
+    {
+        padding: 3px 0px 0px 0px;
+    }
+    .meter_caption {
+        margin-top: 2px;
     }
     .banner_search_bg {
-        padding: 15px 0px;
-        position: absolute;
-        bottom: 0px;
-        width: 168%;
-        background: rgba(0, 0, 0, 0.5);
-    }
-    .sucess_story {
-        display: inline-block;
-        width: 170%;
-        background: #e5e5e5;
-        padding: 23px 0px;
-    }
-    .login_with_baskit {
-        display: inline-block;
-        cursor: pointer;
-        position: relative;
-        /*margin-top: 5px;*/
-        font-size: 78%;
-        margin-left: -58%;
-        margin-top: 10%;
-    }
-
-    .eassy_staps_block {
-        padding: 50px 0px;
-        width: 160%;
-    }
-
-    .logo_block {
-        width: auto;
-        max-width: 100px;
-    }
-
-    .logo_block img {
-        max-width: 100px;
         width: 100%;
     }
 
-    .dash_menuicon {
-        margin-top: 12px;
+    .btn-blue {
+        font-size: 14px !important;
+        padding: 10px 15px !important;
     }
 
-    .option-container {
-        margin-top: 3px;
+    .section-title h2 {
+        font-size: 20px;
     }
 
-    .menu_basic_block {
-        width: 43px;
+    .banner_block_search {
+        min-width: 140px;
+        float: left;
     }
 
-    .massage_popbox {
-        right: -165px;
+    .banner_block_search em {
+        font-size: 16px;
+        top: 5px;
     }
 
-    .notification_popbox {
-        right: -120px;
+    .main_footer_block {
+        padding-left: 0;
     }
 
-    .notification_popbox:before {
-        right: 132px;
+    .product_btn_box .btn + .btn {
+        margin-left: 0 !important;
     }
 
-    .massage_popbox:before {
-        right: 175px;
+    .product_btn_box .btn {
+        margin-top: 5px;
     }
 
-    .menu_basic_popup {
-        width: 300px;
+    .product_btn_box {
+        text-align: center;
     }
 
-    .login_form {
-        width: 96%;
-        left: 2%;
-        max-width: 470px;
+    .product_btn_box .btn:last-child {
+        float: none !important;
+    }
+    .main_logo img {
+        max-width: 120px;
+        margin-top: -10px;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 373px) {
-    .pagination > li > a, .pagination > li > span {
-        padding: 6px 8px;
-    }
+
 }
 
 @media screen and (min-width: 480px) and (max-width: 767px) {
+    .main_story_box {
+        width: 100% !important;
+        left: 0 !important;
+        position: relative !important;
+        margin: 0 auto;
+        margin-left: 0 !important;
 
+    }
+
+    .login_with_baskit {
+        width: 200px;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        right: 0px;
+        top: 46px;
+    }
+
+    .login_with_baskit ul li {
+        width: 100%;
+        border-right: none;
+    }
+
+    .staps_mainblock {
+        margin-bottom: 15px;
+    }
+
+    .aadhaar-holder-home {
+        z-index: 5 !important;
+    }
+
+    .main_banner {
+        background-position: 50%;
+    }
+
+    .section-title h2 {
+        font-size: 25px;
+        line-height: 30px;
+    }
+
+    .story_slider_text {
+        padding-left: 20px !important;
+    }
+
+    .main_story_box h3 {
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    .main_footer_block {
+        padding-left: 47px;
+    }
+
+    .login_popup_box {
+        width: 80%;
+    }
+
+    .login_right_txt {
+        width: 100%;
+    }
+
+    .login_lefttxtbox {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .action-btn {
-        padding: 5px 3px;
+    .top_menubox {
+        padding-left: 200px;
     }
+
+    .main_story_box {
+        width: 750px !important;
+        margin-left: -375px !important;
+    }
+
+    .banner_age_txt + .banner_age_txt {
+        margin-right: 0;
+    }
+
+    .banner_block_search {
+        padding: 30px 2px 5px 2px;
+    }
+
+    .banner_block_search em {
+        left: 4px;
+    }
+
+    .banner_block_search:last-child {
+        padding-top: 15px;
+    }
+
+    .staps_mainblock h2 {
+        font-size: 20px;
+    }
+
+    .staps_mainblock p {
+        font-size: 16px;
+    }
+
 }
 
 @media (max-width: 767px) and (min-width: 320px) {
-    .grid-table tbody tr td.tab-grid:first-child {
-        border-top: 1px solid #ddd;
-    }
 
-    .grid-table {
-        border: 0;
-    }
-
-    .grid-table tbody tr {
-        margin-bottom: 15px;
-        float: left;
-        width: 100%;
-    }
-
-    .grid-table tbody tr td {
-        width: 100%;
-        padding-left: 40%;
-        display: inline-block;
-        text-align: left;
-        border-top: 0;
-        position: relative;
-        min-height: 35px;
-        line-height: 24px;
-    }
-
-    .grid-table tbody tr td:before {
-        position: absolute;
-        left: 8px;
-        top: 5px;
-        font-weight: 600;
-        color: #5a5c63;
-    }
-
-    .globe-header-tr {
-        display: none;
-    }
-
-    .checkbox {
-        text-align: left;
-    }
-
-    .col_select[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .col1[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .col2[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .col3[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .col4[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .col5[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .col6[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .col7[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .option_col[data-line]:before {
-        content: attr(data-line);
-    }
-
-    .res_btn {
-        padding: 5px !important;
-    }
-
-    .grid_search_box {
-        width: 100%;
-    }
-
-    .grid_btnbox {
-        position: absolute;
-        width: 180px;
-        top: -60px;
-        left: -10px;
-    }
-
-    .head_txt {
-        padding: 0px;
-        margin-bottom: 5px;
-        width: 100%;
-    }
-
-    .two_boxrow {
-        margin: 0px;
-    }
-
-    .box_inner {
-        padding: 10px 5px;
-    }
-
-    .form_txt {
-        margin-bottom: 5px;
-        margin-top: 8px;
-    }
-
-    .form-row {
-        margin-bottom: 0px;
-    }
-
-    .left_blanksingle_row {
-        margin-top: 15px;
-    }
 }
 
 @media (max-width: 1023px) and (min-width: 320px) {
-    .option-container {
-        margin-right: 5px;
+    .right_side_viewblk
+    {
+        margin: 0px !important;
     }
-
-    .dash_menuicon {
+    .width100
+    {
+        width: 100% !important;
+        flex: 100%;
+        margin: 0px !important;
+        padding: 0px;
+        max-width: 100%;
+    }
+    .cand_search_filterbox
+    {
+        left: -100%;
+    }
+    .cand_search_filterbox_show
+    {
+        position: fixed;
+        height: 100%;
+        left: 0px;
+        z-index: 100;
+        top: 0px;
+        overflow: auto;
+        max-height: 100%;
+    }
+    .cand_profile_imgbox
+    {
+        margin-top: 0px;
+    }
+    .res_filter_show
+    {
         display: block;
     }
-
-    .dash_sidemenu {
-        left: -250px;
-        top: 0;
-        height: 100vh;
-        overflow: auto;
-        z-index: 111;
+    .candidate_list_box
+    {
+        padding-left: 0px;
     }
-
-    .box_containner {
-        margin: 80px 5px 15px 5px;
+    .res_none
+    {
+        display: none;
     }
-
-    .dash_sidemenu_show {
-        left: 0px;
+    .cand_box
+    {
+        padding: 150px 10px 10px 10px;
+    }
+    .cand_imgbox
+    {
+        top: 10px;
+        width: 150px;
+        height: 140px;
+    }
+    .cand_btncontainner
+    {
+        margin-bottom: 10px !important;
+    }
+    .cand_btncontainner a{
+        padding: 5px 10px;
+    }
+    .all_pagescontainner
+    {
+        padding-top: 60px;
+    }
+    .cand_btnbox
+    {
+        text-align: right;
     }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
-    .box_containner {
-        margin: 80px 5px 0 205px;
+    .btn-pay img
+    {
+        margin-top: 215% !important;
     }
-
-    .dash_sidemenu {
-        width: 200px;
+    .cand_box
+    {
+        padding: 15px 0px 15px 190px;
+    }
+    .cand_imgbox
+    {
+        height: 140px;
+        width: 150px;
+    }
+    .cand_btnbox
+    {
+        left: 15px;
+        top: initial;
+        bottom: 0px;
+    }
+    .cand_btncontainner
+    {
+        margin-bottom: 10px !important;
+    }
+    .cand_btncontainner a{
+        padding: 5px 10px;
+    }
+    .popup_submitbtn
+    {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    .popup_submitbtn_unfriend
+    {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    .popup_submitbtn_view
+    {
+        padding: 5px 10px;
+        font-size: 12px;
     }
 }
-
+@media (max-width: 1023px)
+{
+    .form-header-modarn .form-wizard-step p {
+        font-size: 13px !important;
+    }
+}
 @media screen and (min-width: 1200px) and (max-width: 1359px) {
 
 }
@@ -282,3 +575,5 @@
 @media screen and (min-width: 1360px) and (max-width: 1600px) {
 
 }
+
+

@@ -45,7 +45,7 @@
 @section('content')
     <div class="container">
         <div class="col-sm-12">
-            <div class="col-sm-9">
+            <div class="col-sm-12 col-md-9">
                 <div class="pri_title_heading">
                     <span class="Privacy_title">Payment Option</span>
                 </div>
@@ -108,8 +108,8 @@
                 </div>
                 <hr/>
             </div>
-            <div class="col-sm-3">
-                <div class="candidate_list_box">
+            <div class="col-sm-12 col-md-3">
+                <div class="candidate_list_box cl_list_box">
                     <div class="cand_search_filterbox">
                         <div class="search_filter_head">Benifits Of Paid Membership</div>
                         <ul class="style-scroll promise_member">
@@ -134,7 +134,7 @@
 
 
                 </div>
-                <a target="_blank" href="https://www.payumoney.com/paybypayumoney/#/308811">
+                <a class="btn-pay" target="_blank" href="https://www.payumoney.com/paybypayumoney/#/308811">
                     <img src="{{url('images/PayOnlineButton.png')}}"
                          style="width: 100%; height: 100%; margin-top: 169%;" alt="">
                 </a>

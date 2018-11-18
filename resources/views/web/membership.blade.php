@@ -11,7 +11,7 @@
     <section class="regitration_member all_pagescontainner">
         <div class="container">
             <div class="candidate_list_box">
-                <div class="cand_search_filterbox">
+                <div class="cand_search_filterbox filtr__box">
                     <div class="search_filter_head">Our Promise</div>
                     <ul class="style-scroll promise_member">
                         <li>
@@ -71,24 +71,24 @@
 
                                             <div class="row ">
                                                 <div class="col-md-12 col-sm-12 col-xs-12 packages-section ">
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 LV-Basic">
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 LV-Basic">
                                                         <h2>MM-Bronze
                                                         </h2>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 get-contacts">
+                                                    <div class="col-md-3 col-sm-3 col-xs-6 get-contacts">
                                                         <div class="get-contacts-detail">
                                                             <p>View</p>
                                                             <h3>50</h3>
                                                             <p>Contacts</p></div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 validity-offer-section">
+                                                    <div class="col-md-3 col-sm-3 col-xs-6 validity-offer-section">
                                                         <div class="get-validity-detail">
                                                             <p>Validity</p>
                                                             <h3>3</h3>
                                                             <p>Months</p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 final-price-section">
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 final-price-section">
                                                         <div class="price-detail">
                                                             <p>Final Price</p>
                                                             <h3><i class="fa fa-rupee"></i> 8000</h3>
@@ -108,24 +108,24 @@
                                         <form name="membershipForm" id="membershipForm-7" class="ng-pristine ng-valid">
                                             <div class="row ">
                                                 <div class="col-md-12 col-sm-12 col-xs-12 packages-section ">
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 LV-Super">
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 LV-Super">
                                                         <h2>MM-Silver
                                                         </h2>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 get-contacts">
+                                                    <div class="col-md-3 col-sm-3 col-xs-6 get-contacts">
                                                         <div class="get-contacts-detail">
                                                             <p>View</p>
                                                             <h3>100</h3>
                                                             <p>Contacts</p></div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 validity-offer-section">
+                                                    <div class="col-md-3 col-sm-3 col-xs-6 validity-offer-section">
                                                         <div class="get-validity-detail">
                                                             <p>Validity</p>
                                                             <h3>6</h3>
                                                             <p>Months</p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 final-price-section">
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 final-price-section">
                                                         <div class="price-detail">
                                                             <p>Final Price</p>
                                                             <h3><i class="fa fa-rupee"></i> 15000</h3>
@@ -146,24 +146,24 @@
 
                                             <div class="row ">
                                                 <div class="col-md-12 col-sm-12 col-xs-12 packages-section ">
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 LV-Advance">
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 LV-Advance">
                                                         <h2>MM-Gold
                                                         </h2>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 get-contacts">
+                                                    <div class="col-md-3 col-sm-3 col-xs-6 get-contacts">
                                                         <div class="get-contacts-detail">
                                                             <p>View</p>
                                                             <h3>250</h3>
                                                             <p>Contacts</p></div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 validity-offer-section">
+                                                    <div class="col-md-3 col-sm-3 col-xs-6 validity-offer-section">
                                                         <div class="get-validity-detail">
                                                             <p>Validity</p>
                                                             <h3>12</h3>
                                                             <p>Months</p>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 final-price-section">
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 final-price-section">
                                                         <div class="price-detail">
                                                             <p>Final Price</p>
                                                             <h3><i class="fa fa-rupee"></i> 21000</h3>
@@ -184,11 +184,11 @@
 
                                             <div class="row ">
                                                 <div class="col-md-12 col-sm-12 col-xs-12 packages-section ">
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 LV-Advance">
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 LV-Advance">
                                                         <h2>Bank Details
                                                         </h2>
                                                     </div>
-                                                    <div class="col-md-9 col-sm-9 col-xs-9 get-contacts">
+                                                    <div class="col-md-9 col-sm-9 col-xs-12 get-contacts">
                                                         <div class="get-contacts-detail">
                                                             <p>Account Number :- 36751854429</p>
                                                             <p>Account Name :- Mangal Mandap Matrimony</p>

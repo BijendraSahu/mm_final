@@ -3,22 +3,14 @@
 @section('title','Mangal Mandap : Profiles List')
 @section('head')
     <style>
-        #exTab3 .nav-pills > li > a {
-            border-radius: 4px 4px 0 0;
-        }
 
-        #exTab3 .tab-content {
-            color: black;
-            /*background-color: #428bca;*/
-            padding: 5px 15px;
-        }
     </style>
 @stop
 @section('content')
     <section class="regitration_member all_pagescontainner">
         <div class="container">
             <div class="candidate_list_box">
-                <div class="cand_search_filterbox">
+                <div class="cand_search_filterbox res_none">
                     <div class="search_filter_head">Our Promise</div>
                     <ul class="style-scroll promise_member">
                         <li>
@@ -40,25 +32,23 @@
                     </ul>
                 </div>
                 <div class="cand_list_containner">
-                    <div class="cand_list_containner">
                         <div class="heading_row">
                             <span class="heading_txt">Profiles List</span>
                         </div>
                         <div class="photoupload_containner">
                             <div id="exTab3" class="">
-                                <ul class="nav nav-pills">
-                                    <li class="active">
-                                        <a href="#1b" data-toggle="tab">Send Interests</a>
-                                    </li>
-                                    <li><a href="#2b" data-toggle="tab">Receive Interests</a>
-                                    </li>
-                                    <li><a href="#3b" data-toggle="tab">Accepted</a>
-                                    </li>
-                                    {{--<li><a href="#4a" data-toggle="tab">Background color</a>--}}
-                                    {{--</li>--}}
-                                </ul>
-
                                 <div class="tab-content clearfix">
+                                    <ul class="nav nav-pills">
+                                        <li class="active">
+                                            <a href="#1b" data-toggle="tab">Send Interests</a>
+                                        </li>
+                                        <li><a href="#2b" data-toggle="tab">Receive Interests</a>
+                                        </li>
+                                        <li><a href="#3b" data-toggle="tab">Accepted</a>
+                                        </li>
+                                        {{--<li><a href="#4a" data-toggle="tab">Background color</a>--}}
+                                        {{--</li>--}}
+                                    </ul>
                                     <div class="cand_list_containner tab-pane active" id="1b">
                                         @if(count($send_requests)>0)
                                             @foreach($send_requests as $send_request)
@@ -445,7 +435,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

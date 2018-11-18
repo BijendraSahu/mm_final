@@ -13,7 +13,8 @@
         .font_bolt {
             font-weight: 700;
         }
-        li{
+
+        li {
             font-size: 15px;
         }
 
@@ -25,7 +26,6 @@
             border-radius: 40px;
             outline: none;
             text-transform: uppercase;
-            padding: 10px 29px;
             font-size: 12px;
             text-align: center;
         }
@@ -51,15 +51,20 @@
         }
 
         .top_nav_fixed {
-            position: fixed;
-            top: 52%;
-            width: 100%;
-            z-index: 99;
-            border-radius: initial;
+            /*position: fixed;*/
+            /*top: 52%;*/
+            /*width: 100%;*/
+            /*z-index: 99;*/
+            /*border-radius: initial;*/
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70px;
+            bottom: 0;
+            z-index: 10;
         }
 
         .viewdetails_container {
-            padding-top: 90px;
+            padding-top: 60px;
             display: inline-block;
             width: 100%;
         }
@@ -69,7 +74,7 @@
             -webkit-transition: .5s all;
             -moz-transition: .5s all;
             -o-transition: .5s all;
-            padding: 10px 32px;
+            padding: 5px 15px;
             background: none;
             outline: none;
             border: none;
@@ -498,193 +503,212 @@
         }
 
         .top_menu {
-            top: 8%;
+            top: 54px;
         }
-
-
     </style>
+    <link rel="stylesheet" href="{{url('css/media.css')}}"/>
 @stop
 @section('content')
-    <section class="viewdetails_container" style="background-color: #e5e5e5;">
-        <section class="top_nav_fixed">
-            <div class="container">
-                <div class="row">
-                    <div class="view_fixed_nav">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="#view_about_blk" id="about" type="button"
-                               class="tab_btn waves-effect waves-light selected_tabs"><i
-                                        class="mdi mdi-account fa-sm pr-2"
-                                        aria-hidden="true"></i> About
-                            </a>
-                            <a href="#view_service_blk" type="button"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-briefcase-check fa-sm pr-2"
-                                                                           aria-hidden="true"></i>Education & Profession
-                            </a>
-                            <a type="button" href="#view_gallery_blk"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"
-                                                                           aria-hidden="true"></i>Family Details
-                            </a>
-                            <a type="button" href="#view_userreview_blk"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
-                                                                           aria-hidden="true"></i> Desire Partner
-                            </a>
-                            <a type="button" href="#view_life_style"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
-                                                                           aria-hidden="true"></i> Life Style
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="viewdetails_container basic_bgcolor">
+        {{--<section class="top_nav_fixed">--}}
+        {{--<div class="container">--}}
+        {{--<div class="row">--}}
+        {{--<div class="view_fixed_nav">--}}
+        {{--<div class="btn-group" role="group" aria-label="Basic example">--}}
+        {{--<a href="#view_about_blk" id="about" type="button"--}}
+        {{--class="tab_btn waves-effect waves-light selected_tabs"><i--}}
+        {{--class="mdi mdi-account fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i> About--}}
+        {{--</a>--}}
+        {{--<a href="#view_service_blk" type="button"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-briefcase-check fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i>Education & Profession--}}
+        {{--</a>--}}
+        {{--<a type="button" href="#view_gallery_blk"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i>Family Details--}}
+        {{--</a>--}}
+        {{--<a type="button" href="#view_userreview_blk"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i> Desire Partner--}}
+        {{--</a>--}}
+        {{--<a type="button" href="#view_life_style"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i> Life Style--}}
+        {{--</a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</section>--}}
 
         <div class="container">
             <div class="row">
                 <div class="view_service_container">
                     <div class="sub_service_listbox row">
-                        <div class="col-sm-12 col-md-9">
-                            <div class="cand_box col-sm-12 cand_profile_containner">
-
-                                <div class="basic_lb_row">
-                                    <div class="col-sm-3">
-                                        <div class="cand_imgbox">
-                                            @php
-                                                $image = \App\Images::find($user->id);
-                                            @endphp
-
-                                            @if($user->is_show_pic == '1')
-                                                @if(isset($image->pic1) && file_exists($image->pic1))
-                                                    <img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>
-                                                @else
-                                                    @if($user->gender == 'male')
-                                                        <img class="cand_img" src="{{url('images/male.png')}}"/>
-                                                    @else
-                                                        <img class="cand_img" src="{{url('images/female.png')}}"/>
-                                                    @endif
-                                                @endif
-                                            @else
-                                                <img class="cand_img"
-                                                     src="{{url('images/female_large_protected.jpg')}}"/>
-                                            @endif
-
-                                            {{--@if(file_exists($image->pic1))--}}
-                                                {{--<img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>--}}
-                                            {{--@else--}}
-                                                {{--@if($user->gender == 'male')--}}
-                                                    {{--<img class="cand_img" src="{{url('images/male.png')}}"/>--}}
-                                                {{--@else--}}
-                                                    {{--<img class="cand_img" src="{{url('images/female.png')}}"/>--}}
-                                                {{--@endif--}}
-                                            {{--@endif--}}
-                                            <div class="overlay_trust">
-                                                {{--<div class="meter_img img_80">80%</div>--}}
-                                                <div class="pics_counter_box"><i class="mdi mdi-camera"></i>
-                                                    {{--<span class="pics_counter">3</span>--}}
-                                                    <ul class="lightgallery list-unstyled">
-                                                        <li data-src="{{url('').'/'.$image->pic1}}">
-                                                            <img src="{{url('').'/'.$image->pic1}}"/>
-                                                        </li>
-                                                        <li data-src="{{url('').'/'.$image->pic2}}">
-                                                            <img src="{{url('').'/'.$image->pic2}}"/>
-                                                        </li>
-                                                        <li data-src="{{url('').'/'.$image->pic3}}">
-                                                            <img src="{{url('').'/'.$image->pic3}}"/>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="meter_caption">Reliable Score</div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 u_info">
-                                        <div class="cand_details">
-                                            <div class="cand_name">{{$user->name}}</div>
-                                            <ul class="cand_info">
-                                                <li>{{isset($user->age)?$user->age:'Not mentioned'}}
-                                                    Years
-                                                </li>
-
-
-                                                <li>{{$user->height}}</li>
-                                                <li>{{isset($user->state)?$user->state:'-'}}</li>
-
-
-                                                <li>{{isset($user->city)?$user->city:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->religion)?$user->religion:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->caste)?$user->caste:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->language)?$user->language:'Not mentioned'}}</li>
-                                                <li>{{isset($user->occupation)?$user->occupation:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->status)?$user->status:'Not mentioned'}}</li>
-                                                <li>{{isset($user->anual_income)?$user->anual_income:'Not mentioned'}}</li>
-
-                                                <li data-toggle="tooltip" data-placement="bottom"
-                                                    title="{{$user->education_detail}}">{{str_limit( $user->education,28)}}</li>
-
-
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-3 u_btn">
-                                        @if(isset($_SESSION['user_master']))
-                                            @php
-                                                $session_user = $_SESSION['user_master']->id;
-                                                 $queryResult = \Illuminate\Support\Facades\DB::select("call GetFriendType($session_user,$user->id)");
-                                                  $result = collect($queryResult);
-                                            @endphp
-                                            @if($result[0]->status_ == 'NULL')
-
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
-                                                    <a href="#" data-content="{{$user->id}}" id="send_{{$user->id}}"
-                                                       onclick="send_interest(this)"
-                                                       class="popup_submitbtn btn-sm btn-success">Send
-                                                        Interest</a>
-                                                </div>
-
-                                            @elseif($result[0]->status_ == 'SENDER')
-
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
-                                                    <a href="#" data-content="{{$user->id}}"
-                                                       id="pending_{{$user->id}}" onclick="cancelrequest(this);"
-                                                       class="popup_submitbtn btn-sm btn-danger">Cancel
-                                                        Interest</a>
-                                                </div>
-                                            @elseif($result[0]->status_ == 'RECIEVER')
-
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
-                                                    <a href="#" data-content="{{$user->id}}"
-                                                       id="pending_{{$user->id}}" onclick="acceptfrequest(this);"
-                                                       class="popup_submitbtn btn-sm btn-success">Accept Interest</a>
-                                                </div>
-                                            @elseif($result[0]->status_ == 'FRIENDS')
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
-                                                    <a href="#" data-content="{{$user->id}}" id="friends_{{$user->id}}"
-                                                       onclick="unfriend(this);"
-                                                       class="popup_submitbtn_unfriend btn-sm upgrade_bg">UnFriend</a>
-                                                </div>
-                                            @else
-
-                                            @endif
-
-                                        @endif
-                                        <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
-                                            <a href="#" data-content="{{$user->id}}"
-                                               id="view_{{$user->id}}" onclick="view_contact(this)"
-                                               class="popup_submitbtn btn-sm upgrade_bg">View Contact</a>
-                                        </div>
+                        <div class="col-sm-12 col-sm-9 width100 padd0">
+                            <div class="top_nav_fixed">
+                                <div class="view_fixed_nav">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="#view_about_blk" id="about" type="button"
+                                           class="tab_btn waves-effect waves-light selected_tabs"><i
+                                                    class="mdi mdi-account fa-sm pr-2"
+                                                    aria-hidden="true"></i> About
+                                        </a>
+                                        <a href="#view_service_blk" type="button"
+                                           class="tab_btn waves-effect waves-light"><i
+                                                    class="mdi mdi-briefcase-check fa-sm pr-2"
+                                                    aria-hidden="true"></i>Education & Profession
+                                        </a>
+                                        <a type="button" href="#view_gallery_blk"
+                                           class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"
+                                                                                       aria-hidden="true"></i>Family
+                                            Details
+                                        </a>
+                                        <a type="button" href="#view_userreview_blk"
+                                           class="tab_btn waves-effect waves-light"><i
+                                                    class="mdi mdi-message-draw fa-sm pr-2"
+                                                    aria-hidden="true"></i> Desire Partner
+                                        </a>
+                                        <a type="button" href="#view_life_style"
+                                           class="tab_btn waves-effect waves-light"><i
+                                                    class="mdi mdi-message-draw fa-sm pr-2"
+                                                    aria-hidden="true"></i> Life Style
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+                            <div class="cand_box cand_profile_containner">
+                                <div class="cand_imgbox">
+                                    @php
+                                        $image = \App\Images::find($user->id);
+                                    @endphp
+
+                                    @if($user->is_show_pic == '1')
+                                        @if(isset($image->pic1) && file_exists($image->pic1))
+                                            <img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>
+                                        @else
+                                            @if($user->gender == 'male')
+                                                <img class="cand_img" src="{{url('images/male.png')}}"/>
+                                            @else
+                                                <img class="cand_img" src="{{url('images/female.png')}}"/>
+                                            @endif
+                                        @endif
+                                    @else
+                                        <img class="cand_img"
+                                             src="{{url('images/female_large_protected.jpg')}}"/>
+                                    @endif
+
+                                    {{--@if(file_exists($image->pic1))--}}
+                                    {{--<img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>--}}
+                                    {{--@else--}}
+                                    {{--@if($user->gender == 'male')--}}
+                                    {{--<img class="cand_img" src="{{url('images/male.png')}}"/>--}}
+                                    {{--@else--}}
+                                    {{--<img class="cand_img" src="{{url('images/female.png')}}"/>--}}
+                                    {{--@endif--}}
+                                    {{--@endif--}}
+                                    <div class="overlay_trust">
+                                        {{--<div class="meter_img img_80">80%</div>--}}
+                                        <div class="pics_counter_box"><i class="mdi mdi-camera"></i>
+                                            {{--<span class="pics_counter">3</span>--}}
+                                            <ul class="lightgallery list-unstyled">
+                                                <li data-src="{{url('').'/'.$image->pic1}}">
+                                                    <img src="{{url('').'/'.$image->pic1}}"/>
+                                                </li>
+                                                <li data-src="{{url('').'/'.$image->pic2}}">
+                                                    <img src="{{url('').'/'.$image->pic2}}"/>
+                                                </li>
+                                                <li data-src="{{url('').'/'.$image->pic3}}">
+                                                    <img src="{{url('').'/'.$image->pic3}}"/>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="meter_caption">Reliable Score</div>
+                                    </div>
+
+                                </div>
+                                <div class="cand_details u_info">
+                                    <div class="cand_name">{{$user->name}}</div>
+                                    <ul class="cand_info">
+                                        <li>{{isset($user->age)?$user->age:'Not mentioned'}}
+                                            Years
+                                        </li>
 
 
+                                        <li>{{$user->height}}</li>
+                                        <li>{{isset($user->state)?$user->state:'-'}}</li>
+
+
+                                        <li>{{isset($user->city)?$user->city:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->religion)?$user->religion:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->caste)?$user->caste:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->language)?$user->language:'Not mentioned'}}</li>
+                                        <li>{{isset($user->occupation)?$user->occupation:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->status)?$user->status:'Not mentioned'}}</li>
+                                        <li>{{isset($user->anual_income)?$user->anual_income:'Not mentioned'}}</li>
+
+                                        <li data-toggle="tooltip" data-placement="bottom"
+                                            title="{{$user->education_detail}}">{{str_limit( $user->education,28)}}</li>
+
+
+                                    </ul>
+
+                                </div>
+                                <div class="cand_btnbox u_btn">
+                                    @if(isset($_SESSION['user_master']))
+                                        @php
+                                            $session_user = $_SESSION['user_master']->id;
+                                             $queryResult = \Illuminate\Support\Facades\DB::select("call GetFriendType($session_user,$user->id)");
+                                              $result = collect($queryResult);
+                                        @endphp
+                                        @if($result[0]->status_ == 'NULL')
+
+                                            <div class="btn-group cand_btncontainner">
+                                                <a href="#" data-content="{{$user->id}}" id="send_{{$user->id}}"
+                                                   onclick="send_interest(this)"
+                                                   class="popup_submitbtn btn-sm btn-success">Send
+                                                    Interest</a>
+                                            </div>
+
+                                        @elseif($result[0]->status_ == 'SENDER')
+
+                                            <div class="btn-group cand_btncontainner">
+                                                <a href="#" data-content="{{$user->id}}"
+                                                   id="pending_{{$user->id}}" onclick="cancelrequest(this);"
+                                                   class="popup_submitbtn btn-sm btn-danger">Cancel
+                                                    Interest</a>
+                                            </div>
+                                        @elseif($result[0]->status_ == 'RECIEVER')
+
+                                            <div class="btn-group cand_btncontainner">
+                                                <a href="#" data-content="{{$user->id}}"
+                                                   id="pending_{{$user->id}}" onclick="acceptfrequest(this);"
+                                                   class="popup_submitbtn btn-sm btn-success">Accept Interest</a>
+                                            </div>
+                                        @elseif($result[0]->status_ == 'FRIENDS')
+                                            <div class="btn-group cand_btncontainner">
+                                                <a href="#" data-content="{{$user->id}}" id="friends_{{$user->id}}"
+                                                   onclick="unfriend(this);"
+                                                   class="popup_submitbtn_unfriend btn-sm upgrade_bg">UnFriend</a>
+                                            </div>
+                                        @else
+
+                                        @endif
+
+                                    @endif
+                                    <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                        <a href="#" data-content="{{$user->id}}"
+                                           id="view_{{$user->id}}" onclick="view_contact(this)"
+                                           class="popup_submitbtn btn-sm upgrade_bg">View Contact</a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card view_card" id="view_about_blk">
-                                <br>
                                 <div class="card_basic_header">
                                     <h3>About {{ucwords($user->name)}}
 
@@ -712,7 +736,6 @@
                                 </div>
 
                             </div>
-
                             <div class="card view_card" id="view_service_blk">
                                 <div class="card_basic_header"><h3>Education & Profession </h3></div>
                                 <div class="card-body">
@@ -720,10 +743,16 @@
                                         <div class="col-sm-6 ">
                                             <ul class="cand_info view_details_box">
                                                 <li class="font_bolt">Education</li>
-                                                <li>@if(isset($user->education)) <a data-toggle="tooltip" data-placement="bottom" title="{{$user->education}}" >{{str_limit($user->education,25)}}</a> @else {{'Not mentioned'}} @endif</li>
+                                                <li>@if(isset($user->education)) <a data-toggle="tooltip"
+                                                                                    data-placement="bottom"
+                                                                                    title="{{$user->education}}">{{str_limit($user->education,25)}}</a> @else {{'Not mentioned'}} @endif
+                                                </li>
                                                 <li class="font_bolt">Education Details</li>
-{{--                                                <li>{{isset($user->education_detail)?$user->education_detail:'Not mentioned'}}</li>--}}
-                                                <li>@if(isset($user->education_detail)) <a data-toggle="tooltip" data-placement="bottom" title="{{$user->education_detail}}">{{str_limit($user->education_detail,25)}}</a> @else {{'Not mentioned'}} @endif</li>
+                                                {{--                                                <li>{{isset($user->education_detail)?$user->education_detail:'Not mentioned'}}</li>--}}
+                                                <li>@if(isset($user->education_detail)) <a data-toggle="tooltip"
+                                                                                           data-placement="bottom"
+                                                                                           title="{{$user->education_detail}}">{{str_limit($user->education_detail,25)}}</a> @else {{'Not mentioned'}} @endif
+                                                </li>
                                                 <li class="font_bolt">Occupation Details</li>
                                                 <li>{{isset($user->occupation_detail)?$user->occupation_detail:'Not mentioned'}}</li>
 
@@ -746,7 +775,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_gallery_blk">
                                 <div class="card_basic_header"><h3>Family Details</h3></div>
                                 <div class="card-body pad_botttom0">
@@ -804,7 +832,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_userreview_blk">
                                 <div class="card_basic_header"><h3>Desire Partner</h3></div>
                                 <div class="card-body">
@@ -895,7 +922,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_life_style">
                                 <div class="card_basic_header"><h3>Life Style</h3></div>
                                 <div class="card-body">
@@ -948,9 +974,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="col-sm-12 col-md-3">
+                        <div class="col-sm-12 col-md-3 width100">
                             <div class="right_side_viewblk">
                                 <div class="card more_details">
                                     <div class="card-body">
@@ -984,30 +1009,33 @@
                                                 <li onclick="window.location = '{{url('view_profile').'/'.$similar->id}}'">
                                                     <div class="simi_imgbox">
                                                         {{--@if(file_exists($similar_image->pic1))--}}
-                                                            {{--<img class="simi_img"--}}
-                                                                 {{--src="{{url('').'/'.$similar_image->pic1}}"/>--}}
+                                                        {{--<img class="simi_img"--}}
+                                                        {{--src="{{url('').'/'.$similar_image->pic1}}"/>--}}
                                                         {{--@else--}}
-                                                            {{--@if($similar->gender == 'male')--}}
-                                                                {{--<img class="simi_img" src="{{url('images/male.png')}}"/>--}}
-                                                            {{--@else--}}
-                                                                {{--<img class="simi_img"--}}
-                                                                     {{--src="{{url('images/female.png')}}"/>--}}
-                                                            {{--@endif--}}
+                                                        {{--@if($similar->gender == 'male')--}}
+                                                        {{--<img class="simi_img" src="{{url('images/male.png')}}"/>--}}
+                                                        {{--@else--}}
+                                                        {{--<img class="simi_img"--}}
+                                                        {{--src="{{url('images/female.png')}}"/>--}}
                                                         {{--@endif--}}
-                                                            @if($similar->is_show_pic == '1')
-                                                                @if(isset($similar_image->pic1) && file_exists($similar_image->pic1))
-                                                                    <img class="cand_img" src="{{url('').'/'.$similar_image->pic1}}"/>
-                                                                @else
-                                                                    @if($similar->gender == 'male')
-                                                                        <img class="cand_img" src="{{url('images/male.png')}}"/>
-                                                                    @else
-                                                                        <img class="cand_img" src="{{url('images/female.png')}}"/>
-                                                                    @endif
-                                                                @endif
-                                                            @else
+                                                        {{--@endif--}}
+                                                        @if($similar->is_show_pic == '1')
+                                                            @if(isset($similar_image->pic1) && file_exists($similar_image->pic1))
                                                                 <img class="cand_img"
-                                                                     src="{{url('images/female_large_protected.jpg')}}"/>
+                                                                     src="{{url('').'/'.$similar_image->pic1}}"/>
+                                                            @else
+                                                                @if($similar->gender == 'male')
+                                                                    <img class="cand_img"
+                                                                         src="{{url('images/male.png')}}"/>
+                                                                @else
+                                                                    <img class="cand_img"
+                                                                         src="{{url('images/female.png')}}"/>
+                                                                @endif
                                                             @endif
+                                                        @else
+                                                            <img class="cand_img"
+                                                                 src="{{url('images/female_large_protected.jpg')}}"/>
+                                                        @endif
                                                     </div>
                                                     <div class="simi_details">
                                                         <h4 class="simi_name">{{$similar->name}}</h4>

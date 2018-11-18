@@ -3,20 +3,13 @@
 @section('title','Mangal Mandap : Candidate List')
 @section('head')
     @include('web.usage.lightbox_plugin')
-    <style>
-        b {
-            color: #337ab7;
-        }
-    </style>
 @stop
 @section('content')
     <input type="hidden" id="see_id" value="1"/>
-
     <section class="regitration_member all_pagescontainner">
         <div class="container">
             <div class="candidate_list_box">
-
-                <div class="cand_search_filterbox">
+                <div class="cand_search_filterbox" id="filter_box">
                     @if(isset($_SESSION['user_master']))
                         @php
                             $s_user = \App\Profiles::find($_SESSION['user_master']->id);
@@ -41,23 +34,23 @@
                                 @endif
 
                             </div>
-                            <div class="cand_name_box">
+                            <div class="left_info">
                                 @php
                                     $contact = \App\ViewContacts::where(['user_id' => $_SESSION['user_master']->id])->first();
                                 @endphp
-                                <div class="profile_cand_name"><b><i class="mdi mdi-account fa-sm pr-2"
+                                <div class="profile_cand_name"><i class="mdi mdi-account fa-sm pr-2"
                                                                      aria-hidden="true"></i> {{ucwords($s_user->name)}}
-                                        (MM{{$s_user->id}})</b></div>
-                                <div class="profile_cand_name"><b><i class="mdi mdi-access-point fa-sm pr-2"
-                                                                     aria-hidden="true"></i> Plan</b> :
+                                        (MM{{$s_user->id}})</div>
+                                <div class="profile_cand_name"><i class="mdi mdi-access-point fa-sm pr-2"
+                                                                     aria-hidden="true"></i> Plan :
                                     MM- {{$active->plan}}
                                 </div>
-                                <div class="profile_cand_name"><b><i class="mdi mdi-clock fa-sm pr-2"
-                                                                     aria-hidden="true"></i> Plan Expire</b> :
+                                <div class="profile_cand_name"><i class="mdi mdi-clock fa-sm pr-2"
+                                                                     aria-hidden="true"></i> Plan Expire :
                                     {{$active->deactivated_at}}
                                 </div>
-                                <div class="profile_cand_name"><b> <i class="mdi mdi-contacts fa-sm pr-2"
-                                                                      aria-hidden="true"></i>Contact Left</b>
+                                <div class="profile_cand_name"> <i class="mdi mdi-contacts fa-sm pr-2"
+                                                                      aria-hidden="true"></i>Contact Left
                                     : {{isset($contact)?$contact->contact_left:'0'}}
                                 </div>
                             </div>
@@ -1174,7 +1167,11 @@
                         </form>
                     </div>
                 </div>
-
+                <div class="res_filter_show heading_row">
+                    <div class="heading_txt">Search Filter
+                        <i class="filter_icon pull-right mdi mdi-menu" onclick="FilterShow();"></i>
+                    </div>
+                </div>
                 <div class="cand_list_containner" id="candidate_list">
 
                     @if(count($users)>0)
@@ -1482,7 +1479,7 @@
             </div>
         </div>
     </section>
-
+<div class="div_overlay" id="overlay_menu" onclick="Hidefilter();"></div>
     <script type="text/javascript">
         $(function () {
             $(".typeDD").select2({
@@ -1492,6 +1489,21 @@
                 cache: true
             });
         });
+        function FilterShow() {
+            var chkfilterbox=$('#filter_box').attr('class');
+            if(chkfilterbox == "cand_search_filterbox")
+            {
+                $('#filter_box').addClass('cand_search_filterbox_show');
+                $('#overlay_menu').fadeIn();
+            }else
+            {
+                $('#filter_box').removeClass('cand_search_filterbox_show');
+            }
+        }
+        function Hidefilter() {
+            $('#filter_box').removeClass('cand_search_filterbox_show');
+            $('#overlay_menu').hide();
+        }
         append_loading_img = '<div class="feed_loadimg_block" id="load_img">' +
             '<img height="50px" class="center-block" src="{{ url('images/loading.gif') }}"/></div>';
         {{--function getmorepost() {--}}
