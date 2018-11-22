@@ -503,42 +503,67 @@
 @stop
 @section('content')
     <section class="viewdetails_container" style="background-color: #e5e5e5;">
-        <section class="top_nav_fixed">
-            <div class="container">
-                <div class="row">
-                    <div class="view_fixed_nav">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="#view_about_blk" id="about" type="button"
-                               class="tab_btn waves-effect waves-light selected_tabs"><i
-                                        class="mdi mdi-account fa-sm pr-2"
-                                        aria-hidden="true"></i> About
-                            </a>
-                            <a href="#view_service_blk" type="button"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-briefcase-check fa-sm pr-2"
-                                                                           aria-hidden="true"></i>Education & Profession
-                            </a>
-                            <a type="button" href="#view_gallery_blk"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"
-                                                                           aria-hidden="true"></i>Family Details
-                            </a>
-                            <a type="button" href="#view_userreview_blk"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
-                                                                           aria-hidden="true"></i> Desire Partner
-                            </a>
-                            <a type="button" href="#view_life_style"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
-                                                                           aria-hidden="true"></i> Life Style
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        {{--<section class="top_nav_fixed">--}}
+            {{--<div class="container">--}}
+                {{--<div class="row">--}}
+                    {{--<div class="view_fixed_nav">--}}
+                        {{--<div class="btn-group" role="group" aria-label="Basic example">--}}
+                            {{--<a href="#view_about_blk" id="about" type="button"--}}
+                               {{--class="tab_btn waves-effect waves-light selected_tabs"><i--}}
+                                        {{--class="mdi mdi-account fa-sm pr-2"--}}
+                                        {{--aria-hidden="true"></i> About--}}
+                            {{--</a>--}}
+                            {{--<a href="#view_service_blk" type="button"--}}
+                               {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-briefcase-check fa-sm pr-2"--}}
+                                                                           {{--aria-hidden="true"></i>Education & Profession--}}
+                            {{--</a>--}}
+                            {{--<a type="button" href="#view_gallery_blk"--}}
+                               {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"--}}
+                                                                           {{--aria-hidden="true"></i>Family Details--}}
+                            {{--</a>--}}
+                            {{--<a type="button" href="#view_userreview_blk"--}}
+                               {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"--}}
+                                                                           {{--aria-hidden="true"></i> Desire Partner--}}
+                            {{--</a>--}}
+                            {{--<a type="button" href="#view_life_style"--}}
+                               {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"--}}
+                                                                           {{--aria-hidden="true"></i> Life Style--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</section>--}}
         <div class="container">
             <div class="row">
                 <div class="view_service_container">
                     <div class="sub_service_listbox row">
                         <div class="col-sm-12 col-md-9">
+                            <div class="view_fixed_nav">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="#view_about_blk" id="about" type="button"
+                                       class="tab_btn waves-effect waves-light selected_tabs"><i
+                                                class="mdi mdi-account fa-sm pr-2"
+                                                aria-hidden="true"></i> About
+                                    </a>
+                                    <a href="#view_service_blk" type="button"
+                                       class="tab_btn waves-effect waves-light"><i class="mdi mdi-briefcase-check fa-sm pr-2"
+                                                                                   aria-hidden="true"></i>Education & Profession
+                                    </a>
+                                    <a type="button" href="#view_gallery_blk"
+                                       class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"
+                                                                                   aria-hidden="true"></i>Family Details
+                                    </a>
+                                    <a type="button" href="#view_userreview_blk"
+                                       class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
+                                                                                   aria-hidden="true"></i> Desire Partner
+                                    </a>
+                                    <a type="button" href="#view_life_style"
+                                       class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
+                                                                                   aria-hidden="true"></i> Life Style
+                                    </a>
+                                </div>
+                            </div>
                             <div class="cand_box col-sm-12 cand_profile_containner">
 
                                 <div class="basic_lb_row">
@@ -616,8 +641,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="card view_card" id="view_about_blk">
                                 <br>
                                 <div class="card_basic_header">
@@ -647,7 +670,6 @@
                                 </div>
 
                             </div>
-
                             <div class="card view_card" id="view_service_blk">
                                 <div class="card_basic_header"><h3>Education & Profession </h3></div>
                                 <div class="card-body">
@@ -681,7 +703,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_gallery_blk">
                                 <div class="card_basic_header"><h3>Family Details</h3></div>
                                 <div class="card-body pad_botttom0">
@@ -739,7 +760,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_userreview_blk">
                                 <div class="card_basic_header"><h3>Desire Partner</h3></div>
                                 <div class="card-body">
@@ -830,7 +850,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_life_style">
                                 <div class="card_basic_header"><h3>Life Style</h3></div>
                                 <div class="card-body">
@@ -883,7 +902,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-sm-12 col-md-3">
                             <div class="right_side_viewblk">

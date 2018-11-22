@@ -1461,6 +1461,7 @@ body {
 
 .cand_info li {
     margin-bottom: 5px;
+    float: left;
 }
 
 .cand_info li:nth-child(odd) {
@@ -1470,7 +1471,7 @@ body {
 
 .cand_info li:nth-child(even) {
     display: inline-block;
-    width: 59%;
+    width: 60%;
 }
 
 .cand_btnbox {
@@ -1764,7 +1765,7 @@ body {
 .cand_details {
     display: inline-block;
     width: 100%;
-    padding: 0px 10px;
+    padding: 0px;
 }
 
 .cand_name {
@@ -1917,8 +1918,7 @@ body {
 .similor_profile_ul li {
     position: relative;
     width: 100%;
-    margin-bottom: 10px;
-    padding: 5px 3px 3px 110px;
+    padding: 5px 3px 3px 95px;
     min-height: 80px;
     cursor: pointer;
     transition: .5s all;
@@ -2213,7 +2213,6 @@ a:hover, a:focus {
     width: 280px;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 60px;
     padding: 0px 10px;
 }
 

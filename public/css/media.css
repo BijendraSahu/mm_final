@@ -1,5 +1,4 @@
 /*------------------------Media Ibadur----------*/
-
 @media (max-width: 1199px) and (min-width: 992px)
 {
     .btn-pay img
@@ -15,11 +14,8 @@
     }
 }
 
-
 @media (max-width: 991px) {
-    .top_menubox {
-        padding-left: 200px;
-    }
+
 
     .main_story_box {
         width: 750px !important;
@@ -94,7 +90,6 @@
     }
 }
 
-
 @media (max-width: 767px)
 {
     .main_story_box
@@ -106,22 +101,22 @@
         margin-left: 0 !important;
 
     }
-    .login_with_baskit
-    {
-        width: 200px;
-        position: absolute;
-        background-color: #fff;
-        border-radius: 3px;
-        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-        box-shadow: 0 6px 12px rgba(0,0,0,.175);
-        right: 0px;
-        top: 46px;
-    }
-    .login_with_baskit ul li
-    {
-        width: 100%;
-        border-right: none;
-    }
+    /*.login_with_baskit*/
+    /*{*/
+        /*width: 200px;*/
+        /*position: absolute;*/
+        /*background-color: #fff;*/
+        /*border-radius: 3px;*/
+        /*-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);*/
+        /*box-shadow: 0 6px 12px rgba(0,0,0,.175);*/
+        /*right: 0px;*/
+        /*top: 46px;*/
+    /*}*/
+    /*.login_with_baskit ul li*/
+    /*{*/
+        /*width: 100%;*/
+        /*border-right: none;*/
+    /*}*/
     .staps_mainblock
     {
         margin-bottom: 15px;
@@ -260,8 +255,15 @@
     }
 }
 
-
 @media screen and (min-width: 320px) and (max-width: 479px) {
+    .top_menubox {
+        padding-left: 125px;
+    }
+    .main_logo
+    {
+        top:15px;
+        left: 5px;
+    }
     #exTab3 .tab-content {
         padding: 0px 5px;
     }
@@ -350,21 +352,21 @@
 
     }
 
-    .login_with_baskit {
-        width: 200px;
-        position: absolute;
-        background-color: #fff;
-        border-radius: 3px;
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        right: 0px;
-        top: 46px;
-    }
+    /*.login_with_baskit {*/
+        /*width: 200px;*/
+        /*position: absolute;*/
+        /*background-color: #fff;*/
+        /*border-radius: 3px;*/
+        /*-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);*/
+        /*box-shadow: 0 6px 12px rgba(0, 0, 0, .175);*/
+        /*right: 0px;*/
+        /*top: 46px;*/
+    /*}*/
 
-    .login_with_baskit ul li {
-        width: 100%;
-        border-right: none;
-    }
+    /*.login_with_baskit ul li {*/
+        /*width: 100%;*/
+        /*border-right: none;*/
+    /*}*/
 
     .staps_mainblock {
         margin-bottom: 15px;
@@ -446,10 +448,41 @@
 }
 
 @media (max-width: 767px) and (min-width: 320px) {
-
+    .update_profile_row .col-sm-6
+    {
+        margin-top: 20px;
+    }
+    .update_profile_row
+    {
+        margin-top: 0px !important;
+    }
+    .fixed_menu
+    {
+        height: 50px;
+        overflow: hidden;
+    }
+    .view_fixed_nav .btn-group a
+    {
+        padding: 5px;
+        text-align: center;
+        line-height: 16px;
+    }
+    .view_fixed_nav .btn-group a i {
+        width: 100%;
+        display: inline-block;
+    }
+    .top_menu {
+        top: 50px;
+    }
 }
 
 @media (max-width: 1023px) and (min-width: 320px) {
+    .cand_profile_box
+    {
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+    }
     .right_side_viewblk
     {
         margin: 0px !important;
@@ -562,12 +595,7 @@
         font-size: 12px;
     }
 }
-@media (max-width: 1023px)
-{
-    .form-header-modarn .form-wizard-step p {
-        font-size: 13px !important;
-    }
-}
+
 @media screen and (min-width: 1200px) and (max-width: 1359px) {
 
 }

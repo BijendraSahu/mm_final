@@ -490,9 +490,9 @@
         }
 
         .view_more_details_ul li:nth-child(odd) {
-            font-weight: bold;
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 5px;
+            text-shadow: 1px 1px #e6e6e6;
         }
 
         .view_related_list {
@@ -545,8 +545,8 @@
         <div class="container">
             <div class="row">
                 <div class="view_service_container">
-                    <div class="sub_service_listbox row">
-                        <div class="col-sm-12 col-sm-9 width100 padd0">
+                    <div class="sub_service_listbox">
+                        <div class="col-md-9 col-sm-12 col-xs-12 width100 padd0">
                             <div class="top_nav_fixed">
                                 <div class="view_fixed_nav">
                                     <div class="btn-group" role="group" aria-label="Basic example">
