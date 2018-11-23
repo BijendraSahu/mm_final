@@ -159,6 +159,11 @@
             resize: none;
             border-radius: 0px;
         }
+        .editable_txt {
+            width: 100%;
+            resize: none;
+            border: solid thin #e1e1e1;
+        }
     </style>
     <script type="text/javascript">
         function RemoveEditable(dis) {
@@ -172,7 +177,6 @@
             $(dis).parent().parent().parent().addClass("editable_false");
         }
         function Collapsebtn(dis) {
-            debugger;
             var chk_icon = $(dis).attr('class');
             if (chk_icon == 'mdi mdi-plus') {
                 $(dis).removeClass('mdi-plus');
@@ -191,7 +195,7 @@
     <section class="regitration_member all_pagescontainner">
         <div class="container">
             <div class="candidate_list_box">
-                <div class="cand_profile_box margin0">
+                <div class="cand_profile_box">
                     <div class="cand_profile_imgbox my_profile_imgbox">
                         @php
                             $image = \App\Images::find($user->id);
@@ -1106,24 +1110,20 @@
                                 </div>
                                 <div class="row update_profile_row">
                                     <div class="col-sm-6">
-                                        <div class="textbox_containner txt_area">
+
                                         <textarea type="text" editable="false" name="occupation_detail"
                                                   autocomplete="off"
-                                                  class="animate_txt" id="occupation_detail"
+                                                  class="editable_txt" id="occupation_detail"
                                                   placeholder="Occupation Details" rows="3"></textarea>
-                                            <label class="animate_placeholder" for="occupation_detail">Occupation
-                                                Details</label>
-                                        </div>
+
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="textbox_containner txt_area">
+
                                         <textarea type="text" editable="false" name="about_me"
                                                   autocomplete="off"
-                                                  class="animate_txt" id="about_me"
+                                                  class="editable_txt" id="about_me"
                                                   placeholder="Express Yourself" rows="3"></textarea>
-                                            <label class="animate_placeholder" for="about_me">Express
-                                                Yourself</label>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row update_profile_row">
@@ -1255,24 +1255,18 @@
                                 </div>
                                 <div class="row update_profile_row">
                                     <div class="col-sm-6">
-                                        <div class="textbox_containner txt_area">
                                         <textarea type="text" editable="false" name="father_occupation"
                                                   autocomplete="off"
-                                                  class="animate_txt " id="father_occupation"
+                                                  class="editable_txt " id="father_occupation"
                                                   placeholder="Father Occupation" rows="3"></textarea>
-                                            <label class="animate_placeholder" for="father_occupation">Father
-                                                Occupation<span class="rq_color">*</span></label>
-                                        </div>
+
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="textbox_containner txt_area">
                                         <textarea type="text" editable="false" name="mother_occupation"
                                                   autocomplete="off"
-                                                  class="animate_txt" id="mother_occupation"
+                                                  class="editable_txt" id="mother_occupation"
                                                   placeholder="Mother Occupation" rows="3"></textarea>
-                                            <label class="animate_placeholder" for="mother_occupation">Mother
-                                                Occupation</label>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row update_profile_row">
@@ -1366,21 +1360,16 @@
 
                                 <div class="row update_profile_row">
                                     <div class="col-sm-6">
-                                        <div class="textbox_containner txt_area">
                                         <textarea type="text" editable="false" name="contact_address" autocomplete="off"
-                                                  class="animate_txt" id="contact_address"
+                                                  class="editable_txt" id="contact_address"
                                                   placeholder="Contact Address" rows="3"></textarea>
-                                            <label class="animate_placeholder" for="contact_address">Contact
-                                                Address</label>
-                                        </div>
+
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="textbox_containner txt_area">
-                                        <textarea type="text" editable="false" name="about_family" autocomplete="off"
-                                                  class="animate_txt" id="about_family"
+                                        <textarea type="text" editable="false" name="about_family"
+                                                  class="editable_txt" id="about_family" data-placement="About Family"
                                                   placeholder="About Family" rows="3"></textarea>
-                                            <label class="animate_placeholder" for="about_family">About Family</label>
-                                        </div>
+
                                     </div>
                                 </div>
 

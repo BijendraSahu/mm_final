@@ -1,4 +1,4 @@
-    <input type="hidden" id="glo_share_title" value=""/>
+<input type="hidden" id="glo_share_title" value=""/>
 <input type="hidden" id="glo_share_detail"
        value="Mangal Mandap is a leading Indian matrimonial matchmaking service provider. Our team is committed to provide 360 degree solutions to all prospective Indian brides and grooms for marriage. "/>
 <input type="hidden" id="glo_share_image" value="images/footer_logo.jpg"/>
@@ -10,215 +10,218 @@
 </style>
 <nav class="main_menu fixed_menu" id="top_header_menu">
     <div class="container">
-        <div class="row top_menubox">
-            <div class="main_logo">
-                @if(isset($_SESSION['user_master']))
-                    <a href="{{url('candidate_list')}}">
-                        <img src="{{url('images/mangal_logo.jpg')}}">
-                    </a>
-                @else
-                    <a href="{{url('/')}}">
-                        <img src="{{url('images/mangal_logo.jpg')}}">
-                    </a>
-                @endif
-            </div>
-            <div class="menu_all_containner">
-                <div class="login_with_baskit">
+        <div class="row">
+            <div class="top_menubox">
+                <div class="main_logo">
                     @if(isset($_SESSION['user_master']))
-                        @php
-                            $user_id =$_SESSION['user_master']->id;
-                                $active_plan = \App\ActivateProfile::where(['id'=>$_SESSION['user_master']->id])->first();
-                                $interest_count = \Illuminate\Support\Facades\DB::selectOne("SELECT COUNT(id) as interest_count FROM `friends` WHERE friend_id = $user_id and status = 'pending'");
-                        @endphp
-
-                        <ul id="after_login_ul">
-                            {{--<li><a href="MyDashboard.php">--}}
-                            {{--<i class="mdi mdi-speedometer"></i>Dashboard</a>--}}
-                            {{--</li>--}}
-                            <li>
-                                <a href="{{url('candidate_list')}}"> <i class="mdi mdi-home"></i>Home</a></li>
-                            <li><a href="{{url('userProfiles')}}">
-                                    <i class="mdi mdi-account-switch"></i>Inbox
-                                    <span class="badge">{{isset($interest_count->interest_count) ? $interest_count->interest_count : '0'}}</span></a>
-                            </li>
-                            @if(!isset($active_plan->plan_id))
-                                <li><a href="{{url('membership')}}">
-                                        <i class="mdi mdi-currency-inr"></i>Upgrade Plan</a>
-                                </li>
-                            @endif
-                            <li>
-                                <div class="profile_user glo_menuclick">
-                                    <i class="mdi mdi-account-search"></i><span class="caret"></span> Search
-                                    <div class="menu_basic_popup scale0">
-                                        <div class="menu_popup_containner padding0">
-
-                                            <div class="menu_popup_settingrow effect">
-                                                <a onclick="search_by_id();" data-toggle="modal"
-                                                   data-target="#myModal" class="menu_setting_row">
-                                                    <i class="mdi mdi-account-search"></i>
-                                                    Search by Profile Id
-                                                </a>
-                                            </div>
-                                            <div class="menu_popup_settingrow effect">
-                                                <a href="{{url('advance_search')}}">
-                                                    <i class="mdi mdi-account-search"></i>
-                                                    Advance Search
-                                                </a>
-                                            </div>
-                                            <div class="menu_popup_settingrow effect">
-                                                <a href="{{url('desire_candidates')}}" class="menu_setting_row">
-                                                    <i class="mdi mdi-account"></i>
-                                                    Desire Profile
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li style="border: none;">
-                                <div class="profile_user glo_menuclick">
-                                    @php
-                                        $image = \App\Images::find($_SESSION['user_master']->id);
-                                    @endphp
-                                    @if(isset($image->pic1))
-                                        <img src="{{url('').'/'.$image->pic1}}"/>
-                                    @else
-                                        @if($user->gender == 'male')
-                                            <img src="{{url('images/male.png')}}"/>
-                                        @else
-                                            <img src="{{url('images/female.png')}}"/>
-                                        @endif
-                                    @endif
-                                    <span class="caret"></span>
-                                    <div class="menu_basic_popup scale0">
-                                        <div class="menu_popup_containner padding0">
-
-                                            <div class="menu_popup_settingrow effect">
-                                                <a href="{{url('myp')}}" class="menu_setting_row">
-                                                    <i class="mdi mdi-account-edit"></i>
-                                                    My Profile
-                                                </a>
-                                            </div>
-
-                                            {{--<div class="menu_popup_settingrow effect">--}}
-                                            {{--<a href="{{url('membership')}}" class="menu_setting_row">--}}
-                                            {{--<i class="mdi mdi-currency-inr"></i>--}}
-                                            {{--My membership--}}
-                                            {{--</a>--}}
-                                            {{--</div>--}}
-
-
-                                            <div class="menu_popup_settingrow effect">
-                                                <a onclick="aadhar();" data-toggle="modal"
-                                                   data-target="#myModal" class="menu_setting_row">
-                                                    <i class="mdi mdi-account-search"></i>
-                                                    Aadhar
-                                                </a>
-                                            </div>
-                                            <div class="menu_popup_settingrow effect">
-                                                <a onclick="privacy_control();" data-toggle="modal"
-                                                   data-target="#myModal"
-                                                   class="menu_setting_row">
-                                                    <i class="mdi mdi-lock-open-outline"></i>
-                                                    Privacy Control
-                                                </a>
-                                            </div>
-
-
-                                            {{--<div class="menu_popup_settingrow effect">--}}
-                                            {{--<a href="#" class="menu_setting_row">--}}
-                                            {{--<i class="mdi mdi-delete-forever"></i>--}}
-                                            {{--Delete Account--}}
-                                            {{--</a>--}}
-                                            {{--</div>--}}
-
-                                            <div class="menu_popup_settingrow effect">
-                                                <a onclick="update_password();" data-toggle="modal"
-                                                   data-target="#myModal_UpdatePassword"
-                                                   class="menu_setting_row">
-                                                    <i class="mdi mdi-lock-open-outline"></i>
-                                                    Change Password
-                                                </a>
-                                            </div>
-                                            <div class="menu_popup_settingrow effect">
-                                                <a href="{{url('logout')}}" class="menu_setting_row">
-                                                    <i class="mdi mdi-logout"></i>
-                                                    Logout
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <a href="{{url('candidate_list')}}">
+                            <img src="{{url('images/mangal_logo.jpg')}}">
+                        </a>
                     @else
-                        <ul>
-                            <li>
-                                <a href="{{url('/')}}"> <i class="mdi mdi-home"></i>Home</a></li>
-                            <li onclick="ShowLoginSignup('signin');">
-                                <i class="mdi mdi-account"></i>Login
-                            </li>
-                            <li>
-                                <a href="{{url('registration')}}">
-                                    <i class="mdi mdi-account-edit"></i>Registration</a></li>
-                            <!-- <li >
-                                 <i class="mdi mdi-currency-inr"></i>Payment</li>-->
-                            <li>
-                                <a href="{{url('membership')}}"><i class="mdi mdi-wallet-membership"></i>Membership</a>
-                            </li>
-
-                            {{--<li>--}}
-                                {{--<div class="profile_user glo_menuclick">--}}
-                                    {{--<i class="mdi mdi-account-search"></i><span class="caret"></span> Search--}}
-                                    {{--<div class="menu_basic_popup scale0">--}}
-                                        {{--<div class="menu_popup_containner padding0">--}}
-
-                                            {{--<div class="menu_popup_settingrow effect">--}}
-                                                {{--<a onclick="search_by_id();" data-toggle="modal"--}}
-                                                   {{--data-target="#myModal" class="menu_setting_row">--}}
-                                                    {{--<i class="mdi mdi-account-search"></i>--}}
-                                                    {{--Search by Profile Id--}}
-                                                {{--</a>--}}
-                                            {{--</div>--}}
-
-                                            {{--<div class="menu_popup_settingrow effect">--}}
-                                                {{--<a href="{{url('advance_search')}}">--}}
-                                                    {{--<i class="mdi mdi-account-search"></i>--}}
-                                                    {{--Advance Search--}}
-                                                {{--</a>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            <li style="border: none;">
-                                <a target="_blank" href="{{url('payment')}}"><i class="mdi mdi-wallet-membership"></i>Payment</a>
-                            </li>
-
-                        </ul>
+                        <a href="{{url('/')}}">
+                            <img src="{{url('images/mangal_logo.jpg')}}">
+                        </a>
                     @endif
+                </div>
+                <div class="menu_all_containner">
+                    <div class="login_with_baskit">
+                        @if(isset($_SESSION['user_master']))
+                            @php
+                                $user_id =$_SESSION['user_master']->id;
+                                    $active_plan = \App\ActivateProfile::where(['id'=>$_SESSION['user_master']->id])->first();
+                                    $interest_count = \Illuminate\Support\Facades\DB::selectOne("SELECT COUNT(id) as interest_count FROM `friends` WHERE friend_id = $user_id and status = 'pending'");
+                            @endphp
+
+                            <ul id="after_login_ul">
+                                {{--<li><a href="MyDashboard.php">--}}
+                                {{--<i class="mdi mdi-speedometer"></i>Dashboard</a>--}}
+                                {{--</li>--}}
+                                <li>
+                                    <a href="{{url('candidate_list')}}"> <i class="mdi mdi-home"></i>Home</a></li>
+                                <li><a href="{{url('userProfiles')}}">
+                                        <i class="mdi mdi-account-switch"></i>Inbox
+                                        <span class="badge">{{isset($interest_count->interest_count) ? $interest_count->interest_count : '0'}}</span></a>
+                                </li>
+                                @if(!isset($active_plan->plan_id))
+                                    <li><a href="{{url('membership')}}">
+                                            <i class="mdi mdi-currency-inr"></i>Upgrade Plan</a>
+                                    </li>
+                                @endif
+                                <li>
+                                    <div class="profile_user glo_menuclick">
+                                        <i class="mdi mdi-account-search"></i><span class="caret"></span> Search
+                                        <div class="menu_basic_popup scale0">
+                                            <div class="menu_popup_containner padding0">
+
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a onclick="search_by_id();" data-toggle="modal"
+                                                       data-target="#myModal" class="menu_setting_row">
+                                                        <i class="mdi mdi-account-search"></i>
+                                                        Search by Profile Id
+                                                    </a>
+                                                </div>
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a href="{{url('advance_search')}}">
+                                                        <i class="mdi mdi-account-search"></i>
+                                                        Advance Search
+                                                    </a>
+                                                </div>
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a href="{{url('desire_candidates')}}" class="menu_setting_row">
+                                                        <i class="mdi mdi-account"></i>
+                                                        Desire Profile
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li style="border: none;">
+                                    <div class="profile_user glo_menuclick">
+                                        @php
+                                            $image = \App\Images::find($_SESSION['user_master']->id);
+                                        @endphp
+                                        @if(isset($image->pic1))
+                                            <img src="{{url('').'/'.$image->pic1}}"/>
+                                        @else
+                                            @if($user->gender == 'male')
+                                                <img src="{{url('images/male.png')}}"/>
+                                            @else
+                                                <img src="{{url('images/female.png')}}"/>
+                                            @endif
+                                        @endif
+                                        <span class="caret"></span>
+                                        <div class="menu_basic_popup scale0">
+                                            <div class="menu_popup_containner padding0">
+
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a href="{{url('myp')}}" class="menu_setting_row">
+                                                        <i class="mdi mdi-account-edit"></i>
+                                                        My Profile
+                                                    </a>
+                                                </div>
+
+                                                {{--<div class="menu_popup_settingrow effect">--}}
+                                                {{--<a href="{{url('membership')}}" class="menu_setting_row">--}}
+                                                {{--<i class="mdi mdi-currency-inr"></i>--}}
+                                                {{--My membership--}}
+                                                {{--</a>--}}
+                                                {{--</div>--}}
+
+
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a onclick="aadhar();" data-toggle="modal"
+                                                       data-target="#myModal" class="menu_setting_row">
+                                                        <i class="mdi mdi-account-search"></i>
+                                                        Aadhar
+                                                    </a>
+                                                </div>
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a onclick="privacy_control();" data-toggle="modal"
+                                                       data-target="#myModal"
+                                                       class="menu_setting_row">
+                                                        <i class="mdi mdi-lock-open-outline"></i>
+                                                        Privacy Control
+                                                    </a>
+                                                </div>
+
+
+                                                {{--<div class="menu_popup_settingrow effect">--}}
+                                                {{--<a href="#" class="menu_setting_row">--}}
+                                                {{--<i class="mdi mdi-delete-forever"></i>--}}
+                                                {{--Delete Account--}}
+                                                {{--</a>--}}
+                                                {{--</div>--}}
+
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a onclick="update_password();" data-toggle="modal"
+                                                       data-target="#myModal_UpdatePassword"
+                                                       class="menu_setting_row">
+                                                        <i class="mdi mdi-lock-open-outline"></i>
+                                                        Change Password
+                                                    </a>
+                                                </div>
+                                                <div class="menu_popup_settingrow effect">
+                                                    <a href="{{url('logout')}}" class="menu_setting_row">
+                                                        <i class="mdi mdi-logout"></i>
+                                                        Logout
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        @else
+                            <ul>
+                                <li>
+                                    <a href="{{url('/')}}"> <i class="mdi mdi-home"></i>Home</a></li>
+                                <li onclick="ShowLoginSignup('signin');">
+                                    <i class="mdi mdi-account"></i>Login
+                                </li>
+                                <li>
+                                    <a href="{{url('registration')}}">
+                                        <i class="mdi mdi-account-edit"></i>Registration</a></li>
+                                <!-- <li >
+                                     <i class="mdi mdi-currency-inr"></i>Payment</li>-->
+                                <li>
+                                    <a href="{{url('membership')}}"><i class="mdi mdi-wallet-membership"></i>Membership</a>
+                                </li>
+
+                                {{--<li>--}}
+                                {{--<div class="profile_user glo_menuclick">--}}
+                                {{--<i class="mdi mdi-account-search"></i><span class="caret"></span> Search--}}
+                                {{--<div class="menu_basic_popup scale0">--}}
+                                {{--<div class="menu_popup_containner padding0">--}}
+
+                                {{--<div class="menu_popup_settingrow effect">--}}
+                                {{--<a onclick="search_by_id();" data-toggle="modal"--}}
+                                {{--data-target="#myModal" class="menu_setting_row">--}}
+                                {{--<i class="mdi mdi-account-search"></i>--}}
+                                {{--Search by Profile Id--}}
+                                {{--</a>--}}
+                                {{--</div>--}}
+
+                                {{--<div class="menu_popup_settingrow effect">--}}
+                                {{--<a href="{{url('advance_search')}}">--}}
+                                {{--<i class="mdi mdi-account-search"></i>--}}
+                                {{--Advance Search--}}
+                                {{--</a>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</li>--}}
+                                <li style="border: none;">
+                                    <a target="_blank" href="{{url('payment')}}"><i
+                                                class="mdi mdi-wallet-membership"></i>Payment</a>
+                                </li>
+
+                            </ul>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </nav>
 {{--<div class="page_loader" id="page_loader">--}}
-    {{--<div class="two_heart_box">--}}
-        {{--<div class="heart_left_block">--}}
-            {{--<div class="chest" id="chest">--}}
-                {{--<div class="heart loader_left side top"></div>--}}
-                {{--<div class="heart center">&hearts;</div>--}}
-                {{--<div class="heart loader_right side"></div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="heart_right_block">--}}
-            {{--<div class="chest" id="chest">--}}
-                {{--<div class="heart loader_left side top"></div>--}}
-                {{--<div class="heart center">&hearts;</div>--}}
-                {{--<div class="heart loader_right side"></div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+{{--<div class="two_heart_box">--}}
+{{--<div class="heart_left_block">--}}
+{{--<div class="chest" id="chest">--}}
+{{--<div class="heart loader_left side top"></div>--}}
+{{--<div class="heart center">&hearts;</div>--}}
+{{--<div class="heart loader_right side"></div>--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--<div class="heart_right_block">--}}
+{{--<div class="chest" id="chest">--}}
+{{--<div class="heart loader_left side top"></div>--}}
+{{--<div class="heart center">&hearts;</div>--}}
+{{--<div class="heart loader_right side"></div>--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--</div>--}}
 {{--</div>--}}
 
 <div class="modal popup_bgcolor" id="loginSignup_popup">
