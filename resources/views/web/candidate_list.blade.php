@@ -1241,7 +1241,8 @@
                                             <a href="#" data-content="{{$search_user->id}}"
                                                id="send_{{$search_user->id}}"
                                                onclick="send_interest(this)"
-                                               class="popup_submitbtn_send_without_lg btn-sm btn-success">Send Interest</a>
+                                               class="popup_submitbtn_send_without_lg btn-sm btn-success">
+                                                Send Interest</a>
                                         </div>
                                         <div class="btn-group cand_btncontainner">
                                             <a href="#" data-content="{{$search_user->id}}"

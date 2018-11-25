@@ -975,6 +975,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-12 col-md-3 width100">
                             <div class="right_side_viewblk">
                                 <div class="card more_details">
