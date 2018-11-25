@@ -262,6 +262,12 @@
     .top_menubox {
         padding-left: 125px;
     }
+    .right_side_viewblk
+    {
+        width: 100%;
+        display: inline-block;
+    }
+
     .main_logo
     {
         top:15px;
@@ -540,6 +546,7 @@
         margin: 0px !important;
         padding: 0px;
         max-width: 100%;
+        display: inline-block;
     }
     .cand_search_filterbox
     {

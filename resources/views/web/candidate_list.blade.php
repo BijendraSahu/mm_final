@@ -1230,20 +1230,20 @@
                                         </ul>
                                     </div>
                                     <div class="cand_btnbox">
-                                        <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                        <div class="btn-group cand_btncontainner">
                                             <a class="popup_submitbtn btn-sm btn-primary"
                                                data-content="{{$search_user->id}}" id="view_{{$search_user->id}}"
                                                onclick="view_contact(this)"
                                                href="#">View Profile
                                             </a>
                                         </div>
-                                        <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                        <div class="btn-group cand_btncontainner">
                                             <a href="#" data-content="{{$search_user->id}}"
                                                id="send_{{$search_user->id}}"
                                                onclick="send_interest(this)"
                                                class="popup_submitbtn_send_without_lg btn-sm btn-success">Send Interest</a>
                                         </div>
-                                        <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                        <div class="btn-group cand_btncontainner">
                                             <a href="#" data-content="{{$search_user->id}}"
                                                id="view_{{$search_user->id}}" onclick="view_contact(this)"
                                                class="popup_submitbtn_lv btn-sm upgrade_bg">View Contact</a>

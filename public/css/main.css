@@ -1490,6 +1490,7 @@ body {
 .cand_btnbox a {
     margin-bottom: 10px;
     width: 100%;
+    float: left;
 }
 
 /*------------Checkbox----------------*/
