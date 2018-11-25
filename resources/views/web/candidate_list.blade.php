@@ -1479,7 +1479,7 @@
             </div>
         </div>
     </section>
-<div class="div_overlay" id="overlay_menu" onclick="Hidefilter();"></div>
+
     <script type="text/javascript">
         $(function () {
             $(".typeDD").select2({
@@ -1500,10 +1500,7 @@
                 $('#filter_box').removeClass('cand_search_filterbox_show');
             }
         }
-        function Hidefilter() {
-            $('#filter_box').removeClass('cand_search_filterbox_show');
-            $('#overlay_menu').hide();
-        }
+
         append_loading_img = '<div class="feed_loadimg_block" id="load_img">' +
             '<img height="50px" class="center-block" src="{{ url('images/loading.gif') }}"/></div>';
         {{--function getmorepost() {--}}

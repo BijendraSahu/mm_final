@@ -24,6 +24,9 @@
                     @endif
                 </div>
                 <div class="menu_all_containner">
+                    <div class="mobile_show" onclick="MenuShow(this);">
+                        <i class="filter_icon pull-right mdi mdi-menu"></i>
+                    </div>
                     <div class="login_with_baskit">
                         @if(isset($_SESSION['user_master']))
                             @php
@@ -32,7 +35,7 @@
                                     $interest_count = \Illuminate\Support\Facades\DB::selectOne("SELECT COUNT(id) as interest_count FROM `friends` WHERE friend_id = $user_id and status = 'pending'");
                             @endphp
 
-                            <ul id="after_login_ul">
+                            <ul class="menu_ul" id="after_login_ul">
                                 {{--<li><a href="MyDashboard.php">--}}
                                 {{--<i class="mdi mdi-speedometer"></i>Dashboard</a>--}}
                                 {{--</li>--}}
@@ -153,7 +156,7 @@
                                 </li>
                             </ul>
                         @else
-                            <ul>
+                            <ul class="menu_ul">
                                 <li>
                                     <a href="{{url('/')}}"> <i class="mdi mdi-home"></i>Home</a></li>
                                 <li onclick="ShowLoginSignup('signin');">
@@ -437,8 +440,18 @@
 
     </div>
 </div>
+<div class="div_overlay" id="overlay_menu" onclick="Hidefilter();"></div>
 <p id="err1"></p>
 <script type="text/javascript">
+    function MenuShow(dis) {
+        $(dis).parent().find('.menu_ul').addClass('menu_ul_show');
+        $('#overlay_menu').fadeIn();
+    }
+    function Hidefilter() {
+        $('.menu_ul').removeClass('menu_ul_show');
+        $('#filter_box').removeClass('cand_search_filterbox_show');
+        $('#overlay_menu').hide();
+    }
     function aadhar() {
         $('#myModal').addClass('in');
         $('#myModal').show();
@@ -584,6 +597,7 @@
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
     function submitChange() {
 //        var cpassword = $('#cpswd').val();
         var oldpassword = $('#txtChange_previousPsd').val();

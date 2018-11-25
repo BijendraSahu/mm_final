@@ -2,31 +2,25 @@
     <div role='alert' id='alert' class='alert alert-danger'>{{$errors->first()}}</div>
 @endif
 {{--{!! Form::open(['url' => 'view_profile', 'class' => 'form-horizontal', 'id'=>'privacy_update']) !!}--}}
-<div class="container-fluid">
-    <div class="container-fluid">
-        <div class="col-sm-12">
-            <div class='form-group'>
-                {!! Form::label('contact', 'Search By Profile Id', ['class' => 'col-sm-3 control-label']) !!}
-                <div class='col-sm-9'>
-                    <div class='col-sm-1'>
-                        {!! Form::label('mm', 'MM', ['class' => 'control-label']) !!}
-                    </div>
-                    <div class='col-sm-10'>
-                        <input type="number" min="0" class="form-control input-sm numberOnly" id="profile_id"
-                               placeholder="Enter Profile Id">
-                    </div>
-                </div>
-            </div>
+<div class="col-sm-12">
+    {!! Form::label('contact', 'Search By Profile Id', ['class' => 'col-sm-3 control-label']) !!}
+    <div class='col-sm-9'>
+        <div class='col-sm-1'>
+            {!! Form::label('mm', 'MM', ['class' => 'control-label']) !!}
+        </div>
+        <div class='col-sm-10'>
+            <input type="number" min="0" class="form-control input-sm numberOnly" id="profile_id"
+                   placeholder="Enter Profile Id">
+        </div>
+    </div>
+    <div class='col-sm-offset-4 col-sm-9'>
+        <button type="button" onclick="search_by_id();" class="btn btn-sm btn-primary" style="margin-top: 10px;">Search</button>
+    </div>
+</div>
+<p class="clearfix"></p>
+<div class="col-sm-12">
+    <div class='form-group'>
 
-        </div>
-        <p class="clearfix"></p>
-        <div class="col-sm-12">
-            <div class='form-group'>
-                <div class='col-sm-offset-4 col-sm-9'>
-                    <button type="button" onclick="search_by_id();" class="btn btn-sm btn-primary">Search</button>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 {{--{!! Form::close() !!}--}}

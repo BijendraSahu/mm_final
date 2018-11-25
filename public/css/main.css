@@ -3080,3 +3080,7 @@ img {
 {
     background: #e5e5e5;
 }
+.mobile_show
+{
+    display: none;
+}
