@@ -40,6 +40,8 @@ Route::GET('change_password', function () {
 Route::POST('reset_password', 'LoginMasterController@reset_password');
 Route::GET('user_master/{id}/resetPassword', 'LoginMasterController@reset');
 
+Route::get('forgot_password', 'User_loginController@forgot_password');
+
 Route::POST('change_password', 'LoginMasterController@change_password');
 
 Route::get('hotel/{id}/booked', 'HotelMasterController@booked');

@@ -280,12 +280,13 @@
             </div>
             <div class="right_block forgot">
                 <div class="deli_row">
-                    <input type="text" name="email_pass" autocomplete="off" class="form-control login_txt"
-                           placeholder="Email Id">
+                    <input type="text" name="email_pass" autocomplete="off" id="fcontact_no"
+                           class="form-control login_txt"
+                           placeholder="Mobile No(Password will be send to your no)">
                 </div>
                 <hr>
                 <div class="deli_row">
-                    <button class="btn btn-success login_btn">
+                    <button class="btn btn-success login_btn" onclick="forgotpasswordsend()">
                         <i class="mdi mdi-account-check basic_icon_margin"></i>Submit
                     </button>
                 </div>
@@ -594,6 +595,76 @@
             }
         });
     }
+    function Requiredtxt(me) {
+        var text = $.trim($(me).val());
+        if (text == '') {
+            $(me).addClass("errorClass");
+            return false;
+        } else {
+            $(me).removeClass("errorClass");
+            return true;
+        }
+    }
+    function forgotpasswordsend() {
+        var contact = $('#fcontact_no').val();
+        var result = true;
+        if (!Boolean(Requiredtxt("#fcontact_no"))) {
+            result = false;
+        }
+        if (!result) {
+            return false;
+        } else {
+            alert(contact);
+            $.ajax({
+                type: "get",
+                contentType: "application/json; charset=utf-8",
+                url: "{{ url('forgot_password') }}",
+                data: {contact: contact},
+                success: function (data) {
+                    if (data == 'ok') {
+                        swal("Success....", "Password has been sent successfully", "success");
+                    } else if (data == 'Incorrect') {
+                        swal("Oops....", "Please enter registered mobile no", "info");
+                    }
+                },
+                error: function (xhr, status, error) {
+//                    alert('xhr.responseText');
+                    $('#err').html(xhr.responseText);
+                }
+            });
+        }
+    }
+    {{--function forget_password() {--}}
+        {{--var forget_mobile = $('#forget_mobile').val();--}}
+        {{--if (forget_mobile.trim() == '') {--}}
+            {{--ShowErrorPopupMsg('Please enter mobile no');--}}
+        {{--} else {--}}
+            {{--$.ajax({--}}
+                {{--type: "get",--}}
+                {{--url: "{{url('forget_mobile')}}",--}}
+                {{--data: {forget_mobile: forget_mobile},--}}
+                {{--success: function (data) {--}}
+{{--//                console.log(data);--}}
+                    {{--if (data == "Invalid") {--}}
+                        {{--HidePopoupMsg();--}}
+                        {{--ShowErrorPopupMsg('Email or Password is invalid');--}}
+                    {{--}--}}
+                    {{--else {--}}
+                        {{--HidePopoupMsg();--}}
+                        {{--// ShowSuccessPopupMsg('Login Success');--}}
+                        {{--window.location.href = "{{url('candidate_list')}}";--}}
+                    {{--}--}}
+                {{--},--}}
+                {{--error: function (xhr, status, error) {--}}
+                    {{--$('#err1').html(xhr.responseText);--}}
+
+{{--//                alert(data);--}}
+                {{--}--}}
+            {{--});--}}
+        {{--}--}}
+    {{--}--}}
+
+
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
