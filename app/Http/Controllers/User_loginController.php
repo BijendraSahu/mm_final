@@ -128,7 +128,8 @@ class User_loginController extends Controller
             if (request('admin_reg') == 0) {
                 $this->sendmail($otp);
             }
-            return redirect('/')->with('message', 'Registration has been successful');
+            file_get_contents("https://www.bulksmsplans.com/Restapis/send_sms?api_key=mangalmandap2016@gmail.com&api_token=5a486ac93b1e1c7ef0da801fffd63c911542864848&sender=DEMOSM&receiver=$reg->contact&msgtype=1&sms=Dear%20Mangal%20Mandap%20user,%20Your%20verification%20code%20is%20$reg->otp");
+            return redirect('/')->with('message', 'Registration has been successful...please verify your account by entering verification code');
         }
     }
 
@@ -137,12 +138,12 @@ class User_loginController extends Controller
     {
         $otp = rand(100000, 999999);
         $contact = request('contact');
-        $user = UserMaster::where(['contact' => $contact])->first();
+        $user = Profiles::where(['contact' => $contact])->first();
         if (isset($user)) {
-            $user_master = UserMaster::find($user->id);
+            $user_master = Profiles::find($user->id);
             $user_master->password = $otp;
             $user_master->save();
-            file_get_contents("http://api.msg91.com/api/sendhttp.php?sender=CONONE&route=4&mobiles=$user_master->contact&authkey=213418AONRGdnQ5ae96f62&country=91&message=Dear%20user,%20Password%20to%20login%20into%20MangalMandap%20is%20$otp");
+            file_get_contents("https://www.bulksmsplans.com/Restapis/send_sms?api_key=mangalmandap2016@gmail.com&api_token=5a486ac93b1e1c7ef0da801fffd63c911542864848&sender=DEMOSM&receiver=$user_master->contact&msgtype=1&sms=Dear%20user,%20Password%20to%20login%20into%20MangalMandap%20is%20$otp");
             $_SESSION['user_master'] = $user_master;
             echo 'ok';
         } else {
@@ -188,9 +189,47 @@ class User_loginController extends Controller
     {
         $mobile = request('login_mobile');
         $password = request('login_password');
-        $user = DB::selectone("SELECT * FROM `profiles` WHERE is_active = '1' and email = '$mobile' and password = '$password'");
+        $user = DB::selectOne("SELECT * FROM `profiles` WHERE email = '$mobile' and password = '$password'");
+        $otp = rand(100000, 999999);
         if (isset($user)) {
-            $_SESSION['user_master'] = $user;
+            if ($user->is_active == 1) {
+                if ($user->is_verified == 1) {
+                    $_SESSION['user_master'] = $user;
+                    $_SESSION['age1'] = null;
+                    $_SESSION['age2'] = null;
+                    $_SESSION['gender'] = null;
+                    $_SESSION['religion'] = null;
+
+                    $_SESSION['age1'] = $user->gender == 'male' ? $user->age - 4 : $user->age;
+                    $_SESSION['age2'] = $user->gender == 'male' ? $user->age : $user->age + 4;
+                    $_SESSION['gender'] = $user->gender == 'male' ? 'female' : 'male';
+                    $_SESSION['religion'] = $user->religion;
+                    return 'Success';
+                } else {
+                    $user_master = Profiles::find($user->id);
+                    $user_master->otp = $otp;
+                    $user_master->save();
+                    file_get_contents("https://www.bulksmsplans.com/Restapis/send_sms?api_key=mangalmandap2016@gmail.com&api_token=5a486ac93b1e1c7ef0da801fffd63c911542864848&sender=DEMOSM&receiver=$user_master->contact&msgtype=1&sms=Dear%20Mangal%20Mandap%20user,%20Your%20verification%20code%20is%20$user_master->otp");
+                    return 'NotVerified';
+                }
+            } else {
+                return 'Inactivate';
+            }
+        } else {
+            return "Invalid";
+        }
+    }
+
+    public
+    function verify_otp()
+    {
+        $otp = request('txtotp');
+        $user = Profiles::where(['otp' => $otp])->first();
+        if (isset($user)) {
+            $user_master = Profiles::find($user->id);
+            $user_master->is_verified = 1;
+            $user_master->save();
+            $_SESSION['user_master'] = $user_master;
             $_SESSION['age1'] = null;
             $_SESSION['age2'] = null;
             $_SESSION['gender'] = null;
@@ -200,9 +239,9 @@ class User_loginController extends Controller
             $_SESSION['age2'] = $user->gender == 'male' ? $user->age : $user->age + 4;
             $_SESSION['gender'] = $user->gender == 'male' ? 'female' : 'male';
             $_SESSION['religion'] = $user->religion;
-            return 'Success';
+            echo 'ok';
         } else {
-            return "Invalid";
+            echo 'Incorrect';
         }
     }
 
@@ -421,8 +460,9 @@ class User_loginController extends Controller
             $reg->p_religion = request('p_religion');
         if (request('dob') != null)
             $reg->age = Carbon::parse($reg->dob)->diff(Carbon::now())->format('%y');
-//            $otp = rand(100000, 999999);
-//            $reg->otp = $otp;
+//        $otp = rand(100000, 999999);
+//        $reg->otp = $otp;
+//        $reg->is_verified = 1;
         $reg->save();
 
 //            $activate = new ActivateProfile();
@@ -589,5 +629,7 @@ class User_loginController extends Controller
         $user_data = Profiles::find($id);
         return view('adminview.show_user_full', ['user_data' => $user_data]);
     }
+
+
 
 }

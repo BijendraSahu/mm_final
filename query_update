@@ -54,3 +54,5 @@ ALTER TABLE `profiles` CHANGE `anual_income` `anual_income` VARCHAR(50) CHARACTE
 
 
         update profiles set mob2 = NULL WHERE mob2 = ''
+
+        ALTER TABLE `profiles` ADD `is_verified` TINYINT NOT NULL DEFAULT '0' AFTER `otp`; //27_11

@@ -248,6 +248,11 @@
                 <p>Don't worry, it happens to the best of us.</p>
                 <img src="{{url('images/forgot_image.png')}}">
             </div>
+            <div class="left_block verify">
+                <h1>Verify</h1>
+                <p>Hurray! You are just one step away from validating your account.</p>
+                <img src="{{url('images/verify_image.png')}}"/>
+            </div>
         </div>
         <div class="login_right_txt">
             <div class="right_block login" style="display: none;">
@@ -267,15 +272,22 @@
                 </div>
                 <hr>
                 <div class="product_btn_box">
-                    <div class="btn btn-danger" onclick="ShowLoginSignup('forgot')">
+                    <div class="btn btn-danger btn-sm" onclick="ShowLoginSignup('forgot')">
                         <i class="mdi mdi-account-alert basic_icon_margin"></i>Forgot
                     </div>
-                    <a class="btn btn-warning" href="{{url('registration')}}" style="margin-left: 18px;">
+                    {{--<a class="btn btn-warning" href="{{url('registration')}}" style="margin-left: 18px;">--}}
+                    {{--<i class="mdi mdi-account-edit basic_icon_margin"></i>Sign UP--}}
+                    {{--</a>--}}
+                    <div class="btn btn-info btn-sm pull-center" style="margin-left: 5px;"
+                         onclick="ShowLoginSignup('verify')">
+                        <i class="mdi mdi-account-check basic_icon_margin"></i>Verify Account
+                    </div>
+                    <a class="btn btn-primary btn-sm" href="{{url('registration')}}" style="margin-left: 7px;">
                         <i class="mdi mdi-account-edit basic_icon_margin"></i>Sign UP
                     </a>
-                    <div class="btn btn-primary pull-right" onclick="ShowLoginSignup('signup');">
-                        <i class="mdi mdi-account-edit basic_icon_margin"></i>Contact
-                    </div>
+                    {{--<div class="btn btn-primary pull-right" onclick="ShowLoginSignup('signup');">--}}
+                    {{--<i class="mdi mdi-account-edit basic_icon_margin"></i>Sign UP--}}
+                    {{--</div>--}}
                 </div>
             </div>
             <div class="right_block forgot">
@@ -287,6 +299,24 @@
                 <hr>
                 <div class="deli_row">
                     <button class="btn btn-success login_btn" onclick="forgotpasswordsend()">
+                        <i class="mdi mdi-account-check basic_icon_margin"></i>Submit
+                    </button>
+                </div>
+                <hr>
+                <div class="product_btn_box">
+                    <div class="btn btn-primary login_btn" onclick="ShowLoginSignup('signin');">
+                        <i class="mdi mdi-account-edit basic_icon_margin"></i>Sign In
+                    </div>
+                </div>
+            </div>
+            <div class="right_block verify">
+                <div class="deli_row">
+                    <input type="text" name="email_pass" autocomplete="off" class="form-control login_txt"
+                           placeholder="Enter verification code" id="txtotp2">
+                </div>
+                <hr>
+                <div class="deli_row">
+                    <button class="btn btn-success login_btn" onclick="submitotpForm()">
                         <i class="mdi mdi-account-check basic_icon_margin"></i>Submit
                     </button>
                 </div>
@@ -571,29 +601,42 @@
     function send_login() {
         var login_mobile = $('#login_mobile').val();
         var login_password = $('#login_password').val();
-
-        $.ajax({
-            type: "POST",
-            url: "{{url('login_user')}}",
-            data: "login_mobile= " + login_mobile + "&login_password= " + login_password,
-            success: function (data) {
+        var result = true;
+        if (!Boolean(Requiredtxt("#login_mobile")) || !Boolean(Requiredtxt("#login_password"))) {
+            result = false;
+        }
+        if (!result) {
+            return false;
+        } else {
+            $.ajax({
+                type: "get",
+                url: "{{url('login_user')}}",
+//                data: "login_mobile= " + login_mobile + "&login_password= " + login_password,
+                data: {login_mobile: login_mobile, login_password: login_password},
+                success: function (data) {
 //                console.log(data);
-                if (data == "Invalid") {
-                    HidePopoupMsg();
-                    ShowErrorPopupMsg('Email or Password is invalid');
-                }
-                else {
-                    HidePopoupMsg();
-                    // ShowSuccessPopupMsg('Login Success');
-                    window.location.href = "{{url('candidate_list')}}";
-                }
-            },
-            error: function (xhr, status, error) {
-                $('#err1').html(xhr.responseText);
+                    if (data == "Invalid") {
+                        HidePopoupMsg();
+                        //ShowErrorPopupMsg('Email or Password is invalid');
+                        ShowLoginSignup('signin');
+                        swal("Oops....", "Email or Password is invalid", "info");
+                    } else if (data == "Inactivate") {
+                        swal("Oops....", "Your account is deactivated by admin, Please contact to mangal mandap admin(7354933132)", "info");
+                    } else if (data == "NotVerified") {
+                        swal("Oops....", "Your account in not verified, verification code has been sent to your registered mobile no", "info");
+                    } else {
+                        HidePopoupMsg();
+                        // ShowSuccessPopupMsg('Login Success');
+                        window.location.href = "{{url('candidate_list')}}";
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#err1').html(xhr.responseText);
 
 //                alert(data);
-            }
-        });
+                }
+            });
+        }
     }
     function Requiredtxt(me) {
         var text = $.trim($(me).val());
@@ -634,6 +677,39 @@
             });
         }
     }
+
+    function submitotpForm() {
+        var txtotp = $('#txtotp2').val();
+        if (txtotp.trim() == '') {
+            swal("Oops....", "Please enter verification code", "info");
+            $('#txtotp').focus();
+            return false;
+        } else {
+            $.ajax({
+                type: "get",
+                contentType: "application/json; charset=utf-8",
+                url: "{{ url('verify_otp') }}",
+                data: {txtotp: txtotp},
+                success: function (data) {
+                    if (data == 'ok') {
+                        $('#txtotp').val('');
+                        swal("Success", "You have verified successfully...you will be redirected in 3 seconds", "success");
+                        setTimeout(function () {
+                            window.location.href = "{{url('candidate_list')}}";
+                        }, 2000);
+                    } else if (data == 'Incorrect') {
+                        $('#txtotp').val('');
+                        swal("Oops....", "Incorrect otp...Please enter correct otp", "info");
+                    }
+                },
+                error: function (xhr, status, error) {
+//                    alert('xhr.responseText');
+                    $('#err').html(xhr.responseText);
+                }
+            });
+        }
+    }
+
     {{--function forget_password() {--}}
         {{--var forget_mobile = $('#forget_mobile').val();--}}
         {{--if (forget_mobile.trim() == '') {--}}

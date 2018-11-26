@@ -1806,7 +1806,7 @@ body {
     display: inline-block;
     position: absolute;
     right: 15px;
-    top: 32px;
+    top: 10px;
 }
 
 .cand_btncontainner {
@@ -3091,4 +3091,13 @@ img {
 .mobile_show
 {
     display: none;
+}
+.errorClass {
+    border: 1px solid red;
+}
+
+.error_register {
+    color: red;
+    font-weight: bold;
+    padding-top: 58px;
 }

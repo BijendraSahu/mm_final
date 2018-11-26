@@ -3,9 +3,9 @@
 @section('title','Mangal Mandap : Payment')
 @section('head')
     <style type="text/css">
-        .candidate_list_box {
-            margin-top: 88px;
-        }
+        /*.candidate_list_box {*/
+            /*margin-top: 88px;*/
+        /*}*/
 
         .f-color {
             font-size: 15px;

@@ -42,10 +42,16 @@
 </div><!-- /.modal -->
 @if(session()->has('message'))
     <script type="text/javascript">
-        setTimeout(function () {
-            swal("Success", "{{ session()->get('message') }}", "success");
-        }, 500);
-
+        if ('{{session()->get('message')}}' == 'Registration has been successful...please verify your account by entering verification code') {
+            setTimeout(function () {
+                ShowLoginSignup('verify');
+                swal("Success", "{{ session()->get('message') }}", "success");
+            }, 500);
+        } else {
+            setTimeout(function () {
+                swal("Success", "{{ session()->get('message') }}", "success");
+            }, 500);
+        }
     </script>
 @endif
 @if($errors->any())
@@ -71,7 +77,6 @@
     //        ShowupGrade();
     //    }, 10000);
     function view_contact(dis) {
-        debugger;
         var search_user_id = $(dis).attr('data-content');
         $.ajax({
             type: "GET",

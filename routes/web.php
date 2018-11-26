@@ -40,6 +40,7 @@ Route::GET('change_password', function () {
 Route::POST('reset_password', 'LoginMasterController@reset_password');
 Route::GET('user_master/{id}/resetPassword', 'LoginMasterController@reset');
 
+Route::get('verify_otp', 'User_loginController@verify_otp');
 Route::get('forgot_password', 'User_loginController@forgot_password');
 
 Route::POST('change_password', 'LoginMasterController@change_password');
@@ -109,7 +110,7 @@ Route::get('aadhar/{id}/delete', 'User_loginController@aadharUpdate');
 
 
 Route::post('register', 'User_loginController@register');
-Route::POST('login_user', 'User_loginController@login');
+Route::get('login_user', 'User_loginController@login');
 
 ///interest
 Route::post('sendrequest', 'ProfileController@sendrequest');
@@ -126,7 +127,7 @@ Route::get('edit_profile', 'ProfileController@edit_profile');//myprofile
 Route::get('profile_photo', 'ProfileController@profile_photo');//profile_photo
 Route::post('change_password', 'ProfileController@change_password');
 
-Route::get('payment', 'FrontendController@payment');
+Route::get('getpayment', 'FrontendController@payment');
 Route::post('success', 'FrontendController@payment_success');
 Route::post('failed', 'FrontendController@payment_failed');
 

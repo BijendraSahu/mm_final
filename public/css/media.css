@@ -248,6 +248,7 @@
     .cl_list_box > .cand_search_filterbox
     {
         width: 100%;
+        margin-left: 100%;
     }
     .heading_title
     {
@@ -553,6 +554,7 @@
     .cand_search_filterbox
     {
         left: -100%;
+        margin-left: 100%;
     }
     .cand_search_filterbox_show
     {

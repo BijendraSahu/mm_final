@@ -1199,10 +1199,10 @@
                                     </div>
                                     <div class="cand_details">
                                         <div class="cand_name" style="cursor: pointer;" data-content="{{$search_user->id}}" onclick="view_contact(this)">
-                                            {{$search_user->name}}{{'(MM'.$search_user->id.')'}}<span
+                                            {{$search_user->name}}{{'(MM'.$search_user->id.')'}}{{--<span
                                                     data-toggle="tooltip" data-placement="right"
                                                     title="Verified Profile By Aadhar"
-                                                    class="glyphicon glyphicon-ok icon-success"></span></div>
+                                                    class="glyphicon glyphicon-ok icon-success"></span>--}}</div>
                                         <ul class="cand_info">
                                             <li>{{isset($search_user->age)?$search_user->age:'Not Specified'}}
                                                 Years
@@ -1325,9 +1325,9 @@
                                             <div class="cand_name" style="cursor: pointer;"
                                             <div class="cand_name" style="cursor: pointer;"
                                                  onclick="location.href='{{url('view_profile').'/'.$search_user->id}}';">{{$search_user->name}}{{'(MM'.$search_user->id.')'}}
-                                                <span data-toggle="tooltip" data-placement="right"
+                                                {{--<span data-toggle="tooltip" data-placement="right"
                                                       title="Verified Profile By Aadhar"
-                                                      class="glyphicon glyphicon-ok icon-success"></span></div>
+                                                      class="glyphicon glyphicon-ok icon-success"></span>--}}</div>
                                             <ul class="cand_info">
                                                 <li>{{isset($search_user->age)?$search_user->age:'Not Specified'}}
                                                     Years

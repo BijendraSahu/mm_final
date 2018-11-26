@@ -180,7 +180,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <form name="membershipForm" id="membershipForm-3" class="ng-pristine ng-valid">
+                                        <form name="membershipForm" id="membershipForm-4" class="ng-pristine ng-valid">
 
                                             <div class="row ">
                                                 <div class="col-md-12 col-sm-12 col-xs-12 packages-section ">
@@ -230,12 +230,12 @@
     <script>
         function submitMembership(dis) {
             $('#myModal').modal('show');
+            $('#modal_title').html('Confirm Buy');
             $('#modal_size').removeClass('modal-dialog modal-md');
             $('#modal_size').addClass('modal-dialog modal-lg');
-            $('#modal_title').html('Confirm Buy');
             $('#modal_body').html('<img height="50px" class="center-block" src="{{url('images/loading.gif')}}"/>');
             var plan_id = $(dis).attr('id');
-            var editurl = '{{ url('/').'/' }}' + "payment";
+            var editurl = '{{ url('getpayment') }}';
 //            alert(editurl);
             $.ajax({
                 type: "GET",
