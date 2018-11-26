@@ -505,6 +505,9 @@
         .top_menu {
             top: 54px;
         }
+        .fade.in {
+            opacity: 1;
+        }
     </style>
     <link rel="stylesheet" href="{{url('css/media.css')}}"/>
 @stop
@@ -968,13 +971,13 @@
                                             <li>
                                                 {{isset($user->smoking_habit)?$user->smoking_habit:'Not mentioned'}}
                                             </li>
-
-
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-sm-12 col-md-3 width100">
                             <div class="right_side_viewblk">
                                 <div class="card more_details">
