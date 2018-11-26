@@ -928,6 +928,7 @@ body {
     outline: none;
     text-transform: uppercase;
     padding: 10px 29px;
+    text-align: center;
 }
 
 .popup_submitbtn_cancel {
@@ -939,6 +940,7 @@ body {
     outline: none;
     text-transform: uppercase;
     padding: 10px 23px;
+    text-align: center;
 }
 
 .popup_submitbtn_unfriend {
@@ -950,6 +952,7 @@ body {
     outline: none;
     text-transform: uppercase;
     padding: 10px 44px;
+    text-align: center;
 }
 
 .popup_submitbtn_view {
@@ -961,6 +964,7 @@ body {
     outline: none;
     text-transform: uppercase;
     padding: 10px 15px;
+    text-align: center;
 }
 
 .popup_submitbtn_lv {
@@ -972,6 +976,7 @@ body {
     outline: none;
     text-transform: uppercase;
     padding: 10px 15px;
+    text-align: center;
 }
 
 .popup_submitbtn2 {

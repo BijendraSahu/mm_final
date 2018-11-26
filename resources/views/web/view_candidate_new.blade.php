@@ -505,6 +505,9 @@
         .top_menu {
             top: 54px;
         }
+        .fade.in {
+            opacity: 1;
+        }
     </style>
     <link rel="stylesheet" href="{{url('css/media.css')}}"/>
 @stop

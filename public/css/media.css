@@ -291,6 +291,7 @@
         font-size: 20px;
         height: 20px;
         margin-right: 0px;
+        line-height: 20px;
     }
     .overlay_trust
     {
@@ -595,6 +596,8 @@
     }
     .cand_btncontainner a{
         padding: 5px 10px;
+        margin-bottom: 0px;
+        text-align: center;
     }
     .all_pagescontainner
     {

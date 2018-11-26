@@ -1323,6 +1323,7 @@
 
                                         <div class="cand_details">
                                             <div class="cand_name" style="cursor: pointer;"
+                                            <div class="cand_name" style="cursor: pointer;"
                                                  onclick="location.href='{{url('view_profile').'/'.$search_user->id}}';">{{$search_user->name}}{{'(MM'.$search_user->id.')'}}
                                                 <span data-toggle="tooltip" data-placement="right"
                                                       title="Verified Profile By Aadhar"
@@ -1356,7 +1357,7 @@
                                         </div>
                                         <div class="cand_btnbox">
 
-                                            <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                            <div class="">
                                                 {{--<button type="button" class="btn btn-success btn-xs res_btn"><span--}}
                                                 {{--class="mdi mdi-heart"></span></button>--}}
                                                 {{--<button type="button" class="btn btn-success btn-xs res_btn">Send Interest--}}
@@ -1386,7 +1387,7 @@
                                                 {{--</button>--}}
                                                 {{--</div>--}}
 
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                                <div class="">
                                                     <a href="#" data-content="{{$search_user->id}}"
                                                        id="send_{{$search_user->id}}" onclick="send_interest(this)"
                                                        class="popup_submitbtn btn-sm btn-success">Send Interest</a>
@@ -1401,7 +1402,7 @@
                                                 {{--Interest--}}
                                                 {{--</button>--}}
                                                 {{--</div>--}}
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                                <div class="">
                                                     <a href="#" data-content="{{$search_user->id}}"
                                                        id="pending_{{$search_user->id}}" onclick="cancelrequest(this);"
                                                        class="popup_submitbtn_cancel btn-sm btn-danger">Cancel
@@ -1417,7 +1418,7 @@
                                                 {{--Interest--}}
                                                 {{--</button>--}}
                                                 {{--</div>--}}
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                                <div class="">
                                                     <a href="#" data-content="{{$search_user->id}}"
                                                        id="pending_{{$search_user->id}}" onclick="acceptfrequest(this);"
                                                        class="popup_submitbtn btn-sm btn-success">Accept Interest</a>
@@ -1439,7 +1440,7 @@
                                                 {{--<button type="button" class="btn btn-default btn-xs res_btn">UnFriend--}}
                                                 {{--</button>--}}
                                                 {{--</div>--}}
-                                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                                <div class="">
                                                     <a href="#" data-content="{{$search_user->id}}"
                                                        id="friends_{{$search_user->id}}" onclick="unfriend(this);"
                                                        class="popup_submitbtn btn-sm upgrade_bg">UnFriend</a>
@@ -1447,7 +1448,7 @@
                                             @else
 
                                             @endif
-                                            <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                            <div class="">
                                                 <a href="#" data-content="{{$search_user->id}}"
                                                    id="view_{{$search_user->id}}" onclick="view_contact(this)"
                                                    class="popup_submitbtn btn-sm btn-info">View Contact</a>

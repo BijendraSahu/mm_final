@@ -71,6 +71,7 @@
     //        ShowupGrade();
     //    }, 10000);
     function view_contact(dis) {
+        debugger;
         var search_user_id = $(dis).attr('data-content');
         $.ajax({
             type: "GET",
@@ -105,6 +106,7 @@
     }
 
     function viewUserContact(user_id) {
+        debugger;
         $('#myModal').addClass('in');
         $('#myModal').show();
         $('#modal_title').html('Contact Information');
@@ -114,6 +116,7 @@
             url: "{{url('show_contact')}}",
             data: {user_id: user_id},
             success: function (data) {
+                debugger;
                 $('#modal_body').html(data);
             },
             error: function (xhr, status, error) {
