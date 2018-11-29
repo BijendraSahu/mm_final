@@ -505,6 +505,7 @@
         .top_menu {
             top: 54px;
         }
+
         .fade.in {
             opacity: 1;
         }
@@ -798,16 +799,17 @@
                                             <li class="font_bolt">Family Type</li>
                                             <li>{{isset($user->f_type)?$user->f_type:'Not mentioned'}}</li>
 
-                                            <li class="font_bolt">Family Status</li>
-                                            <li>{{isset($user->f_status)?$user->f_status:'Not mentioned'}}</li>
 
                                             <li class="font_bolt">Family Income</li>
                                             <li>{{isset($user->f_income)?$user->f_values:'Not mentioned'}}</li>
+                                            <li class="font_bolt">Family Status</li>
+                                            <li>{{isset($user->f_status)?$user->f_status:'Not mentioned'}}</li>
+
 
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <ul class="cand_info">
+                                        <ul class="cand_info view_details_box">
                                             <li class="font_bolt">Mother's Occupation</li>
                                             <li>{{isset($user->mother_occupation)?$user->mother_occupation:'Not mentioned'}}</li>
                                             <li class="font_bolt">Married Sisters (s)</li>
@@ -857,29 +859,30 @@
                                             </li>
                                             <li class="font_bolt">Education Partner</li>
                                             <li>
-                                                {{$user->education_partner}}
+                                                {{isset($user->education_partner)?$user->education_partner:'Not mentioned'}}
                                             </li>
-                                            <li class="font_bolt">City</li>
-                                            <li>
-                                                {{$user->p_city}}
-                                            </li>
+
                                             <li class="font_bolt">Height</li>
                                             <li>
-                                                From:&nbsp;{{$user->p_heightfrom}}
-                                                &nbsp;To:&nbsp; {{$user->p_heightto}}
+                                                From:&nbsp;{{isset($user->p_heightfrom)?$user->p_heightfrom:'N/A'}}
+                                                &nbsp;To:&nbsp; {{isset($user->p_heightto)?$user->p_heightto:'N/A'}}
                                             </li>
                                             <li class="font_bolt">Weight</li>
                                             <li>
-                                                {{$user->weight}}
+                                                {{isset($user->weight)?$user->weight:'Not mentioned'}}
                                             </li>
 
                                             <li class="font_bolt">Complexion</li>
                                             <li>
-                                                {{$user->complexion}}
+                                                {{isset($user->complexion)?$user->complexion:'Not mentioned'}}
                                             </li>
                                             <li class="font_bolt">Blood Group</li>
                                             <li>
-                                                {{$user->blood_group}}
+                                                {{isset($user->blood_group)?$user->blood_group:'Not mentioned'}}
+                                            </li>
+                                            <li class="font_bolt">City</li>
+                                            <li>
+                                                {{isset($user->p_city)?$user->p_city:'Not mentioned'}}
                                             </li>
                                         </ul>
                                     </div>
@@ -897,10 +900,7 @@
                                             <li>
                                                 {{$user->p_salary}}
                                             </li>
-                                            <li class="font_bolt">Physical Status</li>
-                                            <li>
-                                                {{$user->p_physical}}
-                                            </li>
+
                                             <li class="font_bolt">Diet</li>
                                             <li>
                                                 {{$user->diet}}
@@ -909,17 +909,18 @@
                                             <li>
                                                 {{$user->body_type}}
                                             </li>
-
-                                            <li class="font_bolt">Drinking Habit</li>
-                                            <li>
-                                                {{$user->drinking_habit}}
-                                            </li>
-
                                             <li class="font_bolt">Smoking Habit</li>
                                             <li>
-                                                {{$user->smoking_habit}}
+                                                {{isset($user->smoking_habit)?$user->smoking_habit:'Not mentioned'}}
                                             </li>
-
+                                            <li class="font_bolt">Drinking Habit</li>
+                                            <li>
+                                                {{isset($user->drinking_habit)?$user->drinking_habit:'Not mentioned'}}
+                                            </li>
+                                            <li class="font_bolt">Physical Status</li>
+                                            <li>
+                                                {{$user->p_physical}}
+                                            </li>
 
                                         </ul>
                                     </div>
