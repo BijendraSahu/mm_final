@@ -22,7 +22,6 @@
             display: inline-block;
             width: 100%;
             margin-bottom: 20px;
-            padding-top: 77px;
             padding-bottom: 17px;
         }
 
@@ -40,12 +39,21 @@
         .black_text{
             color: #000 !important;
         }
+        .payment_mainbox
+        {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            padding: 5px 15px;
+            display: inline-block;
+        }
     </style>
 @stop
 @section('content')
+    <section class="regitration_member all_pagescontainner">
     <div class="container">
-        <div class="col-sm-12">
             <div class="col-sm-12 col-md-9">
+                <div class="payment_mainbox">
                 <div class="pri_title_heading">
                     <span class="Privacy_title">Payment Option</span>
                 </div>
@@ -108,9 +116,9 @@
                 </div>
                 <hr/>
             </div>
+            </div>
             <div class="col-sm-12 col-md-3">
-                <div class="candidate_list_box cl_list_box">
-                    <div class="cand_search_filterbox">
+                    <div class="plan_mainbox">
                         <div class="search_filter_head">Benifits Of Paid Membership</div>
                         <ul class="style-scroll promise_member">
                             <li>
@@ -131,14 +139,11 @@
                             </li>
                         </ul>
                     </div>
-
-
-                </div>
                 <a class="btn-pay" target="_blank" href="https://www.payumoney.com/paybypayumoney/#/308811">
                     <img src="{{url('images/PayOnlineButton.png')}}"
                          style="width: 100%; height: 100%; margin-top: 169%;" alt="">
                 </a>
             </div>
-        </div>
     </div>
+    </section>
 @stop
