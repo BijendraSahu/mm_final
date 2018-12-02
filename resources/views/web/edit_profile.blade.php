@@ -192,7 +192,7 @@
     </script>
 @stop
 @section('content')
-    <section class="regitration_member all_pagescontainner">
+    <section class="regitration_member">
         <div class="container">
             <div class="candidate_list_box">
                 <div class="cand_profile_box">
