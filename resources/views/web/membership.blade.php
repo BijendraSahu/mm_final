@@ -10,8 +10,8 @@
 @section('content')
     <section class="regitration_member all_pagescontainner">
         <div class="container">
-            <div class="candidate_list_box">
-                <div class="cand_search_filterbox filtr__box">
+            <div class="col-sm-3">
+                <div class="plan_mainbox">
                     <div class="search_filter_head">Our Promise</div>
                     <ul class="style-scroll promise_member">
                         <li>
@@ -32,7 +32,8 @@
                         </li>
                     </ul>
                 </div>
-
+            </div>
+            <div class="col-sm-9">
                 <div class="cand_list_containner">
 
                     <div class="cand_list_containner">

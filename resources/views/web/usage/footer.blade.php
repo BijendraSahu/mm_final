@@ -11,8 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="main_footer_block">
                     <h4>Address</h4>
                     <address>
@@ -29,7 +28,7 @@
                     </address>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="main_footer_block">
                     <h4>Quick Links</h4>
                     <ul class="footer_links">
@@ -51,20 +50,17 @@
                     </ul>
                 </div>
             </div>
-        </div>
         <div class="col-md-12 footer_border">
             <div style="border-bottom: 1px solid #e2e2e2;"></div>
         </div>
         <div class="main_footer_bottom">
-            <div class="container">
-                <div class="row">
-                    © 2015 All Rights Reserved
+            <div class="container text-center">
+                    © 2019 All Rights Reserved
                     {{--<a href="http://mangalmandap.com/" target="_blank"><img--}}
                     {{--src="{{url('images/Mnagal-mandap-logo1.png')}}"--}}
                     {{--class="logo_powered"></a>--}}
                     {{--<a href="https://www.facebook.com/bijendra.sahu.1?ref=bookmarks" target="_blank"><span--}}
                                 {{--style="color: white"> Bijendra Sahu</span></a>--}}
-                </div>
             </div>
         </div>
     </div>
