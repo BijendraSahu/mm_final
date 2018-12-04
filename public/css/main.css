@@ -925,6 +925,7 @@ body {
     color: white;
     border: none;
     width: 100%;
+    max-width: 150px;
     border-radius: 40px;
     outline: none;
     text-transform: uppercase;
