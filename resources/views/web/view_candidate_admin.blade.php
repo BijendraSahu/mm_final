@@ -4,10 +4,18 @@
 @section('head')
     @include('web.usage.lightbox_plugin')
     <link rel="stylesheet" href="{{url('css/bootstrap2.min.css')}}"/>
+    <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}"/>
     <style type="text/css">
+        .view_fixed_nav .btn-group a {
+            padding: 5px 29px;
+        }
         h3 {
             font-size: 18px;
             color: #d13b5b;
+        }
+        .modal-header
+        {
+            display: inline-block !important;
         }
 
         .font_bolt {
