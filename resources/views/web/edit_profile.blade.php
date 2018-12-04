@@ -460,8 +460,7 @@
                                         <!--  <input type="Weight" editable="false" name="Weight" autocomplete="off" class="animate_txt" id="Weight" placeholder="Weight" value="Weight">-->
                                         <select name="caste" class="form-control requiredDD drop_edit txt_wizard"
                                                 id="caste">
-                                            <option selected
-                                                    value="{{$user->caste}}">{{$user->caste!=''?$user->caste:'Select caste'}}</option>
+                                            <option selected value="{{$user->caste}}">{{$user->caste!=''?$user->caste:'Select caste'}}</option>
                                             <option value="Adi Dravida">Adi Dravida</option>
                                             <option value="Agarwal">Agarwal</option>
                                             <option value="Agnikula Kshatriya">Agnikula Kshatriya</option>
@@ -1715,7 +1714,7 @@
                                     <div class="col-sm-6">
                                         <select name="p_religion" class="form-control requiredDD txt_wizard drop_edit"
                                                 id="p_religion">
-                                            <option selected="selected" value="">Select Religion</option>
+                                            <option selected="selected" value="{{$user->p_religion}}">{{$user->p_religion}}</option>
                                             <option value="Hindu">Hindu</option>
                                             <option value="Muslim">Muslim</option>
                                             <option value="Muslim - Shia">Muslim - Shia</option>

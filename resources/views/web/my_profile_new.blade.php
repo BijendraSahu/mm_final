@@ -58,7 +58,7 @@
         }
 
         .viewdetails_container {
-            padding-top: 90px;
+            padding-top: 41px;
             display: inline-block;
             width: 100%;
         }
@@ -564,85 +564,94 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="cand_box col-sm-12 cand_profile_containner">
+                            <div class="cand_box cand_profile_containner">
+                                <div class="cand_imgbox">
+                                    @php
+                                        $image = \App\Images::find($user->id);
+                                    @endphp
 
-                                <div class="basic_lb_row">
-                                    <div class="col-sm-3">
-                                        <div class="cand_imgbox">
-                                            @php
-                                                $image = \App\Images::find($user->id);
-                                            @endphp
-                                            @if(file_exists($image->pic1))
-                                                <img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>
+                                    @if($user->is_show_pic == '1')
+                                        @if(isset($image->pic1) && file_exists($image->pic1))
+                                            <img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>
+                                        @else
+                                            @if($user->gender == 'male')
+                                                <img class="cand_img" src="{{url('images/male.png')}}"/>
                                             @else
-                                                @if($user->gender == 'male')
-                                                    <img class="cand_img" src="{{url('images/male.png')}}"/>
-                                                @else
-                                                    <img class="cand_img" src="{{url('images/female.png')}}"/>
-                                                @endif
+                                                <img class="cand_img" src="{{url('images/female.png')}}"/>
                                             @endif
-                                            <div class="overlay_trust">
-                                                {{--<div class="meter_img img_80">80%</div>--}}
-                                                <div class="pics_counter_box"><i class="mdi mdi-camera"></i>
-                                                    {{--<span class="pics_counter">3</span>--}}
-                                                    <ul class="lightgallery list-unstyled">
-                                                        <li data-src="{{url('').'/'.$image->pic1}}">
-                                                            <img src="{{url('').'/'.$image->pic1}}"/>
-                                                        </li>
-                                                        <li data-src="{{url('').'/'.$image->pic2}}">
-                                                            <img src="{{url('').'/'.$image->pic2}}"/>
-                                                        </li>
-                                                        <li data-src="{{url('').'/'.$image->pic3}}">
-                                                            <img src="{{url('').'/'.$image->pic3}}"/>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="meter_caption">Reliable Score</div>
-                                            </div>
+                                        @endif
+                                    @else
+                                        <img class="cand_img"
+                                             src="{{url('images/female_large_protected.jpg')}}"/>
+                                    @endif
 
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 u_info">
-                                        <div class="cand_details">
-                                            <div class="cand_name">{{$user->name}}</div>
-                                            <ul class="cand_info">
-                                                <li>{{isset($user->age)?$user->age:'Not Specified'}}
-                                                    Years
+                                    {{--@if(file_exists($image->pic1))--}}
+                                    {{--<img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>--}}
+                                    {{--@else--}}
+                                    {{--@if($user->gender == 'male')--}}
+                                    {{--<img class="cand_img" src="{{url('images/male.png')}}"/>--}}
+                                    {{--@else--}}
+                                    {{--<img class="cand_img" src="{{url('images/female.png')}}"/>--}}
+                                    {{--@endif--}}
+                                    {{--@endif--}}
+                                    <div class="overlay_trust">
+                                        {{--<div class="meter_img img_80">80%</div>--}}
+                                        <div class="pics_counter_box"><i class="mdi mdi-camera"></i>
+                                            {{--<span class="pics_counter">3</span>--}}
+                                            <ul class="lightgallery list-unstyled">
+                                                <li data-src="{{url('').'/'.$image->pic1}}">
+                                                    <img src="{{url('').'/'.$image->pic1}}"/>
                                                 </li>
-
-
-                                                <li>{{$user->height}}</li>
-                                                <li>{{isset($user->state)?$user->state:'-'}}</li>
-
-
-                                                <li>{{isset($user->city)?$user->city:'Not Specified'}}</li>
-
-                                                <li>{{isset($user->religion)?$user->religion:'Not Specified'}}</li>
-
-                                                <li>{{isset($user->caste)?$user->caste:'Not Specified'}}</li>
-
-                                                <li>{{isset($user->language)?$user->language:'Not Specified'}}</li>
-                                                <li>{{isset($user->occupation)?$user->occupation:'Not Specified'}}</li>
-
-                                                <li>{{isset($user->status)?$user->status:'Not Specified'}}</li>
-                                                <li data-toggle="tooltip" data-placement="bottom"
-                                                    title="{{$user->education_detail}}">{{str_limit( $user->education,28)}}</li>
-
-
+                                                <li data-src="{{url('').'/'.$image->pic2}}">
+                                                    <img src="{{url('').'/'.$image->pic2}}"/>
+                                                </li>
+                                                <li data-src="{{url('').'/'.$image->pic3}}">
+                                                    <img src="{{url('').'/'.$image->pic3}}"/>
+                                                </li>
                                             </ul>
-
                                         </div>
-
+                                        <div class="meter_caption">Reliable Score</div>
                                     </div>
-                                    <div class="col-sm-3 u_btn">
-                                        <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
-                                            <a href="{{url('edit_profile')}}" class="popup_submitbtn btn-sm upgrade_bg">Edit Profile</a>
-                                        </div>
+
+                                </div>
+                                <div class="cand_details u_info">
+                                    <div class="cand_name">{{$user->name}}</div>
+                                    <ul class="cand_info">
+                                        <li>{{isset($user->age)?$user->age:'Not mentioned'}}
+                                            Years
+                                        </li>
+
+
+                                        <li>{{$user->height}}</li>
+                                        <li>{{isset($user->state)?$user->state:'-'}}</li>
+
+
+                                        <li>{{isset($user->city)?$user->city:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->religion)?$user->religion:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->caste)?$user->caste:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->language)?$user->language:'Not mentioned'}}</li>
+                                        <li>{{isset($user->occupation)?$user->occupation:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->status)?$user->status:'Not mentioned'}}</li>
+                                        <li>{{isset($user->anual_income)?$user->anual_income:'Not mentioned'}}</li>
+
+                                        <li data-toggle="tooltip" data-placement="bottom"
+                                            title="{{$user->education_detail}}">{{str_limit( $user->education,28)}}</li>
+
+
+                                    </ul>
+
+                                </div>
+                                <div class="cand_btnbox u_btn">
+                                    <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                        <a href="{{url('edit_profile')}}" class="popup_submitbtn btn-sm upgrade_bg">Edit Profile</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="card view_card" id="view_about_blk">
-                                <br>
                                 <div class="card_basic_header">
                                     <h3>About {{ucwords($user->name)}}
 
@@ -661,11 +670,11 @@
                                     </p>
                                     <p>
                                         <b><i class="mdi mdi-briefcase-check fa-sm pr-2"
-                                              aria-hidden="true"></i>Education:</b><br> {{isset($user->education)?$user->education:'Not mentioned'}}
+                                              aria-hidden="true"></i>Education:</b><br> {{isset($user->education_detail)?$user->education_detail:'Not mentioned'}}
                                     </p>
                                     <p>
                                         <b><i class="mdi mdi-message-draw fa-sm pr-2" aria-hidden="true"></i>Occupation:</b>
-                                        <br>{{isset($user->occupation)?$user->occupation:'Not mentioned'}}
+                                        <br>{{isset($user->occupation_detail)?$user->occupation_detail:'Not mentioned'}}
                                     </p>
                                 </div>
 
@@ -677,12 +686,18 @@
                                         <div class="col-sm-6 ">
                                             <ul class="cand_info view_details_box">
                                                 <li class="font_bolt">Education</li>
-                                                <li>@if(isset($user->education)) <a data-toggle="tooltip" data-placement="bottom" title="{{$user->education}}" >{{str_limit($user->education,25)}}</a> @else {{'Not Specified'}} @endif</li>
+                                                <li>@if(isset($user->education)) <a data-toggle="tooltip"
+                                                                                    data-placement="bottom"
+                                                                                    title="{{$user->education}}">{{str_limit($user->education,25)}}</a> @else {{'Not mentioned'}} @endif
+                                                </li>
                                                 <li class="font_bolt">Education Details</li>
-                                                {{--                                                <li>{{isset($user->education_detail)?$user->education_detail:'Not Specified'}}</li>--}}
-                                                <li>@if(isset($user->education_detail)) <a data-toggle="tooltip" data-placement="bottom" title="{{$user->education_detail}}">{{str_limit($user->education_detail,25)}}</a> @else {{'Not Specified'}} @endif</li>
+                                                {{--                                                <li>{{isset($user->education_detail)?$user->education_detail:'Not mentioned'}}</li>--}}
+                                                <li>@if(isset($user->education_detail)) <a data-toggle="tooltip"
+                                                                                           data-placement="bottom"
+                                                                                           title="{{$user->education_detail}}">{{str_limit($user->education_detail,25)}}</a> @else {{'Not mentioned'}} @endif
+                                                </li>
                                                 <li class="font_bolt">Occupation Details</li>
-                                                <li>{{isset($user->occupation_detail)?$user->occupation_detail:'Not Specified'}}</li>
+                                                <li>{{isset($user->occupation_detail)?$user->occupation_detail:'Not mentioned'}}</li>
 
 
                                             </ul>
@@ -690,13 +705,13 @@
                                         <div class="col-sm-6 ">
                                             <ul class="cand_info">
                                                 <li class="font_bolt">College</li>
-                                                <li>{{isset($user->college_name)?$user->college_name:'Not Specified'}}</li>
+                                                <li>{{isset($user->college_name)?$user->college_name:'Not mentioned'}}</li>
                                                 <li class="font_bolt">Occupation</li>
-                                                <li>{{isset($user->occupation)?$user->occupation:'Not Specified'}}</li>
+                                                <li>{{isset($user->occupation)?$user->occupation:'Not mentioned'}}</li>
                                                 <li class="font_bolt">Job Location</li>
-                                                <li>{{isset($user->job_location)?$user->job_location:'Not Specified'}}</li>
+                                                <li>{{isset($user->job_location)?$user->job_location:'Not mentioned'}}</li>
                                                 <li class="font_bolt">Annual Income</li>
-                                                <li>{{isset($user->anual_income)?$user->anual_income:'Not Specified'}}</li>
+                                                <li>{{isset($user->anual_income)?$user->anual_income:'Not mentioned'}}</li>
 
                                             </ul>
                                         </div>
@@ -709,7 +724,7 @@
                                     <div class="col-sm-6">
                                         <ul class="cand_info view_details_box">
                                             <li class="font_bolt">Father's Occupation</li>
-                                            <li>{{isset($user->father_occupation)?$user->father_occupation:'Not Specified'}}</li>
+                                            <li>{{isset($user->father_occupation)?str_limit($user->father_occupation,25):'Not mentioned'}}</li>
 
                                             <li class="font_bolt">Sisters (s)</li>
                                             <li>{{$user->sisters}}</li>
@@ -717,36 +732,37 @@
                                             <li>{{$user->brothers}}</li>
 
                                             <li class="font_bolt">Paternal Gotra</li>
-                                            <li>{{isset($user->father_side_gotra)?$user->father_side_gotra:'Not Specified'}}</li>
+                                            <li>{{isset($user->father_side_gotra)?$user->father_side_gotra:'Not mentioned'}}</li>
 
 
                                             <li class="font_bolt">Family Type</li>
-                                            <li>{{isset($user->f_type)?$user->f_type:'Not Specified'}}</li>
+                                            <li>{{isset($user->f_type)?$user->f_type:'Not mentioned'}}</li>
 
-                                            <li class="font_bolt">Family Status</li>
-                                            <li>{{isset($user->f_status)?$user->f_status:'Not Specified'}}</li>
 
                                             <li class="font_bolt">Family Income</li>
-                                            <li>{{isset($user->f_income)?$user->f_values:'Not Specified'}}</li>
+                                            <li>{{isset($user->f_income)?$user->f_values:'Not mentioned'}}</li>
+                                            <li class="font_bolt">Family Status</li>
+                                            <li>{{isset($user->f_status)?$user->f_status:'Not mentioned'}}</li>
+
 
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <ul class="cand_info">
+                                        <ul class="cand_info view_details_box">
                                             <li class="font_bolt">Mother's Occupation</li>
-                                            <li>{{isset($user->mother_occupation)?$user->mother_occupation:'Not Specified'}}</li>
+                                            <li>{{isset($user->mother_occupation)?$user->mother_occupation:'Not mentioned'}}</li>
                                             <li class="font_bolt">Married Sisters (s)</li>
                                             <li>{{$user->sis_married}}</li>
                                             <li class="font_bolt">Married Brother (s)</li>
                                             <li>{{$user->bro_married}}</li>
                                             <li class="font_bolt">Maternal Gotra</li>
-                                            <li>{{isset($user->mother_side_gotra)?$user->mother_side_gotra:'Not Specified'}}</li>
+                                            <li>{{isset($user->mother_side_gotra)?$user->mother_side_gotra:'Not mentioned'}}</li>
 
                                             <li class="font_bolt">Family Values</li>
-                                            <li>{{isset($user->f_values)?$user->f_values:'Not Specified'}}</li>
+                                            <li>{{isset($user->f_values)?$user->f_values:'Not mentioned'}}</li>
 
                                             <li class="font_bolt">Family Based Out</li>
-                                            <li>{{isset($user->f_based_out)?$user->f_values:'Not Specified'}}</li>
+                                            <li>{{isset($user->f_based_out)?$user->f_values:'Not mentioned'}}</li>
 
                                             {{--<li class="font_bolt">Unmarried Brother (s)</li>--}}
                                             {{--<li>{{$user->brothers}}</li>--}}
@@ -782,29 +798,30 @@
                                             </li>
                                             <li class="font_bolt">Education Partner</li>
                                             <li>
-                                                {{$user->education_partner}}
+                                                {{isset($user->education_partner)?$user->education_partner:'Not mentioned'}}
                                             </li>
-                                            <li class="font_bolt">City</li>
-                                            <li>
-                                                {{$user->p_city}}
-                                            </li>
+
                                             <li class="font_bolt">Height</li>
                                             <li>
-                                                From:&nbsp;{{$user->p_heightfrom}}
-                                                &nbsp;To:&nbsp; {{$user->p_heightto}}
+                                                From:&nbsp;{{isset($user->p_heightfrom)?$user->p_heightfrom:'N/A'}}
+                                                &nbsp;To:&nbsp; {{isset($user->p_heightto)?$user->p_heightto:'N/A'}}
                                             </li>
                                             <li class="font_bolt">Weight</li>
                                             <li>
-                                                {{$user->weight}}
+                                                {{isset($user->weight)?$user->weight:'Not mentioned'}}
                                             </li>
 
                                             <li class="font_bolt">Complexion</li>
                                             <li>
-                                                {{$user->complexion}}
+                                                {{isset($user->complexion)?$user->complexion:'Not mentioned'}}
                                             </li>
                                             <li class="font_bolt">Blood Group</li>
                                             <li>
-                                                {{$user->blood_group}}
+                                                {{isset($user->blood_group)?$user->blood_group:'Not mentioned'}}
+                                            </li>
+                                            <li class="font_bolt">City</li>
+                                            <li>
+                                                {{isset($user->p_city)?$user->p_city:'Not mentioned'}}
                                             </li>
                                         </ul>
                                     </div>
@@ -822,10 +839,7 @@
                                             <li>
                                                 {{$user->p_salary}}
                                             </li>
-                                            <li class="font_bolt">Physical Status</li>
-                                            <li>
-                                                {{$user->p_physical}}
-                                            </li>
+
                                             <li class="font_bolt">Diet</li>
                                             <li>
                                                 {{$user->diet}}
@@ -834,17 +848,18 @@
                                             <li>
                                                 {{$user->body_type}}
                                             </li>
-
-                                            <li class="font_bolt">Drinking Habit</li>
-                                            <li>
-                                                {{$user->drinking_habit}}
-                                            </li>
-
                                             <li class="font_bolt">Smoking Habit</li>
                                             <li>
-                                                {{$user->smoking_habit}}
+                                                {{isset($user->smoking_habit)?$user->smoking_habit:'Not mentioned'}}
                                             </li>
-
+                                            <li class="font_bolt">Drinking Habit</li>
+                                            <li>
+                                                {{isset($user->drinking_habit)?$user->drinking_habit:'Not mentioned'}}
+                                            </li>
+                                            <li class="font_bolt">Physical Status</li>
+                                            <li>
+                                                {{$user->p_physical}}
+                                            </li>
 
                                         </ul>
                                     </div>
@@ -896,8 +911,6 @@
                                             <li>
                                                 {{isset($user->smoking_habit)?$user->smoking_habit:'Not mentioned'}}
                                             </li>
-
-
                                         </ul>
                                     </div>
                                 </div>

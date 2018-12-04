@@ -2,21 +2,21 @@
     <ul class="nav navbar-nav">
 
         {{--<li>--}}
-            {{--<ul class="nav navbar-nav navbar-left">--}}
-                {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"--}}
-                       {{--data-close-others="false">--}}
-                      {{--<span style="color:#fff">  Quick Links--}}
-                        {{--<span class="caret"></span></span></a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-                        {{--<li><a href="{{ url('booking_master') }}"><i class="fa fa-angle-double-right"></i> Bookings </a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
+        {{--<ul class="nav navbar-nav navbar-left">--}}
+        {{--<li class="dropdown">--}}
+        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"--}}
+        {{--data-close-others="false">--}}
+        {{--<span style="color:#fff">  Quick Links--}}
+        {{--<span class="caret"></span></span></a>--}}
+        {{--<ul class="dropdown-menu">--}}
+        {{--<li><a href="{{ url('booking_master') }}"><i class="fa fa-angle-double-right"></i> Bookings </a></li>--}}
+        {{--</ul>--}}
+        {{--</li>--}}
+        {{--</ul>--}}
         {{--</li>--}}
         <ul class="nav navbar-nav">
             <li><a class="top-menu-head" href="{{url('dashboard')}}"><i class="fa fa-home"
-                                                                   aria-hidden="true"></i> Home</a>
+                                                                        aria-hidden="true"></i> Home</a>
             </li>
         </ul>
         <li>
@@ -47,7 +47,7 @@
     <div id="sidebar-wrapper">
         <div class="logo_dash_box">
             <div class="logo_img_box">
-            <img src="{{url('assets/img/MM2.png')}}">
+                <img src="{{url('assets/img/MM2.png')}}">
             </div>
             {{--<div class="company_name">Mangal Mandap</div>--}}
         </div>
@@ -56,27 +56,30 @@
                             class="fa fa-bars" style="font-size:30px !Important;" aria-hidden="true"
                             aria-hidden="true"> </i> </a></li>
             <li><a href="{{url('dashboard')}}" title="Home"><i class="fa fa-home"
-                                                          aria-hidden="true"></i><span
+                                                               aria-hidden="true"></i><span
                             style="margin-left:10px;"> Home</span></a></li>
             <li><a href="{{url('user_master')}}" title="All Users"><i class="fa fa-users"
-                                                                  aria-hidden="true"></i><span
-                            style="margin-left:10px;"> All Users</span></a></li>
-           {{-- <li><a href="{{url('user_master')}}" title="Paid Users"><i class="fa fa-user"
-                                                                  aria-hidden="true"></i><span
-                            style="margin-left:10px;"> Paid Users</span></a></li>
-            <li><a href="{{url('user_master')}}" title="Free Users"><i class="fa fa-child"
-                                                           aria-hidden="true"></i><span
-                            style="margin-left:10px;"> Free Users</span></a></li>--}}
+                                                                      aria-hidden="true"></i><span
+                            style="margin-left:10px;"> All Profiles</span></a></li>
+            <li><a href="{{url('user_list')}}" title="User List"><i class="fa fa-user"
+                                                                    aria-hidden="true"></i><span
+                            style="margin-left:10px;">Users List</span></a></li>
+            <li><a href="{{url('user_list?type=active')}}" title="User List"><i class="fa fa-user"
+                                                                                aria-hidden="true"></i><span
+                            style="margin-left:10px;">Active Users</span></a></li>
+            <li><a href="{{url('user_list?type=inactive')}}" title="Deleted Users"><i class="fa fa-child"
+                                                                                      aria-hidden="true"></i><span
+                            style="margin-left:10px;"> Inactive Users</span></a></li>
             {{--<li><a href="{{url('user_master')}}" title="Membership"><i class="fa fa-map-marker"--}}
-                                                             {{--aria-hidden="true"></i><span--}}
-                            {{--style="margin-left:10px;"> Membership</span></a></li>--}}
+            {{--aria-hidden="true"></i><span--}}
+            {{--style="margin-left:10px;"> Membership</span></a></li>--}}
             {{--<li><a href="{{url('lead')}}" title="Leads"><i class="fa fa-list-alt"--}}
-                                                                  {{--aria-hidden="true"></i><span--}}
-                            {{--style="margin-left:10px;"> Leads</span></a></li>--}}
+            {{--aria-hidden="true"></i><span--}}
+            {{--style="margin-left:10px;"> Leads</span></a></li>--}}
 
             {{--<li><a href="{{url('hotel')}}" title="Hotels"><i class="fa fa-hospital-o"--}}
-                                                                  {{--aria-hidden="true"></i><span--}}
-                            {{--style="margin-left:10px;"> Hotels</span></a></li>--}}
+            {{--aria-hidden="true"></i><span--}}
+            {{--style="margin-left:10px;"> Hotels</span></a></li>--}}
             <li><a href="{{ url('logout') }}" title="Logout"><i class="fa fa-lock" aria-hidden="true"> </i> <span
                             style="margin-left:10px;">Log Out </span> </a></li>
 

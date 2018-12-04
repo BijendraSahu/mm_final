@@ -60,6 +60,13 @@ class ProfileController extends Controller
         }
     }
 
+    public function show_contact_admin()
+    {
+        $user = Profiles::find(request('user_id'));
+        $image = Images::find(request('user_id'));
+        return view('web.profile.show_contact')->with(['user' => $user, 'image' => $image]);
+    }
+
 
     public function sendrequest()
     {
@@ -116,7 +123,7 @@ class ProfileController extends Controller
     {
         if (isset($_SESSION['user_master'])) {
             $user = Profiles::find($_SESSION['user_master']->id);
-            return view('web.my_profile_new')->with(['user' => $user]);
+            return view('web.my_profile')->with(['user' => $user]);
         } else {
             return Redirect::back()->withInput()->withErrors(array('message' => 'Please login first'));
         }
@@ -179,6 +186,17 @@ class ProfileController extends Controller
         return view('user.admin_candidate_list')->with(['users' => $users, 'user_no' => $user_no]);
     }
 
+    public function user_list()
+    {
+        if (request('type') == 'active') {
+            return view('user.view_user_master')->with('user_masters', Profiles::getactiveUserMaster());
+        } else if (request('type') == 'inactive') {
+            return view('user.view_user_master')->with('user_masters', Profiles::getinactiveUserMaster());
+        } else {
+            return view('user.view_user_master')->with('user_masters', Profiles::getUserMaster());
+        }
+    }
+
     public function store(Request $request)
     {
 //        if (request('id_proof') != null)
@@ -227,7 +245,7 @@ class ProfileController extends Controller
         $user_master = Profiles::find($id);
         $user_master->is_active = 0;
         $user_master->save();
-        return redirect('user_master');
+        return redirect('user_list')->with(['message' => "User Id: $id has been activated "]);
     }
 
 //
@@ -236,7 +254,7 @@ class ProfileController extends Controller
         $user_master = Profiles::find($id);
         $user_master->is_active = 1;
         $user_master->save();
-        return redirect('user_master');
+        return redirect('user_list')->with(['message' => "User Id: $id has been activated "]);
     }
 
     public

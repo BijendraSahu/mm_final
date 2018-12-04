@@ -1128,7 +1128,7 @@ class FrontendController extends Controller
             $age2 = isset($user->p_ageto) ? $user->p_ageto : '70';
             $gender = $user->gender == 'male' ? 'female' : 'male';
             $religion = $user->p_religion;
-            $users = DB::table('profiles')->select(DB::raw('*'))->whereBetween('age', ["$age1", "$age2"])->where(['gender' => $gender])->orderBy('age', 'asc')->paginate(5);
+            $users = DB::table('profiles')->select(DB::raw('*'))->whereBetween('age', ["$age1", "$age2"])->where(['gender' => $gender, 'religion' => $religion])->orderBy('age', 'asc')->paginate(5);
             return view('web.search.desire_candidate_list')->with(['users' => $users, 'user_count' => 0, 'religion' => $religion]);
         } else {
             return redirect('/')->withErrors('Please login first');

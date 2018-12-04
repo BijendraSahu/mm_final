@@ -128,7 +128,7 @@ class User_loginController extends Controller
             if (request('admin_reg') == 0) {
                 $this->sendmail($otp);
             }
-            file_get_contents("https://www.bulksmsplans.com/Restapis/send_sms?api_key=mangalmandap2016@gmail.com&api_token=5a486ac93b1e1c7ef0da801fffd63c911542864848&sender=DEMOSM&receiver=$reg->contact&msgtype=1&sms=Dear%20Mangal%20Mandap%20user,%20Your%20verification%20code%20is%20$reg->otp");
+            file_get_contents("https://www.bulksmsplans.com/Restapis/send_sms?api_key=mangalmandap2016@gmail.com&api_token=5a486ac93b1e1c7ef0da801fffd63c911542864848&sender=MMMTRI&receiver=$reg->contact&msgtype=1&sms=Dear%20Mangal%20Mandap%20user%20Your%20verification%20code%20is%20$reg->otp");
             return redirect('/')->with('message', 'Registration has been successful...please verify your account by entering verification code');
         }
     }

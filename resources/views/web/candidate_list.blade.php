@@ -39,18 +39,19 @@
                                     $contact = \App\ViewContacts::where(['user_id' => $_SESSION['user_master']->id])->first();
                                 @endphp
                                 <div class="profile_cand_name"><i class="mdi mdi-account fa-sm pr-2"
-                                                                     aria-hidden="true"></i> {{ucwords($s_user->name)}}
-                                        (MM{{$s_user->id}})</div>
+                                                                  aria-hidden="true"></i> {{ucwords($s_user->name)}}
+                                    (MM{{$s_user->id}})
+                                </div>
                                 <div class="profile_cand_name"><i class="mdi mdi-access-point fa-sm pr-2"
-                                                                     aria-hidden="true"></i> Plan :
+                                                                  aria-hidden="true"></i> Plan :
                                     MM- {{$active->plan}}
                                 </div>
                                 <div class="profile_cand_name"><i class="mdi mdi-clock fa-sm pr-2"
-                                                                     aria-hidden="true"></i> Plan Expire :
+                                                                  aria-hidden="true"></i> Plan Expire :
                                     {{$active->deactivated_at}}
                                 </div>
-                                <div class="profile_cand_name"> <i class="mdi mdi-contacts fa-sm pr-2"
-                                                                      aria-hidden="true"></i>Contact Left
+                                <div class="profile_cand_name"><i class="mdi mdi-contacts fa-sm pr-2"
+                                                                  aria-hidden="true"></i>Contact Left
                                     : {{isset($contact)?$contact->contact_left:'0'}}
                                 </div>
                             </div>
@@ -69,11 +70,14 @@
                                        class="search_filter" name="marital_status[]"
                                        value="Never Married">
                                 &nbsp;&nbsp;<label class="label-checkbox">Never Married</label><br>
-                                <input {{isset($_SESSION['marital_status'][1])?'checked':''}} type="checkbox" class="search_filter" name="marital_status[]" value="Divorced">
+                                <input {{isset($_SESSION['marital_status'][1])?'checked':''}} type="checkbox"
+                                       class="search_filter" name="marital_status[]" value="Divorced">
                                 &nbsp;&nbsp;<label class="label-checkbox">Divorced</label><br>
-                                <input {{isset($_SESSION['marital_status'][2])?'checked':''}} type="checkbox" class="search_filter" name="marital_status[]" value="Widowed">
+                                <input {{isset($_SESSION['marital_status'][2])?'checked':''}} type="checkbox"
+                                       class="search_filter" name="marital_status[]" value="Widowed">
                                 &nbsp;&nbsp;<label class="label-checkbox">Widowed</label><br>
-                                <input {{isset($_SESSION['marital_status'][3])?'checked':''}} type="checkbox" class="search_filter" name="marital_status[]" value="Separated">
+                                <input {{isset($_SESSION['marital_status'][3])?'checked':''}} type="checkbox"
+                                       class="search_filter" name="marital_status[]" value="Separated">
                                 &nbsp;&nbsp;<label class="label-checkbox">Separated</label><br>
                             </div>
                             <div class="filter_box">
@@ -305,8 +309,8 @@
                                 <div class="age_filterbox">
                                     <select name="manglik" class="form-control">
                                         <option value="yes">Manglik</option>
-                                        <option selected value="no">Not Manglik</option>
-                                        <option value="dont know">Don't Know</option>
+                                        <option selected value="no">Non Manglik</option>
+                                        <option value="dont know">Doesn't Matter</option>
                                     </select>
                                 </div>
                             </div>
@@ -319,7 +323,7 @@
                                     <select name="physical" class="form-control">
                                         <option selected value="Normal">Normal</option>
                                         <option value="Physically challenged">Physically challenged</option>
-                                        <option value="dont know">Any</option>
+                                        <option value="dont know">Doesn't Matter</option>
                                     </select>
                                 </div>
                             </div>
@@ -1068,7 +1072,7 @@
                             </div>
                             <div class="filter_data_box">
                                 <select name="f_status" class="form-control">
-                                    <option selected="selected" value="Any">Any</option>
+                                    <option selected="selected" value="Any">Doesn't Matter</option>
                                     <option value="Rich">RICH</option>
                                     <option value="Upper Middle">UPPER MIDDLE</option>
                                     <option value="Middle">MIDDLE</option>
@@ -1081,11 +1085,10 @@
                             </div>
                             <div class="filter_data_box">
                                 <select name="diet" id="Diet_Partner" class="form-control  txt_wizard">
-                                    <option selected="selected" value="Any">Any</option>
+                                    {{--<option selected="selected" value="Any">Any</option>--}}
+                                    <option selected="selected" value="Any">Doesn't Matter</option>
                                     <option value="Vegetarian">Vegetarian</option>
-                                    <option value="Non Vegetarian">Non Vegetarian/option&gt;
-                                    </option>
-                                    <option>Doesn't Matter</option>
+                                    <option value="Non Vegetarian">Non Vegetarian</option>
                                 </select>
                             </div>
 
@@ -1162,7 +1165,11 @@
                             {{--</select>--}}
                             {{--</div>--}}
                             <div class="filter_box">
-                                <button type="submit" class="btn btn-sm btn-primary">Search</button>
+                                @if(!isset($_SESSION['user_master']))
+                                    <button type="button" onclick="search_profile(this)" class="btn btn-sm btn-primary">Search</button>
+                                @else
+                                    <button type="submit" class="btn btn-sm btn-primary">Search</button>
+                                @endif
                             </div>
                         </form>
                     </div>
@@ -1193,12 +1200,14 @@
                                                 @endif
                                             @endif
                                         @else
-                                            <img data-content="{{$search_user->id}}" onclick="view_contact(this)" class="cand_img" src="{{url('images/female_large_protected.jpg')}}"/>
+                                            <img data-content="{{$search_user->id}}" onclick="view_contact(this)"
+                                                 class="cand_img" src="{{url('images/female_large_protected.jpg')}}"/>
                                         @endif
 
                                     </div>
                                     <div class="cand_details">
-                                        <div class="cand_name" style="cursor: pointer;" data-content="{{$search_user->id}}" onclick="view_contact(this)">
+                                        <div class="cand_name" style="cursor: pointer;"
+                                             data-content="{{$search_user->id}}" onclick="view_contact(this)"
                                             {{$search_user->name}}{{'(MM'.$search_user->id.')'}}{{--<span
                                                     data-toggle="tooltip" data-placement="right"
                                                     title="Verified Profile By Aadhar"
@@ -1231,11 +1240,11 @@
                                     </div>
                                     <div class="cand_btnbox">
                                         <div class="btn-group cand_btncontainner">
-                                            <a class="popup_submitbtn btn-sm btn-primary"
+                                            <button style="cursor: pointer" class="popup_submitbtn btn-sm btn-primary"
                                                data-content="{{$search_user->id}}" id="view_{{$search_user->id}}"
                                                onclick="view_contact(this)"
                                                href="#">View Profile
-                                            </a>
+                                            </button>
                                         </div>
                                         <div class="btn-group cand_btncontainner">
                                             <a href="#" data-content="{{$search_user->id}}"
@@ -1322,7 +1331,6 @@
 
 
                                         <div class="cand_details">
-                                            <div class="cand_name" style="cursor: pointer;"
                                             <div class="cand_name" style="cursor: pointer;"
                                                  onclick="location.href='{{url('view_profile').'/'.$search_user->id}}';">{{$search_user->name}}{{'(MM'.$search_user->id.')'}}
                                                 {{--<span data-toggle="tooltip" data-placement="right"
@@ -1493,13 +1501,11 @@
             });
         });
         function FilterShow() {
-            var chkfilterbox=$('#filter_box').attr('class');
-            if(chkfilterbox == "cand_search_filterbox")
-            {
+            var chkfilterbox = $('#filter_box').attr('class');
+            if (chkfilterbox == "cand_search_filterbox") {
                 $('#filter_box').addClass('cand_search_filterbox_show');
                 $('#overlay_menu').fadeIn();
-            }else
-            {
+            } else {
                 $('#filter_box').removeClass('cand_search_filterbox_show');
             }
         }

@@ -630,7 +630,7 @@
 
     .cand_search_filterbox {
         left: -100%;
-        margin-left: 100%;
+        /*margin-left: 100%;*/
     }
 
     .cand_search_filterbox_show {

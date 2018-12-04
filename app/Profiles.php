@@ -10,25 +10,22 @@ class Profiles extends Model
     protected $table = 'profiles';
     public $timestamps = false;
 
-    public function scopeGetActiveUserMaster($query)
-    {
-        return $query->where('role_master_id', '!=', 1)->get();
-    }
 
     public function scopeGetUserMaster($query)
     {
         return $query->get();
     }
 
-    public function scopeGetActiveDistrMaster($query)
+    public function scopeGetInactiveUserMaster($query)
     {
-        return $query->where(['is_active' => 1, 'role_master_id' => 2])->get();
+        return $query->where(['is_active' => 0])->get();
     }
 
-    public function scopeGetActiveAdmin($query)
+    public function scopeGetactiveUserMaster($query)
     {
-        return $query->where(['is_active' => 1, 'role_master_id' => 1])->get();
+        return $query->where(['is_active' => 1])->get();
     }
+
 
     public
     function scopegetUserDropdown()

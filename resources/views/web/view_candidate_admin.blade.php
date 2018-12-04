@@ -26,7 +26,6 @@
             border-radius: 40px;
             outline: none;
             text-transform: uppercase;
-            padding: 10px 29px;
             font-size: 12px;
             text-align: center;
         }
@@ -52,15 +51,20 @@
         }
 
         .top_nav_fixed {
-            position: fixed;
-            top: 304px;
-            width: 100%;
-            z-index: 99;
-            border-radius: initial;
+            /*position: fixed;*/
+            /*top: 52%;*/
+            /*width: 100%;*/
+            /*z-index: 99;*/
+            /*border-radius: initial;*/
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70px;
+            bottom: 0;
+            z-index: 10;
         }
 
         .viewdetails_container {
-            padding-top: 90px;
+            padding-top: 60px;
             display: inline-block;
             width: 100%;
         }
@@ -70,7 +74,7 @@
             -webkit-transition: .5s all;
             -moz-transition: .5s all;
             -o-transition: .5s all;
-            padding: 10px 32px;
+            padding: 5px 15px;
             background: none;
             outline: none;
             border: none;
@@ -486,9 +490,9 @@
         }
 
         .view_more_details_ul li:nth-child(odd) {
-            font-weight: bold;
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 5px;
+            text-shadow: 1px 1px #e6e6e6;
         }
 
         .view_related_list {
@@ -499,134 +503,182 @@
         }
 
         .top_menu {
-            top: 56px;
+            top: 54px;
         }
 
-
+        .fade.in {
+            opacity: 1;
+        }
     </style>
+    <link rel="stylesheet" href="{{url('css/media.css')}}"/>
 @stop
 @section('content')
-    <section class="viewdetails_container" style="background-color: #e5e5e5;">
-        <section class="top_nav_fixed">
-            <div class="container">
-                <div class="row">
-                    <div class="view_fixed_nav">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="#view_about_blk" id="about" type="button"
-                               class="tab_btn waves-effect waves-light selected_tabs"><i
-                                        class="mdi mdi-account fa-sm pr-2"
-                                        aria-hidden="true"></i> About
-                            </a>
-                            <a href="#view_service_blk" type="button"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-briefcase-check fa-sm pr-2"
-                                                                           aria-hidden="true"></i>Education & Profession
-                            </a>
-                            <a type="button" href="#view_gallery_blk"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"
-                                                                           aria-hidden="true"></i>Family Details
-                            </a>
-                            <a type="button" href="#view_userreview_blk"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
-                                                                           aria-hidden="true"></i> Desire Partner
-                            </a>
-                            <a type="button" href="#view_life_style"
-                               class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"
-                                                                           aria-hidden="true"></i> Life Style
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="viewdetails_container basic_bgcolor">
+        {{--<section class="top_nav_fixed">--}}
+        {{--<div class="container">--}}
+        {{--<div class="row">--}}
+        {{--<div class="view_fixed_nav">--}}
+        {{--<div class="btn-group" role="group" aria-label="Basic example">--}}
+        {{--<a href="#view_about_blk" id="about" type="button"--}}
+        {{--class="tab_btn waves-effect waves-light selected_tabs"><i--}}
+        {{--class="mdi mdi-account fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i> About--}}
+        {{--</a>--}}
+        {{--<a href="#view_service_blk" type="button"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-briefcase-check fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i>Education & Profession--}}
+        {{--</a>--}}
+        {{--<a type="button" href="#view_gallery_blk"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i>Family Details--}}
+        {{--</a>--}}
+        {{--<a type="button" href="#view_userreview_blk"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i> Desire Partner--}}
+        {{--</a>--}}
+        {{--<a type="button" href="#view_life_style"--}}
+        {{--class="tab_btn waves-effect waves-light"><i class="mdi mdi-message-draw fa-sm pr-2"--}}
+        {{--aria-hidden="true"></i> Life Style--}}
+        {{--</a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</section>--}}
 
         <div class="container">
             <div class="row">
                 <div class="view_service_container">
-                    <div class="sub_service_listbox row">
-                        <div class="col-sm-12 col-md-9">
-                            <div class="cand_box col-sm-12 cand_profile_containner">
-
-                                <div class="basic_lb_row">
-                                    <div class="col-sm-3">
-                                        <div class="cand_imgbox">
-                                            @php
-                                                $image = \App\Images::find($user->id);
-                                            @endphp
-                                            @if(file_exists($image->pic1))
-                                                <img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>
-                                            @else
-                                                @if($user->gender == 'male')
-                                                    <img class="cand_img" src="{{url('images/male.png')}}"/>
-                                                @else
-                                                    <img class="cand_img" src="{{url('images/female.png')}}"/>
-                                                @endif
-                                            @endif
-                                            <div class="overlay_trust">
-                                                {{--<div class="meter_img img_80">80%</div>--}}
-                                                <div class="pics_counter_box"><i class="mdi mdi-camera"></i>
-                                                    {{--<span class="pics_counter">3</span>--}}
-                                                    <ul class="lightgallery list-unstyled">
-                                                        <li data-src="{{url('').'/'.$image->pic1}}">
-                                                            <img src="{{url('').'/'.$image->pic1}}"/>
-                                                        </li>
-                                                        <li data-src="{{url('').'/'.$image->pic2}}">
-                                                            <img src="{{url('').'/'.$image->pic2}}"/>
-                                                        </li>
-                                                        <li data-src="{{url('').'/'.$image->pic3}}">
-                                                            <img src="{{url('').'/'.$image->pic3}}"/>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="meter_caption">Reliable Score</div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 u_info">
-                                        <div class="cand_details">
-                                            <div class="cand_name">{{$user->name}}</div>
-                                            <ul class="cand_info">
-                                                <li>{{isset($user->age)?$user->age:'Not mentioned'}}
-                                                    Years
-                                                </li>
-
-
-                                                <li>{{$user->height}}</li>
-                                                <li>{{isset($user->state)?$user->state:'-'}}</li>
-
-
-                                                <li>{{isset($user->city)?$user->city:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->religion)?$user->religion:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->caste)?$user->caste:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->language)?$user->language:'Not mentioned'}}</li>
-                                                <li>{{isset($user->occupation)?$user->occupation:'Not mentioned'}}</li>
-
-                                                <li>{{isset($user->status)?$user->status:'Not mentioned'}}</li>
-                                                <li>{{isset($user->anual_income)?$user->anual_income:'Not mentioned'}}</li>
-                                                <li data-toggle="tooltip" data-placement="bottom"
-                                                    title="{{$user->education_detail}}">{{str_limit( $user->education,28)}}</li>
-
-
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-3 u_btn">
-                                        <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
-                                            <a href="{{url('edit_profile').'/'.$user->id}}" class="popup_submitbtn btn-sm upgrade_bg">Edit
-                                                Profile</a>
-                                        </div>
+                    <div class="sub_service_listbox">
+                        <div class="col-md-9 col-sm-12 col-xs-12 width100 padd0">
+                            <div class="top_nav_fixed">
+                                <div class="view_fixed_nav">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="#view_about_blk" id="about" type="button"
+                                           class="tab_btn waves-effect waves-light selected_tabs"><i
+                                                    class="mdi mdi-account fa-sm pr-2"
+                                                    aria-hidden="true"></i> About
+                                        </a>
+                                        <a href="#view_service_blk" type="button"
+                                           class="tab_btn waves-effect waves-light"><i
+                                                    class="mdi mdi-briefcase-check fa-sm pr-2"
+                                                    aria-hidden="true"></i>Education & Profession
+                                        </a>
+                                        <a type="button" href="#view_gallery_blk"
+                                           class="tab_btn waves-effect waves-light"><i class="mdi mdi-image fa-sm pr-2"
+                                                                                       aria-hidden="true"></i>Family
+                                            Details
+                                        </a>
+                                        <a type="button" href="#view_userreview_blk"
+                                           class="tab_btn waves-effect waves-light"><i
+                                                    class="mdi mdi-message-draw fa-sm pr-2"
+                                                    aria-hidden="true"></i> Desire Partner
+                                        </a>
+                                        <a type="button" href="#view_life_style"
+                                           class="tab_btn waves-effect waves-light"><i
+                                                    class="mdi mdi-message-draw fa-sm pr-2"
+                                                    aria-hidden="true"></i> Life Style
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+                            <div class="cand_box cand_profile_containner">
+                                <div class="cand_imgbox">
+                                    @php
+                                        $image = \App\Images::find($user->id);
+                                    @endphp
+
+                                    @if($user->is_show_pic == '1')
+                                        @if(isset($image->pic1) && file_exists($image->pic1))
+                                            <img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>
+                                        @else
+                                            @if($user->gender == 'male')
+                                                <img class="cand_img" src="{{url('images/male.png')}}"/>
+                                            @else
+                                                <img class="cand_img" src="{{url('images/female.png')}}"/>
+                                            @endif
+                                        @endif
+                                    @else
+                                        <img class="cand_img"
+                                             src="{{url('images/female_large_protected.jpg')}}"/>
+                                    @endif
+
+                                    {{--@if(file_exists($image->pic1))--}}
+                                    {{--<img class="cand_img" src="{{url('').'/'.$image->pic1}}"/>--}}
+                                    {{--@else--}}
+                                    {{--@if($user->gender == 'male')--}}
+                                    {{--<img class="cand_img" src="{{url('images/male.png')}}"/>--}}
+                                    {{--@else--}}
+                                    {{--<img class="cand_img" src="{{url('images/female.png')}}"/>--}}
+                                    {{--@endif--}}
+                                    {{--@endif--}}
+                                    <div class="overlay_trust">
+                                        {{--<div class="meter_img img_80">80%</div>--}}
+                                        <div class="pics_counter_box"><i class="mdi mdi-camera"></i>
+                                            {{--<span class="pics_counter">3</span>--}}
+                                            <ul class="lightgallery list-unstyled">
+                                                <li data-src="{{url('').'/'.$image->pic1}}">
+                                                    <img src="{{url('').'/'.$image->pic1}}"/>
+                                                </li>
+                                                <li data-src="{{url('').'/'.$image->pic2}}">
+                                                    <img src="{{url('').'/'.$image->pic2}}"/>
+                                                </li>
+                                                <li data-src="{{url('').'/'.$image->pic3}}">
+                                                    <img src="{{url('').'/'.$image->pic3}}"/>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="meter_caption">Reliable Score</div>
+                                    </div>
+
+                                </div>
+                                <div class="cand_details u_info">
+                                    <div class="cand_name">{{$user->name}}</div>
+                                    <ul class="cand_info">
+                                        <li>{{isset($user->age)?$user->age:'Not mentioned'}}
+                                            Years
+                                        </li>
 
 
+                                        <li>{{$user->height}}</li>
+                                        <li>{{isset($user->state)?$user->state:'-'}}</li>
+
+
+                                        <li>{{isset($user->city)?$user->city:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->religion)?$user->religion:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->caste)?$user->caste:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->language)?$user->language:'Not mentioned'}}</li>
+                                        <li>{{isset($user->occupation)?$user->occupation:'Not mentioned'}}</li>
+
+                                        <li>{{isset($user->status)?$user->status:'Not mentioned'}}</li>
+                                        <li>{{isset($user->anual_income)?$user->anual_income:'Not mentioned'}}</li>
+
+                                        <li data-toggle="tooltip" data-placement="bottom"
+                                            title="{{$user->education_detail}}">{{str_limit( $user->education,28)}}</li>
+                                        <li>{{isset($user->email)?$user->email:'Not mentioned'}}</li>
+
+                                        <li data-toggle="tooltip" data-placement="bottom"
+                                            title="{{$user->password}}">{{str_limit( $user->password,28)}}</li>
+
+                                    </ul>
+                                </div>
+                                <div class="cand_btnbox u_btn">
+                                    <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                        <a href="{{url('edit_profile').'/'.$user->id}}"
+                                           class="popup_submitbtn btn-sm upgrade_bg">Edit
+                                            Profile</a>
+                                    </div>
+                                    <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                        <a href="#" data-content="{{$user->id}}"
+                                           id="view_{{$user->id}}" onclick="view_user_contact('{{$user->id}}')"
+                                           class="popup_submitbtn btn-sm upgrade_bg">View Contact</a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card view_card" id="view_about_blk">
-                                <br>
                                 <div class="card_basic_header">
                                     <h3>About {{ucwords($user->name)}}
 
@@ -654,7 +706,6 @@
                                 </div>
 
                             </div>
-
                             <div class="card view_card" id="view_service_blk">
                                 <div class="card_basic_header"><h3>Education & Profession </h3></div>
                                 <div class="card-body">
@@ -694,7 +745,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_gallery_blk">
                                 <div class="card_basic_header"><h3>Family Details</h3></div>
                                 <div class="card-body pad_botttom0">
@@ -715,16 +765,17 @@
                                             <li class="font_bolt">Family Type</li>
                                             <li>{{isset($user->f_type)?$user->f_type:'Not mentioned'}}</li>
 
-                                            <li class="font_bolt">Family Status</li>
-                                            <li>{{isset($user->f_status)?$user->f_status:'Not mentioned'}}</li>
 
                                             <li class="font_bolt">Family Income</li>
                                             <li>{{isset($user->f_income)?$user->f_values:'Not mentioned'}}</li>
+                                            <li class="font_bolt">Family Status</li>
+                                            <li>{{isset($user->f_status)?$user->f_status:'Not mentioned'}}</li>
+
 
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <ul class="cand_info">
+                                        <ul class="cand_info view_details_box">
                                             <li class="font_bolt">Mother's Occupation</li>
                                             <li>{{isset($user->mother_occupation)?$user->mother_occupation:'Not mentioned'}}</li>
                                             <li class="font_bolt">Married Sisters (s)</li>
@@ -752,7 +803,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_userreview_blk">
                                 <div class="card_basic_header"><h3>Desire Partner</h3></div>
                                 <div class="card-body">
@@ -775,29 +825,30 @@
                                             </li>
                                             <li class="font_bolt">Education Partner</li>
                                             <li>
-                                                {{$user->education_partner}}
+                                                {{isset($user->education_partner)?$user->education_partner:'Not mentioned'}}
                                             </li>
-                                            <li class="font_bolt">City</li>
-                                            <li>
-                                                {{$user->p_city}}
-                                            </li>
+
                                             <li class="font_bolt">Height</li>
                                             <li>
-                                                From:&nbsp;{{$user->p_heightfrom}}
-                                                &nbsp;To:&nbsp; {{$user->p_heightto}}
+                                                From:&nbsp;{{isset($user->p_heightfrom)?$user->p_heightfrom:'N/A'}}
+                                                &nbsp;To:&nbsp; {{isset($user->p_heightto)?$user->p_heightto:'N/A'}}
                                             </li>
                                             <li class="font_bolt">Weight</li>
                                             <li>
-                                                {{$user->weight}}
+                                                {{isset($user->weight)?$user->weight:'Not mentioned'}}
                                             </li>
 
                                             <li class="font_bolt">Complexion</li>
                                             <li>
-                                                {{$user->complexion}}
+                                                {{isset($user->complexion)?$user->complexion:'Not mentioned'}}
                                             </li>
                                             <li class="font_bolt">Blood Group</li>
                                             <li>
-                                                {{$user->blood_group}}
+                                                {{isset($user->blood_group)?$user->blood_group:'Not mentioned'}}
+                                            </li>
+                                            <li class="font_bolt">City</li>
+                                            <li>
+                                                {{isset($user->p_city)?$user->p_city:'Not mentioned'}}
                                             </li>
                                         </ul>
                                     </div>
@@ -815,10 +866,7 @@
                                             <li>
                                                 {{$user->p_salary}}
                                             </li>
-                                            <li class="font_bolt">Physical Status</li>
-                                            <li>
-                                                {{$user->p_physical}}
-                                            </li>
+
                                             <li class="font_bolt">Diet</li>
                                             <li>
                                                 {{$user->diet}}
@@ -827,23 +875,23 @@
                                             <li>
                                                 {{$user->body_type}}
                                             </li>
-
-                                            <li class="font_bolt">Drinking Habit</li>
-                                            <li>
-                                                {{$user->drinking_habit}}
-                                            </li>
-
                                             <li class="font_bolt">Smoking Habit</li>
                                             <li>
-                                                {{$user->smoking_habit}}
+                                                {{isset($user->smoking_habit)?$user->smoking_habit:'Not mentioned'}}
                                             </li>
-
+                                            <li class="font_bolt">Drinking Habit</li>
+                                            <li>
+                                                {{isset($user->drinking_habit)?$user->drinking_habit:'Not mentioned'}}
+                                            </li>
+                                            <li class="font_bolt">Physical Status</li>
+                                            <li>
+                                                {{$user->p_physical}}
+                                            </li>
 
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card view_card" id="view_life_style">
                                 <div class="card_basic_header"><h3>Life Style</h3></div>
                                 <div class="card-body">
@@ -890,25 +938,24 @@
                                             <li>
                                                 {{isset($user->smoking_habit)?$user->smoking_habit:'Not mentioned'}}
                                             </li>
-
-
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="col-sm-12 col-md-3">
+
+
+                        <div class="col-sm-12 col-md-3 width100">
                             <div class="right_side_viewblk">
                                 <div class="card more_details">
                                     <div class="card-body">
                                         <h3 class="margin_top0">Horoscope</h3>
                                         <ul class="list-unstyled view_more_details_ul">
-                                            <li>Place of Birth</li>
+                                            <li>Birth of Place</li>
                                             <li>{{isset($user->bop)?$user->bop:'Not mentioned'}}</li>
                                             <li>Date Of Birth</li>
                                             <li>{{isset($user->dob)?$user->dob:'Not mentioned'}}</li>
-                                            <li>Time of Birth</li>
+                                            <li>Birth of Time</li>
                                             <li>{{isset($user->tob)?$user->tob:'Not mentioned'}}</li>
                                             <li>{{"Horoscope match"}}</li>
                                             <li>{{isset($user->horoscope_match)?$user->horoscope_match == 1 ? 'Yes':'No':'Not mentioned'}}</li>
@@ -931,16 +978,33 @@
                                                 @endphp
                                                 <li onclick="window.location = '{{url('view_profile').'/'.$similar->id}}'">
                                                     <div class="simi_imgbox">
-                                                        @if(file_exists($similar_image->pic1))
-                                                            <img class="simi_img"
-                                                                 src="{{url('').'/'.$similar_image->pic1}}"/>
-                                                        @else
-                                                            @if($similar->gender == 'male')
-                                                                <img class="simi_img" src="{{url('images/male.png')}}"/>
+                                                        {{--@if(file_exists($similar_image->pic1))--}}
+                                                        {{--<img class="simi_img"--}}
+                                                        {{--src="{{url('').'/'.$similar_image->pic1}}"/>--}}
+                                                        {{--@else--}}
+                                                        {{--@if($similar->gender == 'male')--}}
+                                                        {{--<img class="simi_img" src="{{url('images/male.png')}}"/>--}}
+                                                        {{--@else--}}
+                                                        {{--<img class="simi_img"--}}
+                                                        {{--src="{{url('images/female.png')}}"/>--}}
+                                                        {{--@endif--}}
+                                                        {{--@endif--}}
+                                                        @if($similar->is_show_pic == '1')
+                                                            @if(isset($similar_image->pic1) && file_exists($similar_image->pic1))
+                                                                <img class="cand_img"
+                                                                     src="{{url('').'/'.$similar_image->pic1}}"/>
                                                             @else
-                                                                <img class="simi_img"
-                                                                     src="{{url('images/female.png')}}"/>
+                                                                @if($similar->gender == 'male')
+                                                                    <img class="cand_img"
+                                                                         src="{{url('images/male.png')}}"/>
+                                                                @else
+                                                                    <img class="cand_img"
+                                                                         src="{{url('images/female.png')}}"/>
+                                                                @endif
                                                             @endif
+                                                        @else
+                                                            <img class="cand_img"
+                                                                 src="{{url('images/female_large_protected.jpg')}}"/>
                                                         @endif
                                                     </div>
                                                     <div class="simi_details">
@@ -1053,5 +1117,23 @@
                 });
             }
         });
+        function view_user_contact(user_id) {
+            $('#myModal').addClass('in');
+            $('#myModal').show();
+            $('#modal_title').html('Contact Information');
+            $('#modal_body').html('<img height="50px" class="center-block" src="{{url('images/loading.gif')}}"/>');
+            $.ajax({
+                type: "get",
+                url: "{{url('show_contact_admin')}}",
+                data: {user_id: user_id},
+                success: function (data) {
+                    debugger;
+                    $('#modal_body').html(data);
+                },
+                error: function (xhr, status, error) {
+                    $('#modal_body').html(xhr.responseText);
+                }
+            });
+        }
     </script>
 @stop

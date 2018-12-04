@@ -55,6 +55,7 @@ Route::GET('dashboard', 'LoginMasterController@login_user');
 Route::resource('home', 'LoginMasterController');
 Route::post('admin_login', 'LoginMasterController@store');
 Route::resource('user_master', 'ProfileController');
+Route::get('user_list', 'ProfileController@user_list');
 Route::resource('hotel', 'HotelMasterController');
 Route::resource('hotel_info', 'HotelInfoController');
 /****************************Crud Route******************************/
@@ -65,6 +66,7 @@ Route::get('hotel/{id}/delete', 'HotelMasterController@destroy');
 Route::get('user_master/{id}/delete', 'UserMasterController@destroy');
 Route::get('user_master/{id}/activate', 'UserMasterController@activate');
 Route::get('mark_as_paid/{id}', 'UserMasterController@mark_as_paid');
+Route::get('mark_as_unpaid/{id}', 'UserMasterController@mark_as_unpaid');
 /********delete Route***********/
 
 Route::get('getdetails', 'UserMasterController@getdetails');
@@ -120,6 +122,7 @@ Route::get('wunfriend', 'ProfileController@unfriend');
 
 Route::get('viewcontact', 'ProfileController@viewcontact');
 Route::get('show_contact', 'ProfileController@show_contact');
+Route::get('show_contact_admin', 'ProfileController@show_contact_admin');
 
 
 Route::get('myp', 'ProfileController@myprofile');//myprofile

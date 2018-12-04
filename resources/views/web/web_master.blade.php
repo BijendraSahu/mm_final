@@ -110,8 +110,42 @@
         });
     }
 
+
+    function search_profile(dis) {
+        var search_user_id = $(dis).attr('data-content');
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "{{ url('viewcontact') }}",
+            data: {search_user_id: search_user_id},
+            success: function (data) {
+                if (data == 'success') {
+                    viewUserContact(search_user_id);
+//                    swal("Success", "Interest has been send", "success");
+//                    setTimeout(function () {
+//                        window.location.reload();
+//                    }, 1000);
+                } else if (data == 'unpaid') {
+                    swal("Unpaid User", "Please make a payment to view contact", "info");
+//                    setTimeout(function () {
+//                        ShowLoginSignup('signin');
+//                    }, 2000);
+                } else if (data == 'Please login first') {
+                    swal("Login First", "Before Searching match please Login/Register first.", "info");
+                    setTimeout(function () {
+                        ShowLoginSignup('signin');
+                    }, 2000);
+                } else {
+                    swal("Server Error", "Error", "error");
+                }
+            },
+            error: function (xhr, status, error) {
+                swal("Server Error", "Error", "error");
+            }
+        });
+    }
+
     function viewUserContact(user_id) {
-        debugger;
         $('#myModal').addClass('in');
         $('#myModal').show();
         $('#modal_title').html('Contact Information');

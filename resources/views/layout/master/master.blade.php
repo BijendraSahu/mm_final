@@ -17,7 +17,7 @@ if (is_null($_SESSION['admin_master'])) {
     {{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.0, maximum-scale=1.0, user-scalable=yes"/>
     <title>@yield('title')</title>
 
     {{--<script src="https://code.jquery.com/jquery-1.11.3.js"></script>--}}
@@ -39,7 +39,7 @@ if (is_null($_SESSION['admin_master'])) {
     <link href="{{ url('assets/css/default.css') }}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="{{ url('https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-{{--    <link href="{{ url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet">--}}
 
     <link href="{{ url('assets/css/datepicker.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -64,14 +64,17 @@ if (is_null($_SESSION['admin_master'])) {
             top: 0;
             left: 0;
         }
+
         .splash {
             animation: splash 2s ease-in;
             animation-fill-mode: forwards;
             -webkit-animation-fill-mode: forwards;
         }
+
         .splash .anim {
             opacity: 1;
         }
+
         .anim {
             height: 100%;
             position: absolute;
@@ -85,12 +88,14 @@ if (is_null($_SESSION['admin_master'])) {
             opacity: 0;
             transition: .5s all;
         }
+
         .splesh_loader {
             position: absolute;
             left: 50%;
             top: 0;
             transform: translate(-50%, 0);
         }
+
         .splesh_loader:before {
             content: '';
             position: absolute;
@@ -102,6 +107,7 @@ if (is_null($_SESSION['admin_master'])) {
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
             height: 200px;
         }
+
         .splesh_loader:after {
             content: '';
             position: absolute;
@@ -113,6 +119,7 @@ if (is_null($_SESSION['admin_master'])) {
             background: linear-gradient(to bottom, white 0%, white 50%, rgba(255, 255, 255, 0) 100%);
             height: 200px;
         }
+
         @keyframes loader {
             0% {
                 transform: translate(-50%, 110%);
@@ -124,6 +131,7 @@ if (is_null($_SESSION['admin_master'])) {
                 transform: translate(-50%, 0%);
             }
         }
+
         @keyframes splash {
             0% {
                 transform: translate(0%, 0%);
@@ -158,10 +166,11 @@ if (is_null($_SESSION['admin_master'])) {
                 top: 6.94em;
             }
         }
-        .splash .tower-page-loader
-        {
-            display:none;
+
+        .splash .tower-page-loader {
+            display: none;
         }
+
         .tower-page-loader {
             text-align: center;
             position: absolute;
@@ -171,6 +180,7 @@ if (is_null($_SESSION['admin_master'])) {
             top: 20%;
             color: #bdbdbd;
         }
+
         .tower-page-loader span {
             vertical-align: middle;
             display: inline-block;
@@ -182,37 +192,43 @@ if (is_null($_SESSION['admin_master'])) {
             font-size: 2em;
             transform: rotateX(-90deg);
         }
+
         .tower-page-loader span:nth-child(1) {
             animation: drop 2.5s ease-in-out infinite;
             animation-delay: 0.5s;
         }
+
         .tower-page-loader span:nth-child(2) {
             animation: drop 2.5s ease-in-out infinite;
             animation-delay: 0.6s;
         }
+
         .tower-page-loader span:nth-child(3) {
             animation: drop 2.5s ease-in-out infinite;
             animation-delay: 0.7s;
         }
+
         .tower-page-loader span:nth-child(4) {
             animation: drop 2.5s ease-in-out infinite;
             animation-delay: 0.8s;
         }
+
         .tower-page-loader span:nth-child(5) {
             animation: drop 2.5s ease-in-out infinite;
             animation-delay: 0.9s;
         }
+
         .tower-page-loader span:nth-child(6) {
             animation: drop 2.5s ease-in-out infinite;
             animation-delay: 1s;
         }
+
         .tower-page-loader span:nth-child(7) {
             animation: drop 2.5s ease-in-out infinite;
             animation-delay: 1.1s;
         }
     </style>
     <style>
-
 
 
         body {
@@ -276,6 +292,7 @@ if (is_null($_SESSION['admin_master'])) {
             text-decoration: none !important;
             color: #754a40;
         }
+
         .dash_head {
             display: inline-block;
             width: 100%;
@@ -283,6 +300,7 @@ if (is_null($_SESSION['admin_master'])) {
             padding: 10px 15px;
             box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 2px, rgba(0, 0, 0, 0.05) 0px 2px 5px;
         }
+
         .dash_txt {
             display: inline-block;
             font-size: 18px;
@@ -336,7 +354,8 @@ if (is_null($_SESSION['admin_master'])) {
       		c1.004-0.002,1.684-1.012,1.312-1.938l-2.911-7.277l2.912-7.278c0.372-0.928-0.313-1.941-1.313-1.938h1.017
       		c-0.375,0-0.732,0.15-0.996,0.414l-6.039,6.039h-6.915l6.646-17.443c0.354-0.926-0.33-1.916-1.321-1.914l-1.87-0.004
       		c-0.439,0.004-0.843,0.203-1.112,0.543L15.677,17.24l-9.765-0.002c-0.3,0.002-0.597,0.055-0.879,0.16L0.678,19.03
-      		C-0.225,19.36-0.228,20.637,0.677,20.977z" transform="translate(64,30) rotate(90 0 0)" filter="url(#f1)"></path>
+      		C-0.225,19.36-0.228,20.637,0.677,20.977z" transform="translate(64,30) rotate(90 0 0)"
+                          filter="url(#f1)"></path>
                 </g>
             </svg>
         </div>
@@ -353,25 +372,19 @@ if (is_null($_SESSION['admin_master'])) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-           {{-- <div class="navbar-nav navbar-left">
-                <div class="h5 form-control" style="background-color: #FFFFFF">
-                    <a class="top-menu-head" style="text-decoration: none;" href="{{url('dashboard')}}"><i
-                                class="fa fa-home"
-                                aria-hidden="true"></i>
+            {{-- <div class="navbar-nav navbar-left">
+                 <div class="h5 form-control" style="background-color: #FFFFFF">
+                     <a class="top-menu-head" style="text-decoration: none;" href="{{url('dashboard')}}"><i
+                                 class="fa fa-home"
+                                 aria-hidden="true"></i>
 
-                        <strong class="text-primary">Banjari Tours & Travels</strong>
-                    </a>
-                </div>
-            </div>--}}
+                         <strong class="text-primary">Banjari Tours & Travels</strong>
+                     </a>
+                 </div>
+             </div>--}}
         </div>
         <div class="nav navbar-nav navbar-right">
-            @if($_SESSION['admin_master']->role_master_id == 1)
-                @include('layout.header.admin_header')
-            @elseif($_SESSION['admin_master']->role_master_id == 2)
-                @include('layout.header.executive_header')
-            @elseif($_SESSION['admin_master']->role_master_id == 3)
-                @include('layout.header.executive_header')
-            @endif
+            @include('layout.header.main_header')
         </div>
         {{--@include('layout.header.header')--}}
     </div>
@@ -381,14 +394,14 @@ if (is_null($_SESSION['admin_master'])) {
 <!-- Page Content -->
 <div class="container-fluid contain_wid">
     {{--<div class="container content">--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-lg-12">--}}
-            {{--</div>--}}
-        {{--</div>--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-lg-12">--}}
+    {{--</div>--}}
+    {{--</div>--}}
     {{--</div>--}}
     @yield('content')
 </div>
- {{--Place holder--}}
+{{--Place holder--}}
 
 
 <div class="modal fade" tabindex="-1" role="dialog" id="myModal">

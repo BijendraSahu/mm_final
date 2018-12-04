@@ -55,7 +55,7 @@
         </div>
         <div class="main_footer_bottom">
             <div class="container text-center">
-                    © 2019 All Rights Reserved
+                    © 2017 All Rights Reserved
                     {{--<a href="http://mangalmandap.com/" target="_blank"><img--}}
                     {{--src="{{url('images/Mnagal-mandap-logo1.png')}}"--}}
                     {{--class="logo_powered"></a>--}}
@@ -72,10 +72,9 @@
         <li class="mdi mdi-heart"></li>
         <li class="mdi mdi-heart"></li>
         <li class="mdi mdi-heart"></li>
-        <li class="mdi mdi-heart"></li>
-        <li class="mdi mdi-heart"></li>
-        <li class="mdi mdi-heart"></li>
-        <li class="mdi mdi-heart"></li>
+        {{--<li class="mdi mdi-heart"></li>--}}
+        {{--<li class="mdi mdi-heart"></li>--}}
+        {{--<li class="mdi mdi-heart"></li>--}}
     </ul>
 </footer>
 

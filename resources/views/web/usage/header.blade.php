@@ -100,7 +100,8 @@
                                                 <div class="menu_popup_settingrow effect">
                                                     <a href="{{url('myp')}}" class="menu_setting_row">
                                                         <i class="mdi mdi-account-edit"></i>
-                                                        My Profile
+                                                        My
+                                                        Profile({{isset($_SESSION['user_master'])?$_SESSION['user_master']->id:''}})
                                                     </a>
                                                 </div>
 

@@ -166,6 +166,7 @@
             right: -57px;
             z-index: 1000;
             box-shadow: 0px 0px 11px #00000026;
+            display:none;
         }
 
         .aadhaar-holder-home .aadhaar-logo {

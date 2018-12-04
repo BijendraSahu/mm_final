@@ -20,6 +20,17 @@
             display: inline-block;
             width: 90%;
         }
+
+        .popup_submitbtn_view {
+            padding: 4px 5px !important;
+        }
+
+        .profile_cand_name {
+            font-size: 11px !important;
+        }
+        .cand_btncontainner {
+            margin-bottom: -2px;
+        }
     </style>
     {{--<script>--}}
     {{--$(document).ready(function () {--}}
@@ -99,24 +110,36 @@
 
                                     <li data-toggle="tooltip" data-placement="bottom"
                                         title="{{$search_user->occupation_detail}}">{{ $search_user->occupation}}</li>
+
+                                    <li data-toggle="tooltip" data-placement="bottom"
+                                        title="Email">{{str_limit( $search_user->email)}}</li>
+
+                                    <li data-toggle="tooltip" data-placement="bottom"
+                                        title="Password">{{ $search_user->password}}</li>
                                 </ul>
                             </div>
                             <div class="cand_btnbox">
 
-                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                <div class="btn-group cand_btncontainner">
                                     {{--<button type="button" class="btn btn-success btn-xs res_btn"><span--}}
                                     {{--class="mdi mdi-heart"></span></button>--}}
                                     {{--<button type="button" class="btn btn-success btn-xs res_btn">Send Interest--}}
                                     {{--</button>--}}
-                                    <a target="_blank" class="popup_submitbtn_view btn-sm btn-primary"
+                                    <a target="_blank" class="popup_submitbtn_view btn-xs btn-primary"
                                        href="{{url('view_profile_admin').'/'.$search_user->id}}">View Profile
                                         {{--<button type="button" class="btn btn-primary btn-xs res_btn"><span--}}
                                         {{--class="mdi mdi-eye"></span></button>--}}
                                         {{--<button type="button" class="btn btn-primary btn-xs res_btn">View Profile--}}
                                         {{--</button>--}}
                                     </a>
+                                    <a href="{{url('edit_profile').'/'.$search_user->id}}" target="_blank"
+                                       id="{{$search_user->id}}" class="popup_submitbtn_view btn-xs btn-success"
+                                       title="Edit User">Edit Profile</a>
+
+                                    <a onclick="view_user_contact('{{$search_user->id}}')" class="popup_submitbtn_view btn-xs btn-danger"
+                                       title="View Contact">View Contact</a>
                                 </div>
-                                <div class="btn-group cand_btncontainner" style="margin-bottom: 25px;">
+                                <div class="btn-group cand_btncontainner">
                                     {{--<button type="button" class="btn btn-success btn-xs res_btn"><span--}}
                                     {{--class="mdi mdi-heart"></span></button>--}}
                                     {{--<button type="button" class="btn btn-success btn-xs res_btn">Send Interest--}}
@@ -132,8 +155,12 @@
                                             MM- {{$active->plan}}
                                         </div>
                                         <div class="profile_cand_name"><b><i class="mdi mdi-clock fa-sm pr-2"
+                                                                             aria-hidden="true"></i> Plan Activate</b> :
+                                            {{ date_format(date_create($active->activated_at), "d-M-Y h:i A")}}
+                                        </div>
+                                        <div class="profile_cand_name"><b><i class="mdi mdi-clock fa-sm pr-2"
                                                                              aria-hidden="true"></i> Plan Expire</b> :
-                                            {{$active->deactivated_at}}
+                                            {{ date_format(date_create($active->deactivated_at), "d-M-Y")}}
                                         </div>
                                         <div class="profile_cand_name"><b> <i class="mdi mdi-contacts fa-sm pr-2"
                                                                               aria-hidden="true"></i>Contact Left</b>
@@ -168,13 +195,33 @@
     {{--</section>--}}
 
     <script type="text/javascript">
-        $(function () {
-            $(".typeDD").select2({
-                width: 'element',
-                minimumResultsForSearch: Infinity,
-                cache: true
+        function view_user_contact(user_id) {
+            $('#myModal').modal('show');
+            $('.modal-dialog').removeClass('modal-lg');
+            $('.modal-dialog').addClass('modal-md');
+            $('.modal-title').html('Contact Information');
+            $('.modal-body').html('<img height="50px" class="center-block" src="{{url('assets/img/loading.gif')}}"/>');
+
+            $.ajax({
+                type: "get",
+                url: "{{url('show_contact_admin')}}",
+                data: {user_id: user_id},
+                success: function (data) {
+                    $('.modal-body').html(data);
+                },
+                error: function (xhr, status, error) {
+                    $('.modal-body').html(xhr.responseText);
+                }
             });
-        });
+        }
+
+//        $(function () {
+//            $(".typeDD").select2({
+//                width: 'element',
+//                minimumResultsForSearch: Infinity,
+//                cache: true
+//            });
+//        });
         function getPaidUser(getUserId) {
             var checkstr = confirm('are you sure you want this user as paid user?');
             if (checkstr == true) {
