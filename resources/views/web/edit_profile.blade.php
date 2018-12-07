@@ -309,7 +309,6 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-
                                         @if($user->is_once_dob == '1')
                                             <div class="textbox_containner">
                                                 <input type="text" editable="false" name="dob" autocomplete="off"
