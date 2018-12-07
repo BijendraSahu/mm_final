@@ -599,6 +599,7 @@
         padding: 5px;
         text-align: center;
         line-height: 16px;
+        display: inline-block;
     }
 
     .view_fixed_nav .btn-group a i {
