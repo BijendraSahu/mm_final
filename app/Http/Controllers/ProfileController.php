@@ -123,7 +123,7 @@ class ProfileController extends Controller
     {
         if (isset($_SESSION['user_master'])) {
             $user = Profiles::find($_SESSION['user_master']->id);
-            return view('web.my_profile')->with(['user' => $user]);
+            return view('web.my_profile_new')->with(['user' => $user]);
         } else {
             return Redirect::back()->withInput()->withErrors(array('message' => 'Please login first'));
         }

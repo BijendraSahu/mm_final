@@ -4,15 +4,24 @@
 @section('head')
     @include('web.usage.lightbox_plugin')
     <link rel="stylesheet" href="{{url('css/bootstrap2.min.css')}}"/>
+    <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}"/>
     <style type="text/css">
+        .view_fixed_nav .btn-group a {
+            padding: 5px 29px;
+        }
         h3 {
             font-size: 18px;
-            color: #00983c;
+            color: #d13b5b;
+        }
+        .modal-header
+        {
+            display: inline-block !important;
         }
         .font_bolt {
             font-weight: 700;
         }
-        li{
+
+        li {
             font-size: 15px;
         }
 
@@ -24,7 +33,6 @@
             border-radius: 40px;
             outline: none;
             text-transform: uppercase;
-            padding: 10px 29px;
             font-size: 12px;
             text-align: center;
         }
@@ -50,15 +58,20 @@
         }
 
         .top_nav_fixed {
-            position: fixed;
-            top: 304px;
-            width: 100%;
-            z-index: 99;
-            border-radius: initial;
+            /*position: fixed;*/
+            /*top: 52%;*/
+            /*width: 100%;*/
+            /*z-index: 99;*/
+            /*border-radius: initial;*/
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70px;
+            bottom: 0;
+            z-index: 10;
         }
 
         .viewdetails_container {
-            padding-top: 41px;
+            padding-top: 60px;
             display: inline-block;
             width: 100%;
         }
@@ -68,7 +81,7 @@
             -webkit-transition: .5s all;
             -moz-transition: .5s all;
             -o-transition: .5s all;
-            padding: 10px 32px;
+            padding: 5px 15px;
             background: none;
             outline: none;
             border: none;
@@ -484,9 +497,9 @@
         }
 
         .view_more_details_ul li:nth-child(odd) {
-            font-weight: bold;
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 5px;
+            text-shadow: 1px 1px #e6e6e6;
         }
 
         .view_related_list {
@@ -497,7 +510,11 @@
         }
 
         .top_menu {
-            top: 56px;
+            top: 54px;
+        }
+
+        .fade.in {
+            opacity: 1;
         }
     </style>
 @stop

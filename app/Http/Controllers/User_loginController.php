@@ -254,7 +254,10 @@ class User_loginController extends Controller
             $reg->email = request('email');
             $reg->contact = request('contact');
 //            $reg->password = request('password');
-//            $reg->gender = request('gender');
+            $reg->gender = request('gender');
+            if (request('gender') != null)
+                $reg->is_once_gender = 1;
+
             if (request('name') != null)
                 $reg->name = request('name');
             if (request('create_for') != null)
@@ -278,7 +281,7 @@ class User_loginController extends Controller
             if (request('mob2') != null)
                 $reg->mob2 = request('mob2');
             if (request('religion') != null)
-                $reg->religion = request('religion');
+                $reg->religion = request('religion'); $reg->is_once_religion = 1;
             if (request('caste') != null)
                 $reg->caste = request('caste');
             if (request('subcaste') != null)
@@ -343,6 +346,8 @@ class User_loginController extends Controller
                 $reg->p_religion = request('p_religion');
             if (request('dob') != null)
                 $reg->age = Carbon::parse($reg->dob)->diff(Carbon::now())->format('%y');
+            if (request('dob') != null)
+                $reg->is_once_dob = 1;
 //            $otp = rand(100000, 999999);
 //            $reg->otp = $otp;
             $reg->save();

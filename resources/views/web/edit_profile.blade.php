@@ -159,6 +159,7 @@
             resize: none;
             border-radius: 0px;
         }
+
         .editable_txt {
             width: 100%;
             resize: none;
@@ -302,18 +303,22 @@
                                     <div class="col-sm-6">
                                         <div class="textbox_containner">
                                             <input type="text" name="contact" autocomplete="off" class="animate_txt"
-                                                   id="contact" placeholder="Enter Primary No" value="{{$user->contact}}"/>
+                                                   id="contact" placeholder="Enter Primary No"
+                                                   value="{{$user->contact}}"/>
                                             <label class="animate_placeholder" for="contact">Primary No.</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
 
-                                        @if($user->is_once_dob == '0')
+                                        @if($user->is_once_dob == '1')
                                             <div class="textbox_containner">
                                                 <input type="text" editable="false" name="dob" autocomplete="off"
-                                                       class="animate_txt dtp" id="DOB" placeholder="DOB"
-                                                       value="{{$user->dob}}">
-                                                <label class="animate_placeholder" title="You can only once in a life" data-toggle="tooltip" data-placement="top" for="name">DOB</label>
+                                                       class="animate_txt editable_false" disabled id="DOB1" placeholder="DOB"
+                                                       value="{{$user->dob}}" title="You can only edit once in a life this field" data-toggle="tooltip" data-placement="top" >
+                                                <label class="animate_placeholder" title="You can only edit once in a life" data-toggle="tooltip" data-placement="top" for="name">DOB</label>
+                                                {{--<label class="" title="You can only edit once in a life this field"--}}
+                                                {{--data-toggle="tooltip" data-placement="top"--}}
+                                                {{--                                                       for="name">{{$user->religion}}</label>--}}
                                             </div>
                                         @else
                                             <div class="textbox_containner">
@@ -321,7 +326,8 @@
                                                        class="animate_txt" id="DOB1"
                                                        placeholder="DOB"
                                                        value="{{$user->dob}}">
-                                                <label class="animate_placeholder"  title="You can only once in a life" data-toggle="tooltip" data-placement="top" for="name">DOB</label>
+                                                <label class="animate_placeholder" title="You can only once in a life"
+                                                       data-toggle="tooltip" data-placement="top" for="name">DOB</label>
                                             </div>
                                         @endif
                                     </div>
@@ -416,19 +422,33 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <select id="Religion" name="religion" class="form-control drop_edit">
-                                            <option value="{{$user->religion}}">{{$user->religion!=''?$user->religion:'Select Religion'}}</option>
-                                            <option value="Hindu">Hindu</option>
-                                            <option value="Sikh">Sikh</option>
-                                            <option value="Christian">Christian</option>
-                                            <option value="Muslim">Muslim</option>
-                                            <option value="Jain">Jain</option>
-                                            <option value="Buddhist">Buddhist</option>
-                                            <option value="Atheist">Atheist</option>
-                                            <option value="Bahai">Bahai</option>
-                                            <option value="Jew">Jew</option>
-                                            <option value="Other Religion">Other Religion</option>
-                                        </select>
+                                        @if($user->is_once_religion==0)
+                                            <select id="Religion" name="religion"
+                                                    title="You can only edit once in a life" data-toggle="tooltip"
+                                                    data-placement="top" class="form-control drop_edit ">
+                                                <option value="{{$user->religion}}">{{$user->religion!=''?$user->religion:'Select Religion'}}</option>
+                                                <option value="Hindu">Hindu</option>
+                                                <option value="Sikh">Sikh</option>
+                                                <option value="Christian">Christian</option>
+                                                <option value="Muslim">Muslim</option>
+                                                <option value="Jain">Jain</option>
+                                                <option value="Buddhist">Buddhist</option>
+                                                <option value="Atheist">Atheist</option>
+                                                <option value="Bahai">Bahai</option>
+                                                <option value="Jew">Jew</option>
+                                                <option value="Other Religion">Other Religion</option>
+                                            </select>
+                                        @else
+                                            <div class="textbox_containner">
+                                                <input type="text" editable="false" name="religion1" autocomplete="off"
+                                                class="animate_txt editable_false" disabled id="rel1" placeholder="Religion"
+                                                value="{{$user->religion!=''?$user->religion:'Select Religion'}}" title="You can only edit once in a life this field" data-toggle="tooltip" data-placement="top" >
+                                                <label class="animate_placeholder" title="You can only edit once in a life" data-toggle="tooltip" data-placement="top" for="name">Religion</label>
+                                                {{--<label class="" title="You can only edit once in a life this field"--}}
+                                                       {{--data-toggle="tooltip" data-placement="top"--}}
+{{--                                                       for="name">{{$user->religion}}</label>--}}
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="update_profile_row row">
@@ -460,7 +480,8 @@
                                         <!--  <input type="Weight" editable="false" name="Weight" autocomplete="off" class="animate_txt" id="Weight" placeholder="Weight" value="Weight">-->
                                         <select name="caste" class="form-control requiredDD drop_edit txt_wizard"
                                                 id="caste">
-                                            <option selected value="{{$user->caste}}">{{$user->caste!=''?$user->caste:'Select caste'}}</option>
+                                            <option selected
+                                                    value="{{$user->caste}}">{{$user->caste!=''?$user->caste:'Select caste'}}</option>
                                             <option value="Adi Dravida">Adi Dravida</option>
                                             <option value="Agarwal">Agarwal</option>
                                             <option value="Agnikula Kshatriya">Agnikula Kshatriya</option>
@@ -1059,7 +1080,14 @@
                                     </div>
 
                                 </div>
-
+                                {{--<div class="row update_profile_row">--}}
+                                {{--<div class="col-sm-6">--}}
+                                {{--<select name="gender" class="form-control requiredDD txt_wizard drop_edit">--}}
+                                {{--<option value="male">Male</option>--}}
+                                {{--<option value="female">Female</option>--}}
+                                {{--</select>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="submit_btnbox row">
                                     <div class="after_editable_btnbox">
                                         <button type="button"
@@ -1714,7 +1742,8 @@
                                     <div class="col-sm-6">
                                         <select name="p_religion" class="form-control requiredDD txt_wizard drop_edit"
                                                 id="p_religion">
-                                            <option selected="selected" value="{{$user->p_religion}}">{{$user->p_religion}}</option>
+                                            <option selected="selected"
+                                                    value="{{$user->p_religion}}">{{$user->p_religion}}</option>
                                             <option value="Hindu">Hindu</option>
                                             <option value="Muslim">Muslim</option>
                                             <option value="Muslim - Shia">Muslim - Shia</option>
@@ -2133,7 +2162,8 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
-                                        <select id="p_manglik" name="p_manglik" class="form-control requiredDD txt_wizard drop_edit">
+                                        <select id="p_manglik" name="p_manglik"
+                                                class="form-control requiredDD txt_wizard drop_edit">
                                             <option value="">Select Manglik</option>
                                             <option value="Manglik">Manglik</option>
                                             <option value="Non Manglik">Non Manglik</option>
