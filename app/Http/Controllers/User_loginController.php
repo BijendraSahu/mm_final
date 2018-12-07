@@ -133,6 +133,24 @@ class User_loginController extends Controller
     }
 
     public
+    function forgot_password()
+    {
+        $otp = rand(100000, 999999);
+        $contact = request('contact');
+        $user = UserMaster::where(['contact' => $contact])->first();
+        if (isset($user)) {
+            $user_master = UserMaster::find($user->id);
+            $user_master->password = $otp;
+            $user_master->save();
+            file_get_contents("http://api.msg91.com/api/sendhttp.php?sender=CONONE&route=4&mobiles=$user_master->contact&authkey=213418AONRGdnQ5ae96f62&country=91&message=Dear%20user,%20Password%20to%20login%20into%20MangalMandap%20is%20$otp");
+            $_SESSION['user_master'] = $user_master;
+            echo 'ok';
+        } else {
+            echo 'Incorrect';
+        }
+    }
+
+    public
     function sendmail($otp)
     {
         /***********Mail************/
@@ -310,102 +328,102 @@ class User_loginController extends Controller
 //        echo request('user_by_admin');
 //        if (isset($_SESSION['user_master'])) {
 //            $reg = Profiles::find(request('user_by_admin'));
-            $reg = Profiles::find(request('user_by_admin'));
-            $reg->email = request('email');
-            $reg->contact = request('contact');
+        $reg = Profiles::find(request('user_by_admin'));
+        $reg->email = request('email');
+        $reg->contact = request('contact');
 //            $reg->password = request('password');
 //            $reg->gender = request('gender');
-            if (request('name') != null)
-                $reg->name = request('name');
-            if (request('create_for') != null)
-                $reg->create_for = request('create_for');
-            if (request('dob') != null)
-                $reg->dob = Carbon::parse(request('dob'))->format('Y-m-d');
-            if (request('height') != null)
-                $reg->height = request('height');
-            if (request('gotra') != null)
-                $reg->gotra = request('gotra') == '' ? 'Not mentioned' : request('gotra');
-            if (request('father_side_gotra') != null)
-                $reg->father_side_gotra = request('father_side_gotra');
-            if (request('mother_side_gotra') != null)
-                $reg->mother_side_gotra = request('mother_side_gotra');
-            if (request('status') != null)
-                $reg->status = request('status');
-            if (request('living') != null)
-                $reg->living = request('living');
-            if (request('mob') != null)
-                $reg->mob = request('mob');
-            if (request('mob2') != null)
-                $reg->mob2 = request('mob2');
-            if (request('religion') != null)
-                $reg->religion = request('religion');
-            if (request('caste') != null)
-                $reg->caste = request('caste');
-            if (request('subcaste') != null)
-                $reg->subcaste = request('subcaste');
-            if (request('manglik') != null)
-                $reg->manglik = request('manglik');
-            if (request('language') != null)
-                $reg->language = request('language');
-            if (request('highest_degree') != null)
-                $reg->highest_degree = request('highest_degree');
-            if (request('college_name') != null)
-                $reg->college_name = request('college_name');
-            if (request('occupation') != null)
-                $reg->occupation = request('occupation');
-            if (request('occupation_detail') != null)
-                $reg->occupation_detail = request('occupation_detail');
-            if (request('anual_income') != null)
-                $reg->anual_income = request('anual_income');
-            if (request('f_values') != null)
-                $reg->f_values = request('f_values');
-            if (request('f_type') != null)
-                $reg->f_type = request('f_type');
-            if (request('f_status') != null)
-                $reg->f_status = request('f_status');
-            if (request('family_income') != null)
-                $reg->f_income = request('family_income');
-            if (request('brothers') != null)
-                $reg->brothers = request('brothers');
-            if (request('sisters') != null)
-                $reg->sisters = request('sisters');
-            if (request('bro_married') != null)
-                $reg->bro_married = request('bro_married');
-            if (request('sis_married') != null)
-                $reg->sis_married = request('sis_married');
-            if (request('father_occupation') != null)
-                $reg->father_occupation = request('father_occupation');
-            if (request('mother_occupation') != null)
-                $reg->mother_occupation = request('mother_occupation');
-            if (request('about_me') != null)
-                $reg->about_me = request('about_me');
-            if (request('horoscope_match') != null)
-                $reg->horoscope_match = request('horoscope_match');
-            if (request('bop') != null)
-                $reg->bop = request('bop');
-            if (request('p_agefrom') != null)
-                $reg->p_agefrom = request('p_agefrom');
-            if (request('p_ageto') != null)
-                $reg->p_ageto = request('p_ageto');
-            if (request('p_status') != null)
-                $reg->p_status = request('p_status');
-            if (request('p_heightfrom') != null)
-                $reg->p_heightfrom = request('p_heightfrom');
-            if (request('p_language') != null)
-                $reg->p_language = request('p_language');
-            if (request('p_city') != null)
-                $reg->p_city = request('p_city');
-            if (request('p_state') != null)
-                $reg->p_state = request('p_state');
-            if (request('p_salary') != null)
-                $reg->p_salary = request('p_salary');
-            if (request('p_religion') != null)
-                $reg->p_religion = request('p_religion');
-            if (request('dob') != null)
-                $reg->age = Carbon::parse($reg->dob)->diff(Carbon::now())->format('%y');
+        if (request('name') != null)
+            $reg->name = request('name');
+        if (request('create_for') != null)
+            $reg->create_for = request('create_for');
+        if (request('dob') != null)
+            $reg->dob = Carbon::parse(request('dob'))->format('Y-m-d');
+        if (request('height') != null)
+            $reg->height = request('height');
+        if (request('gotra') != null)
+            $reg->gotra = request('gotra') == '' ? 'Not mentioned' : request('gotra');
+        if (request('father_side_gotra') != null)
+            $reg->father_side_gotra = request('father_side_gotra');
+        if (request('mother_side_gotra') != null)
+            $reg->mother_side_gotra = request('mother_side_gotra');
+        if (request('status') != null)
+            $reg->status = request('status');
+        if (request('living') != null)
+            $reg->living = request('living');
+        if (request('mob') != null)
+            $reg->mob = request('mob');
+        if (request('mob2') != null)
+            $reg->mob2 = request('mob2');
+        if (request('religion') != null)
+            $reg->religion = request('religion');
+        if (request('caste') != null)
+            $reg->caste = request('caste');
+        if (request('subcaste') != null)
+            $reg->subcaste = request('subcaste');
+        if (request('manglik') != null)
+            $reg->manglik = request('manglik');
+        if (request('language') != null)
+            $reg->language = request('language');
+        if (request('highest_degree') != null)
+            $reg->highest_degree = request('highest_degree');
+        if (request('college_name') != null)
+            $reg->college_name = request('college_name');
+        if (request('occupation') != null)
+            $reg->occupation = request('occupation');
+        if (request('occupation_detail') != null)
+            $reg->occupation_detail = request('occupation_detail');
+        if (request('anual_income') != null)
+            $reg->anual_income = request('anual_income');
+        if (request('f_values') != null)
+            $reg->f_values = request('f_values');
+        if (request('f_type') != null)
+            $reg->f_type = request('f_type');
+        if (request('f_status') != null)
+            $reg->f_status = request('f_status');
+        if (request('family_income') != null)
+            $reg->f_income = request('family_income');
+        if (request('brothers') != null)
+            $reg->brothers = request('brothers');
+        if (request('sisters') != null)
+            $reg->sisters = request('sisters');
+        if (request('bro_married') != null)
+            $reg->bro_married = request('bro_married');
+        if (request('sis_married') != null)
+            $reg->sis_married = request('sis_married');
+        if (request('father_occupation') != null)
+            $reg->father_occupation = request('father_occupation');
+        if (request('mother_occupation') != null)
+            $reg->mother_occupation = request('mother_occupation');
+        if (request('about_me') != null)
+            $reg->about_me = request('about_me');
+        if (request('horoscope_match') != null)
+            $reg->horoscope_match = request('horoscope_match');
+        if (request('bop') != null)
+            $reg->bop = request('bop');
+        if (request('p_agefrom') != null)
+            $reg->p_agefrom = request('p_agefrom');
+        if (request('p_ageto') != null)
+            $reg->p_ageto = request('p_ageto');
+        if (request('p_status') != null)
+            $reg->p_status = request('p_status');
+        if (request('p_heightfrom') != null)
+            $reg->p_heightfrom = request('p_heightfrom');
+        if (request('p_language') != null)
+            $reg->p_language = request('p_language');
+        if (request('p_city') != null)
+            $reg->p_city = request('p_city');
+        if (request('p_state') != null)
+            $reg->p_state = request('p_state');
+        if (request('p_salary') != null)
+            $reg->p_salary = request('p_salary');
+        if (request('p_religion') != null)
+            $reg->p_religion = request('p_religion');
+        if (request('dob') != null)
+            $reg->age = Carbon::parse($reg->dob)->diff(Carbon::now())->format('%y');
 //            $otp = rand(100000, 999999);
 //            $reg->otp = $otp;
-            $reg->save();
+        $reg->save();
 
 //            $activate = new ActivateProfile();
 //            $activate->id = $reg->id;
