@@ -256,7 +256,11 @@
         right: 8px;
         max-width: 130px;
     }
-
+    .view_fixed_nav {
+        padding-top: 10px;
+        background: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
     .main_footer_bottom {
         padding: 0px 0px 5px 0px;
     }

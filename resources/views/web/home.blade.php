@@ -200,6 +200,10 @@
             .story_slider_text:after {
                 border-right-color: #f5f5f5;
             }
+            .caroufredsel_wrapper
+            {
+                min-height: 300px;
+            }
         }
     </style>
     <script type="text/javascript">
